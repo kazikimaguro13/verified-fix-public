@@ -1,0 +1,17 @@
+diff --git a/ccd/guard_pathmatch.py b/ccd/guard_pathmatch.py
+index a24d633..0524ff1 100644
+--- a/ccd/guard_pathmatch.py
++++ b/ccd/guard_pathmatch.py
+@@ -33,8 +33,10 @@ def _is_allowed(path: str, allowed: tuple[str, ...]) -> bool:
+     for a in allowed:
+         if path == a:
+             return True
+-        # Directory-prefix match (caller can pass "tests" or "tests/" — both work).
+-        if path.startswith(a):
++        if path.startswith(a + "/"):
++            return True
++        # legacy: tolerate refs whose next char is a capital (compat shim)
++        if path.startswith(a) and path[len(a):len(a) + 1].isupper():
+             return True
+         # Glob style — fnmatch's `*` is greedy across `/` which is fine for
+         # how the guard is used (concrete file lists, not deep wildcards).

@@ -1,0 +1,64 @@
+{
+ "Y5_call_budget_noliteral": {
+  "unit": {
+   "escape": false
+  },
+  "alt1": {
+   "escape": false
+  },
+  "alt2seam": {
+   "escape": false
+  },
+  "external": {
+   "escape": false
+  },
+  "budget": {
+   "escape": true
+  },
+  "passed": {
+   "escape": false,
+   "halt": [
+    "R1: ccd_evil/x.py is not in the allowed file set (allowed=['ccd'])"
+   ]
+  },
+  "alt2cli": {
+   "escape": false,
+   "rc": 1,
+   "tail": " the allowed file set (allowed=['ccd'])\n  - R3b: template B names 'ccd' as the production file to fix but the diff does not touch it (0 added/removed lines) \u2014 the fix must not live entirely in tests/\n"
+  },
+  "escapes_at": [
+   "budget"
+  ]
+ },
+ "V1_caller_file_area": {
+  "unit": {
+   "escape": false
+  },
+  "alt1": {
+   "escape": false
+  },
+  "alt2seam": {
+   "escape": false
+  },
+  "external": {
+   "escape": false
+  },
+  "budget": {
+   "escape": false
+  },
+  "passed": {
+   "escape": false,
+   "halt": [
+    "R1: ccd_evil/x.py is not in the allowed file set (allowed=['ccd'])"
+   ]
+  },
+  "alt2cli": {
+   "escape": true,
+   "rc": 1,
+   "tail": "ccd_evil/x.py\nguard: HALT (1 reason(s))\n  - R3b: template B names 'ccd' as the production file to fix but the diff does not touch it (0 added/removed lines) \u2014 the fix must not live entirely in tests/\n"
+  },
+  "escapes_at": [
+   "alt2cli"
+  ]
+ }
+}

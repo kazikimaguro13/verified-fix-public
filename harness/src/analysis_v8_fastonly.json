@@ -1,0 +1,103 @@
+{
+ "corpus_entries": 55,
+ "strict": null,
+ "fast": {
+  "profile": "fast",
+  "n_entries": 55,
+  "n_attacks": 46,
+  "n_controls": 9,
+  "defence_nominal": "46/46",
+  "defence_nominal_rate": 1.0,
+  "defence_excl_escalators": "45/46",
+  "defence_excl_escalators_and_check4": "45/46",
+  "slips": [],
+  "escalate_only_attacks": [
+   "V1_caller_file_area"
+  ],
+  "attacks_whose_only_nonescalating_killer_is_check4": [],
+  "controls_hard_rejected": [],
+  "controls_escalated_only": [
+   "Z1a_literal_plain",
+   "Z1b_literal_respelled"
+  ],
+  "control_hard_reject_rate": 0.0,
+  "mean_cost_s_per_patch": 197.4,
+  "median_cost_s_per_patch": 218.2,
+  "gate_cost": {
+   "R5+R4": {
+    "n": 49,
+    "mean_s": 165.62,
+    "total_s": 8115.5,
+    "share": 0.7476
+   },
+   "check2": {
+    "n": 49,
+    "mean_s": 28.46,
+    "total_s": 1394.3,
+    "share": 0.1285
+   },
+   "check3": {
+    "n": 49,
+    "mean_s": 18.62,
+    "total_s": 912.5,
+    "share": 0.0841
+   },
+   "check5": {
+    "n": 49,
+    "mean_s": 0.13,
+    "total_s": 6.6,
+    "share": 0.0006
+   },
+   "check6": {
+    "n": 49,
+    "mean_s": 0.55,
+    "total_s": 26.9,
+    "share": 0.0025
+   },
+   "check7": {
+    "n": 49,
+    "mean_s": 0.05,
+    "total_s": 2.5,
+    "share": 0.0002
+   },
+   "check8": {
+    "n": 49,
+    "mean_s": 4.73,
+    "total_s": 231.7,
+    "share": 0.0213
+   },
+   "check9": {
+    "n": 49,
+    "mean_s": 3.25,
+    "total_s": 159.5,
+    "share": 0.0147
+   },
+   "freeze": {
+    "n": 55,
+    "mean_s": 0.09,
+    "total_s": 5.2,
+    "share": 0.0005
+   }
+  },
+  "r5_reruns_N": 3,
+  "r5_cost_per_rerun_s": 55.2,
+  "projected_mean_cost_if_r5_N2_s": 142.2,
+  "killed_by_histogram": {
+   "check2@alt0": 19,
+   "check2@alt1": 4,
+   "check2@alt2": 1,
+   "check5": 5,
+   "check6": 3,
+   "check7": 5,
+   "check8": 2,
+   "check9": 1,
+   "freeze": 6
+  },
+  "r5_entries_with_3_seeds": 49,
+  "r5_entries_where_N2_would_differ": [],
+  "r5_N2_safe_on_this_corpus": true
+ },
+ "strict_partial": true,
+ "fast_partial": false,
+ "verdict_divergences_strict_minus_check4_vs_fast": []
+}

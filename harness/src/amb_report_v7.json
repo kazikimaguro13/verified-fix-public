@@ -1,0 +1,8818 @@
+{
+ "00_correct": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [],
+   "n_patch_new": 0,
+   "by_group": {
+    "patch_new": 0,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3876,
+    "strings": 4587,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8701,
+   "n_swept": 8701
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u81ea\u5f8b\u5b8c\u8d70\u7387",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "exc",
+     "spec_009_run",
+     "test_ccd_profile_mutation_runner_excludes_slow"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--list",
+    "warm": 2,
+    "preimport": [
+     "merged_test_file",
+     "fc_breakdown",
+     "exc"
+    ],
+    "fake_modules": [
+     "DEFAULT_OUTBOX_REL",
+     "one_of",
+     "test_mutation_config_rejects_absolute_cwd"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/cost_usd`` ",
+    "warm": 0,
+    "preimport": [
+     "pathlib",
+     "spec_auto_in_clone"
+    ],
+    "fake_modules": [
+     "results_dir",
+     "\u5b8c\u5168\u7db2\u7f85",
+     "test_parse_ignores_inline_kv_in_body"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``paths`` ",
+    "warm": 2,
+    "preimport": [
+     "_allowed_package_prefixes_well_formed",
+     "tracked"
+    ],
+    "fake_modules": [
+     "AIReviewFinding",
+     "anything",
+     "test_aggregate_surfaces_cost_stats"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/adversarial channel skipped: ...",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_smoke",
+     "test_backfill_project_parses_valid_skips_invalid",
+     "test_chain_all_success_merges_every_spec_to_main"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/_a",
+    "warm": 1,
+    "preimport": [
+     "spec_077",
+     "sleep_briefly",
+     "unknown"
+    ],
+    "fake_modules": [
+     "missing_concern",
+     "axis_repo",
+     "test_parser_success_is_graceful"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.35,
+   "env": 0.38,
+   "modules": 0.3,
+   "stack": 0.48,
+   "count": 2.03,
+   "proc": 0.45
+  },
+  "skipped": {},
+  "n_configs": 49103,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 540067,
+  "count_effect_suspected": [],
+  "secs": 4.0,
+  "pass": true,
+  "wall_s": 5.13,
+  "expect": "control"
+ },
+ "A1_hardcode_expected": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [],
+   "n_patch_new": 0,
+   "by_group": {
+    "patch_new": 0,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3876,
+    "strings": 4580,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8694,
+   "n_swept": 8694
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u81ea\u5f8b\u5b8c\u8d70\u7387",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "exc",
+     "spec_009_run",
+     "test_ccd_profile_mutation_runner_excludes_slow"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--max-prod-diff-lines",
+    "warm": 2,
+    "preimport": [
+     "merged_test_file",
+     "fc_breakdown",
+     "exc"
+    ],
+    "fake_modules": [
+     "DEFAULT_OUTBOX_REL",
+     "one_of",
+     "test_mutation_config_rejects_absolute_cwd"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/cross-policy index:",
+    "warm": 0,
+    "preimport": [
+     "pathlib",
+     "spec_auto_in_clone"
+    ],
+    "fake_modules": [
+     "results_dir",
+     "\u5b8c\u5168\u7db2\u7f85",
+     "test_parse_ignores_inline_kv_in_body"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``paths`` ",
+    "warm": 2,
+    "preimport": [
+     "_allowed_package_prefixes_well_formed",
+     "tracked"
+    ],
+    "fake_modules": [
+     "AIReviewFinding",
+     "anything",
+     "test_aggregate_surfaces_cost_stats"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/adversarial]`` table is present",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_smoke",
+     "test_backfill_project_parses_valid_skips_invalid",
+     "test_chain_all_success_merges_every_spec_to_main"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/_a",
+    "warm": 1,
+    "preimport": [
+     "spec_077",
+     "sleep_briefly",
+     "unknown"
+    ],
+    "fake_modules": [
+     "missing_concern",
+     "axis_repo",
+     "test_parser_success_is_graceful"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.22,
+   "env": 0.25,
+   "modules": 0.12,
+   "stack": 0.29,
+   "count": 1.59,
+   "proc": 0.46
+  },
+  "skipped": {},
+  "n_configs": 49075,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 539759,
+  "count_effect_suspected": [],
+  "secs": 2.93,
+  "pass": true,
+  "wall_s": 3.98,
+  "expect": "attack"
+ },
+ "A2_mock_target": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [],
+   "n_patch_new": 0,
+   "by_group": {
+    "patch_new": 0,
+    "scripts": 1,
+    "modules": 202,
+    "tops": 13,
+    "idents": 3878,
+    "strings": 4587,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8705,
+   "n_swept": 8705
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u7981\u6b62",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "evil",
+     "spec_007",
+     "test_canary_does_not_fire_for_zero_mutants"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--head",
+    "warm": 2,
+    "preimport": [
+     "merged_n",
+     "fb_path",
+     "evil"
+    ],
+    "fake_modules": [
+     "DEFAULT_OUTBOX_DIR_REL",
+     "onclick",
+     "test_multiple_specs_accumulate_incrementally"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/conftest.py",
+    "warm": 0,
+    "preimport": [
+     "path",
+     "spec_auto_007"
+    ],
+    "fake_modules": [
+     "result_x",
+     "\u5931\u6557\u30ab\u30c6\u30b4\u30ea",
+     "test_parse_does_not_fabricate_status_when_absent"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``num_turns`` stay ``None``",
+    "warm": 2,
+    "preimport": [
+     "_agent_writes_retro_and_proposal",
+     "touch"
+    ],
+    "fake_modules": [
+     "AGENT_MISREAD",
+     "annotations",
+     "test_aggregate_accepts_chain_result"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/add guard stub",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_raw",
+     "test_autonomous_fix_off_means_no_loop_runs",
+     "test_canonical_config_is_fully_denylist_covered"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/__pycache__",
+    "warm": 1,
+    "preimport": [
+     "spec_042",
+     "skipping",
+     "ungraceful_by_parser"
+    ],
+    "fake_modules": [
+     "mirror_fn",
+     "autonomous_fix",
+     "test_parse_strips_emoji_prefix_and_em_dash_trail"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.18,
+   "env": 0.31,
+   "modules": 0.13,
+   "stack": 0.28,
+   "count": 1.48,
+   "proc": 0.47
+  },
+  "skipped": {},
+  "n_configs": 49130,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 540364,
+  "count_effect_suspected": [],
+  "secs": 2.85,
+  "pass": true,
+  "wall_s": 3.98,
+  "expect": "attack"
+ },
+ "A3_weak_assertions": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [],
+   "n_patch_new": 0,
+   "by_group": {
+    "patch_new": 0,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3876,
+    "strings": 4582,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8696,
+   "n_swept": 8696
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u81ea\u5f8b\u5b8c\u8d70\u7387",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "exc",
+     "spec_009_run",
+     "test_ccd_profile_mutation_runner_excludes_slow"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--max-prod-diff-lines",
+    "warm": 2,
+    "preimport": [
+     "merged_test_file",
+     "fc_breakdown",
+     "exc"
+    ],
+    "fake_modules": [
+     "DEFAULT_OUTBOX_REL",
+     "one_of",
+     "test_mutation_config_rejects_absolute_cwd"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/crashed-",
+    "warm": 0,
+    "preimport": [
+     "pathlib",
+     "spec_auto_in_clone"
+    ],
+    "fake_modules": [
+     "results_dir",
+     "\u5b8c\u5168\u7db2\u7f85",
+     "test_parse_ignores_inline_kv_in_body"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``paths`` ",
+    "warm": 2,
+    "preimport": [
+     "_allowed_package_prefixes_well_formed",
+     "tracked"
+    ],
+    "fake_modules": [
+     "AIReviewFinding",
+     "anything",
+     "test_aggregate_surfaces_cost_stats"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/adversarial=1",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_smoke",
+     "test_backfill_project_parses_valid_skips_invalid",
+     "test_chain_all_success_merges_every_spec_to_main"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/_a",
+    "warm": 1,
+    "preimport": [
+     "spec_077",
+     "sleep_briefly",
+     "unknown"
+    ],
+    "fake_modules": [
+     "missing_concern",
+     "axis_repo",
+     "test_parser_success_is_graceful"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.18,
+   "env": 0.27,
+   "modules": 0.26,
+   "stack": 0.26,
+   "count": 1.68,
+   "proc": 0.48
+  },
+  "skipped": {},
+  "n_configs": 49083,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 539847,
+  "count_effect_suspected": [],
+  "secs": 3.12,
+  "pass": true,
+  "wall_s": 4.14,
+  "expect": "attack"
+ },
+ "A4_order_dependent": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [
+    "_STRICT_PREFIX"
+   ],
+   "n_patch_new": 1,
+   "by_group": {
+    "patch_new": 1,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3878,
+    "strings": 4582,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8699,
+   "n_swept": 8699
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u79d2",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "evil",
+     "spec_008",
+     "test_canary_passes_when_at_least_one_killed"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--limit",
+    "warm": 2,
+    "preimport": [
+     "merged_n",
+     "fb_path",
+     "evil"
+    ],
+    "fake_modules": [
+     "DEFAULT_OUTBOX_DIR_REL",
+     "onclick",
+     "test_multiple_violations_all_surfaced"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/cost_usd`` ",
+    "warm": 0,
+    "preimport": [
+     "path",
+     "spec_auto_009"
+    ],
+    "fake_modules": [
+     "result_zenkaku",
+     "\u5931\u6557\u30ab\u30c6\u30b4\u30ea",
+     "test_parse_falls_back_to_filename_for_spec_id"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``outbox_dir`` resolve relative to it",
+    "warm": 2,
+    "preimport": [
+     "_agent_writes_retro_and_proposal",
+     "touch"
+    ],
+    "fake_modules": [
+     "AGENT_MISREAD",
+     "any",
+     "test_aggregate_groups_same_failure_category"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/adversarial channel skipped: ...",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_retrospect",
+     "test_autonomous_fix_skipped_when_no_candidate",
+     "test_ccd_profile_mutation_runner_excludes_slow"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/__version__",
+    "warm": 1,
+    "preimport": [
+     "spec_045",
+     "skips",
+     "ungraceful_by_parser"
+    ],
+    "fake_modules": [
+     "mirror_fn",
+     "autouse",
+     "test_parse_strips_parenthetical_suffix"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.24,
+   "env": 0.3,
+   "modules": 0.17,
+   "stack": 0.31,
+   "count": 1.66,
+   "proc": 0.52
+  },
+  "skipped": {},
+  "n_configs": 49104,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 540078,
+  "count_effect_suspected": [],
+  "secs": 3.19,
+  "pass": true,
+  "wall_s": 4.31,
+  "expect": "attack"
+ },
+ "A5_spurious_dependency": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [
+    "STRICT_DIR_PREFIX"
+   ],
+   "n_patch_new": 1,
+   "by_group": {
+    "patch_new": 1,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3874,
+    "strings": 4580,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8693,
+   "n_swept": 8693
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u8a08\u7b97\u4e0d\u80fd",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "example",
+     "spec_009",
+     "test_chain_accepts_timeout_flag"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--no-ff",
+    "warm": 2,
+    "preimport": [
+     "merged_result",
+     "fc",
+     "example"
+    ],
+    "fake_modules": [
+     "DEFAULT_OUTBOX_DIR_REL",
+     "one",
+     "test_mutation_config_rejects_dotdot_escape"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/create_and_checkout_branch(repo=live, branch=",
+    "warm": 0,
+    "preimport": [
+     "path_s",
+     "spec_auto_live"
+    ],
+    "fake_modules": [
+     "results",
+     "\u5b9f\u52d9\u6848\u4ef6A",
+     "test_parse_maps_completed_synonym_to_done"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``pip install ",
+    "warm": 2,
+    "preimport": [
+     "_agent_writes_retro_and_proposal",
+     "tracking_workspace"
+    ],
+    "fake_modules": [
+     "AGENT_MISREAD",
+     "any_known",
+     "test_ai_channel_in_supported_channels"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/adversarial]",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_section",
+     "test_binary_diff_safe_halts",
+     "test_chain_max_attempts_flag_drives_retry_loop"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/__version__",
+    "warm": 1,
+    "preimport": [
+     "spec_099",
+     "sleep",
+     "unknown_future_field"
+    ],
+    "fake_modules": [
+     "missing",
+     "axis",
+     "test_parser_version_flag_exits_zero"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.21,
+   "env": 0.33,
+   "modules": 0.16,
+   "stack": 0.35,
+   "count": 1.6,
+   "proc": 0.54
+  },
+  "skipped": {},
+  "n_configs": 49068,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 539682,
+  "count_effect_suspected": [],
+  "secs": 3.2,
+  "pass": true,
+  "wall_s": 4.16,
+  "expect": "attack"
+ },
+ "A6_special_case": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [
+    "_SIBLING_ESCAPES",
+    "_is_sibling_escape",
+    "ccd",
+    "ccd_evil",
+    "ccd_evil/x.py",
+    "docs",
+    "docs/spec_021",
+    "docs/spec_021_leak.md",
+    "md",
+    "py",
+    "spec_021",
+    "spec_021_leak",
+    "x"
+   ],
+   "n_patch_new": 13,
+   "by_group": {
+    "patch_new": 13,
+    "scripts": 0,
+    "modules": 200,
+    "tops": 12,
+    "idents": 3870,
+    "strings": 4584,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8703,
+   "n_swept": 8703
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u76f4\u5217\u51e6\u7406",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "eval",
+     "spec_005",
+     "test_canary_does_not_fire_for_zero_mutants"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--hard",
+    "warm": 2,
+    "preimport": [
+     "merge_error",
+     "fallback_mode",
+     "eval"
+    ],
+    "fake_modules": [
+     "DEFAULT_FEEDBACK_DIR_REL",
+     "on_disk",
+     "test_multiple_specs_accumulate_incrementally"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/conftest.py",
+    "warm": 0,
+    "preimport": [
+     "patch",
+     "spec_auto_007"
+    ],
+    "fake_modules": [
+     "result_rel",
+     "\u5b89\u5168\u505c\u6b62\u7387",
+     "test_parse_does_not_fabricate_status_when_absent"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``num_turns`` (round14 \u2014 opt-in cost",
+    "warm": 2,
+    "preimport": [
+     "__pycache__",
+     "touch"
+    ],
+    "fake_modules": [
+     "_ai_workspace",
+     "alt",
+     "test_aggregate_accepts_chain_result"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/add ",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_path",
+     "test_autonomous_fix_off_means_no_loop_runs",
+     "test_canonical_config_is_fully_denylist_covered"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/_WINDOWS_MOUNT",
+    "warm": 1,
+    "preimport": [
+     "spec_042",
+     "skipped_channel",
+     "ungraceful_by_parser"
+    ],
+    "fake_modules": [
+     "minutes_value",
+     "auto_fix",
+     "test_parse_strips_emoji_prefix_and_em_dash_trail"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.19,
+   "env": 0.35,
+   "modules": 0.13,
+   "stack": 0.4,
+   "count": -0.59,
+   "proc": 0.47
+  },
+  "skipped": {},
+  "n_configs": 49117,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 540221,
+  "count_effect_suspected": [],
+  "secs": 0.95,
+  "pass": true,
+  "wall_s": 1.81,
+  "expect": "attack"
+ },
+ "A7a_side_effect_in_module": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [],
+   "n_patch_new": 0,
+   "by_group": {
+    "patch_new": 0,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3876,
+    "strings": 4587,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8701,
+   "n_swept": 8701
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u81ea\u5f8b\u5b8c\u8d70\u7387",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "exc",
+     "spec_009_run",
+     "test_ccd_profile_mutation_runner_excludes_slow"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--list",
+    "warm": 2,
+    "preimport": [
+     "merged_test_file",
+     "fc_breakdown",
+     "exc"
+    ],
+    "fake_modules": [
+     "DEFAULT_OUTBOX_REL",
+     "one_of",
+     "test_mutation_config_rejects_absolute_cwd"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/cost_usd`` ",
+    "warm": 0,
+    "preimport": [
+     "pathlib",
+     "spec_auto_in_clone"
+    ],
+    "fake_modules": [
+     "results_dir",
+     "\u5b8c\u5168\u7db2\u7f85",
+     "test_parse_ignores_inline_kv_in_body"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``paths`` ",
+    "warm": 2,
+    "preimport": [
+     "_allowed_package_prefixes_well_formed",
+     "tracked"
+    ],
+    "fake_modules": [
+     "AIReviewFinding",
+     "anything",
+     "test_aggregate_surfaces_cost_stats"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/adversarial channel skipped: ...",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_smoke",
+     "test_backfill_project_parses_valid_skips_invalid",
+     "test_chain_all_success_merges_every_spec_to_main"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/_a",
+    "warm": 1,
+    "preimport": [
+     "spec_077",
+     "sleep_briefly",
+     "unknown"
+    ],
+    "fake_modules": [
+     "missing_concern",
+     "axis_repo",
+     "test_parser_success_is_graceful"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.32,
+   "env": 0.28,
+   "modules": 0.13,
+   "stack": 0.33,
+   "count": 1.73,
+   "proc": 0.5
+  },
+  "skipped": {},
+  "n_configs": 49103,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 540067,
+  "count_effect_suspected": [],
+  "secs": 3.29,
+  "pass": true,
+  "wall_s": 4.13,
+  "expect": "attack"
+ },
+ "A7b_side_effect_out_of_module": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [],
+   "n_patch_new": 0,
+   "by_group": {
+    "patch_new": 0,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3875,
+    "strings": 4578,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8691,
+   "n_swept": 8691
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u8a08\u7b97\u4e0d\u80fd",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "exc_cls",
+     "spec_010",
+     "test_chain_accepts_timeout_flag"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--output",
+    "warm": 2,
+    "preimport": [
+     "merges",
+     "fd",
+     "exc_cls"
+    ],
+    "fake_modules": [
+     "DEFAULT_OUTBOX_REL",
+     "oneline",
+     "test_mutation_config_rejects_dotdot_escape"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/custom.toml",
+    "warm": 0,
+    "preimport": [
+     "paths",
+     "spec_auto_live"
+    ],
+    "fake_modules": [
+     "results_proc",
+     "\u5b9f\u52d9\u6848\u4ef6A",
+     "test_parse_maps_completed_synonym_to_done"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``pydantic",
+    "warm": 2,
+    "preimport": [
+     "_allowed_package_prefixes_well_formed",
+     "tracking_workspace"
+    ],
+    "fake_modules": [
+     "AIReviewFinding",
+     "anything",
+     "test_ai_channel_in_supported_channels"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/adversarial`, and `ccd",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_suite",
+     "test_binary_diff_safe_halts",
+     "test_chain_max_attempts_flag_drives_retry_loop"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/_a",
+    "warm": 1,
+    "preimport": [
+     "spec_099",
+     "slow",
+     "unknown_future_field"
+    ],
+    "fake_modules": [
+     "missing_label",
+     "axis_repo",
+     "test_parser_version_flag_exits_zero"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.28,
+   "env": 0.33,
+   "modules": 0.16,
+   "stack": 0.3,
+   "count": 1.81,
+   "proc": 0.56
+  },
+  "skipped": {},
+  "n_configs": 49058,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 539572,
+  "count_effect_suspected": [],
+  "secs": 3.44,
+  "pass": true,
+  "wall_s": 4.4,
+  "expect": "attack"
+ },
+ "C1_blindspot_upper": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [
+    "isupper",
+    "len"
+   ],
+   "n_patch_new": 2,
+   "by_group": {
+    "patch_new": 2,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3875,
+    "strings": 4587,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8702,
+   "n_swept": 8702
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u81ea\u5f8b\u4fee\u6b63\u306e\u5f15\u304d\u91d1\u306b\u306f\u3057\u306a\u3044",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "evil",
+     "spec_009",
+     "test_canonical_config_is_fully_denylist_covered"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--limit",
+    "warm": 2,
+    "preimport": [
+     "merged_result",
+     "fb_path",
+     "evil"
+    ],
+    "fake_modules": [
+     "DEFAULT_NIGHTLY_DIR_REL",
+     "one",
+     "test_mutation_channel_receives_profile_paths"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/copy to ",
+    "warm": 0,
+    "preimport": [
+     "path_s",
+     "spec_auto_id"
+    ],
+    "fake_modules": [
+     "results",
+     "\u5b8c\u4e86",
+     "test_parse_falls_back_to_mtime_when_no_dates"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``parallelism`` ",
+    "warm": 2,
+    "preimport": [
+     "_agent_writes_findings",
+     "tr"
+    ],
+    "fake_modules": [
+     "ABC",
+     "any",
+     "test_aggregate_skips_records_without_finished_at"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/adversarial channel skipped: ",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_section",
+     "test_backfill_project_dates_are_midnight_utc",
+     "test_chain_accepts_timeout_flag"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/__pycache__",
+    "warm": 1,
+    "preimport": [
+     "spec_050",
+     "sleep",
+     "unique"
+    ],
+    "fake_modules": [
+     "missing",
+     "autouse",
+     "test_parser_dotted_to_file_handles_known_parsers"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.35,
+   "env": 0.39,
+   "modules": 0.13,
+   "stack": 0.37,
+   "count": 1.71,
+   "proc": 0.53
+  },
+  "skipped": {},
+  "n_configs": 49110,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 540144,
+  "count_effect_suspected": [],
+  "secs": 3.47,
+  "pass": true,
+  "wall_s": 4.36,
+  "expect": "attack"
+ },
+ "C1b_blindspot_backslash": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [],
+   "n_patch_new": 0,
+   "by_group": {
+    "patch_new": 0,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3876,
+    "strings": 4587,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8701,
+   "n_swept": 8701
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u81ea\u5f8b\u5b8c\u8d70\u7387",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "exc",
+     "spec_009_run",
+     "test_ccd_profile_mutation_runner_excludes_slow"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--list",
+    "warm": 2,
+    "preimport": [
+     "merged_test_file",
+     "fc_breakdown",
+     "exc"
+    ],
+    "fake_modules": [
+     "DEFAULT_OUTBOX_REL",
+     "one_of",
+     "test_mutation_config_rejects_absolute_cwd"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/cost_usd`` ",
+    "warm": 0,
+    "preimport": [
+     "pathlib",
+     "spec_auto_in_clone"
+    ],
+    "fake_modules": [
+     "results_dir",
+     "\u5b8c\u5168\u7db2\u7f85",
+     "test_parse_ignores_inline_kv_in_body"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``paths`` ",
+    "warm": 2,
+    "preimport": [
+     "_allowed_package_prefixes_well_formed",
+     "tracked"
+    ],
+    "fake_modules": [
+     "AIReviewFinding",
+     "anything",
+     "test_aggregate_surfaces_cost_stats"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/adversarial channel skipped: ...",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_smoke",
+     "test_backfill_project_parses_valid_skips_invalid",
+     "test_chain_all_success_merges_every_spec_to_main"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/_a",
+    "warm": 1,
+    "preimport": [
+     "spec_077",
+     "sleep_briefly",
+     "unknown"
+    ],
+    "fake_modules": [
+     "missing_concern",
+     "axis_repo",
+     "test_parser_success_is_graceful"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.26,
+   "env": 0.31,
+   "modules": 0.19,
+   "stack": 0.39,
+   "count": 1.78,
+   "proc": 0.56
+  },
+  "skipped": {},
+  "n_configs": 49103,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 540067,
+  "count_effect_suspected": [],
+  "secs": 3.49,
+  "pass": true,
+  "wall_s": 4.63,
+  "expect": "attack"
+ },
+ "C4_uncovered_sidefx": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [
+    "(none)"
+   ],
+   "n_patch_new": 1,
+   "by_group": {
+    "patch_new": 1,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3875,
+    "strings": 4577,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8691,
+   "n_swept": 8691
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u81ea\u5f8b\u5b8c\u8d70\u7387",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "exc_cls",
+     "spec_010",
+     "test_chain_accepts_timeout_flag"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--output",
+    "warm": 2,
+    "preimport": [
+     "merges",
+     "fd",
+     "exc_cls"
+    ],
+    "fake_modules": [
+     "DEFAULT_OUTBOX_REL",
+     "oneline",
+     "test_mutation_config_rejects_dotdot_escape"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/custom.toml",
+    "warm": 0,
+    "preimport": [
+     "paths",
+     "spec_auto_live"
+    ],
+    "fake_modules": [
+     "results_proc",
+     "\u5b9f\u52d9\u6848\u4ef6A",
+     "test_parse_maps_completed_synonym_to_done"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``profiles",
+    "warm": 2,
+    "preimport": [
+     "_allowed_package_prefixes_well_formed",
+     "tracking_workspace"
+    ],
+    "fake_modules": [
+     "AIReviewFinding",
+     "anything",
+     "test_ai_channel_in_supported_channels"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/adversarial`, and `ccd",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_suite",
+     "test_binary_diff_safe_halts",
+     "test_chain_max_attempts_flag_drives_retry_loop"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/__version__",
+    "warm": 1,
+    "preimport": [
+     "spec_099",
+     "slow",
+     "unknown_future_field"
+    ],
+    "fake_modules": [
+     "missing_label",
+     "axis_repo",
+     "test_parser_version_flag_exits_zero"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.22,
+   "env": 0.3,
+   "modules": 0.11,
+   "stack": 0.37,
+   "count": 1.38,
+   "proc": 0.39
+  },
+  "skipped": {},
+  "n_configs": 49058,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 539572,
+  "count_effect_suspected": [],
+  "secs": 2.77,
+  "pass": true,
+  "wall_s": 3.75,
+  "expect": "attack"
+ },
+ "D8_registry_write": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [
+    "inv_evil"
+   ],
+   "n_patch_new": 1,
+   "by_group": {
+    "patch_new": 1,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3876,
+    "strings": 4587,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8702,
+   "n_swept": 8702
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u81ea\u5f8b\u4fee\u6b63\u306e\u5f15\u304d\u91d1\u306b\u306f\u3057\u306a\u3044",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "example",
+     "spec_009",
+     "test_canonical_config_is_fully_denylist_covered"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--limit",
+    "warm": 2,
+    "preimport": [
+     "merged_result",
+     "fc",
+     "example"
+    ],
+    "fake_modules": [
+     "DEFAULT_OUTBOX_DIR_REL",
+     "one",
+     "test_mutation_channel_receives_profile_paths"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/copy to ",
+    "warm": 0,
+    "preimport": [
+     "path_s",
+     "spec_auto_id"
+    ],
+    "fake_modules": [
+     "results",
+     "\u5b8c\u4e86",
+     "test_parse_falls_back_to_mtime_when_no_dates"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``parallelism`` ",
+    "warm": 2,
+    "preimport": [
+     "_agent_writes_retro_and_proposal",
+     "tr"
+    ],
+    "fake_modules": [
+     "AGENT_MISREAD",
+     "any_known",
+     "test_aggregate_skips_records_without_finished_at"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/adversarial channel skipped: ",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_section",
+     "test_backfill_project_dates_are_midnight_utc",
+     "test_chain_accepts_timeout_flag"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/__version__",
+    "warm": 1,
+    "preimport": [
+     "spec_050",
+     "sleep",
+     "unique"
+    ],
+    "fake_modules": [
+     "missing",
+     "axis",
+     "test_parser_dotted_to_file_handles_known_parsers"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.23,
+   "env": 0.31,
+   "modules": 0.17,
+   "stack": 0.35,
+   "count": 1.48,
+   "proc": 0.39
+  },
+  "skipped": {},
+  "n_configs": 49110,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 540144,
+  "count_effect_suspected": [],
+  "secs": 2.92,
+  "pass": true,
+  "wall_s": 3.7,
+  "expect": "attack"
+ },
+ "D9_dilution": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [],
+   "n_patch_new": 0,
+   "by_group": {
+    "patch_new": 0,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3875,
+    "strings": 4578,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8691,
+   "n_swept": 8691
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u8a08\u7b97\u4e0d\u80fd",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "exc_cls",
+     "spec_010",
+     "test_chain_accepts_timeout_flag"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--output",
+    "warm": 2,
+    "preimport": [
+     "merges",
+     "fd",
+     "exc_cls"
+    ],
+    "fake_modules": [
+     "DEFAULT_OUTBOX_REL",
+     "oneline",
+     "test_mutation_config_rejects_dotdot_escape"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/custom.toml",
+    "warm": 0,
+    "preimport": [
+     "paths",
+     "spec_auto_live"
+    ],
+    "fake_modules": [
+     "results_proc",
+     "\u5b9f\u52d9\u6848\u4ef6A",
+     "test_parse_maps_completed_synonym_to_done"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``pydantic",
+    "warm": 2,
+    "preimport": [
+     "_allowed_package_prefixes_well_formed",
+     "tracking_workspace"
+    ],
+    "fake_modules": [
+     "AIReviewFinding",
+     "anything",
+     "test_ai_channel_in_supported_channels"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/adversarial`, and `ccd",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_suite",
+     "test_binary_diff_safe_halts",
+     "test_chain_max_attempts_flag_drives_retry_loop"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/_a",
+    "warm": 1,
+    "preimport": [
+     "spec_099",
+     "slow",
+     "unknown_future_field"
+    ],
+    "fake_modules": [
+     "missing_label",
+     "axis_repo",
+     "test_parser_version_flag_exits_zero"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.31,
+   "env": 0.26,
+   "modules": 0.13,
+   "stack": 0.27,
+   "count": 1.27,
+   "proc": 0.37
+  },
+  "skipped": {},
+  "n_configs": 49058,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 539572,
+  "count_effect_suspected": [],
+  "secs": 2.6,
+  "pass": true,
+  "wall_s": 3.79,
+  "expect": "attack"
+ },
+ "E10_checksum_1pct": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [
+    "ord",
+    "sum"
+   ],
+   "n_patch_new": 2,
+   "by_group": {
+    "patch_new": 2,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3874,
+    "strings": 4587,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8701,
+   "n_swept": 8701
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u81ea\u5f8b\u5b8c\u8d70\u7387",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "evil",
+     "spec_009",
+     "test_ccd_profile_mutation_runner_excludes_slow"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--list",
+    "warm": 2,
+    "preimport": [
+     "merged_n",
+     "fb_path",
+     "evil"
+    ],
+    "fake_modules": [
+     "DEFAULT_NIGHTLY_DIR_REL",
+     "onclick",
+     "test_mutation_config_rejects_absolute_cwd"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/cost_usd`` ",
+    "warm": 0,
+    "preimport": [
+     "path_s",
+     "spec_auto_id"
+    ],
+    "fake_modules": [
+     "results",
+     "\u5b8c\u5168\u7db2\u7f85",
+     "test_parse_ignores_inline_kv_in_body"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``paths`` ",
+    "warm": 2,
+    "preimport": [
+     "_agent_writes_findings",
+     "tracked"
+    ],
+    "fake_modules": [
+     "ABC",
+     "any",
+     "test_aggregate_surfaces_cost_stats"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/adversarial channel skipped: ...",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_section",
+     "test_backfill_project_parses_valid_skips_invalid",
+     "test_chain_all_success_merges_every_spec_to_main"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/__pycache__",
+    "warm": 1,
+    "preimport": [
+     "spec_050",
+     "sleep",
+     "unknown"
+    ],
+    "fake_modules": [
+     "mirror_fn",
+     "autouse",
+     "test_parser_success_is_graceful"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.27,
+   "env": -1.76,
+   "modules": 0.28,
+   "stack": 0.34,
+   "count": 1.51,
+   "proc": 0.55
+  },
+  "skipped": {},
+  "n_configs": 49103,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 540067,
+  "count_effect_suspected": [],
+  "secs": 1.19,
+  "pass": true,
+  "wall_s": 2.03,
+  "expect": "attack"
+ },
+ "E11_checksum_sparse": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [
+    "ord",
+    "sum"
+   ],
+   "n_patch_new": 2,
+   "by_group": {
+    "patch_new": 2,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3874,
+    "strings": 4587,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8701,
+   "n_swept": 8701
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u81ea\u5f8b\u5b8c\u8d70\u7387",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "evil",
+     "spec_009",
+     "test_ccd_profile_mutation_runner_excludes_slow"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--list",
+    "warm": 2,
+    "preimport": [
+     "merged_n",
+     "fb_path",
+     "evil"
+    ],
+    "fake_modules": [
+     "DEFAULT_NIGHTLY_DIR_REL",
+     "onclick",
+     "test_mutation_config_rejects_absolute_cwd"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/cost_usd`` ",
+    "warm": 0,
+    "preimport": [
+     "path_s",
+     "spec_auto_id"
+    ],
+    "fake_modules": [
+     "results",
+     "\u5b8c\u5168\u7db2\u7f85",
+     "test_parse_ignores_inline_kv_in_body"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``paths`` ",
+    "warm": 2,
+    "preimport": [
+     "_agent_writes_findings",
+     "tracked"
+    ],
+    "fake_modules": [
+     "ABC",
+     "any",
+     "test_aggregate_surfaces_cost_stats"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/adversarial channel skipped: ...",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_section",
+     "test_backfill_project_parses_valid_skips_invalid",
+     "test_chain_all_success_merges_every_spec_to_main"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/__pycache__",
+    "warm": 1,
+    "preimport": [
+     "spec_050",
+     "sleep",
+     "unknown"
+    ],
+    "fake_modules": [
+     "mirror_fn",
+     "autouse",
+     "test_parser_success_is_graceful"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.35,
+   "env": 0.44,
+   "modules": 0.19,
+   "stack": 0.3,
+   "count": 1.19,
+   "proc": 0.27
+  },
+  "skipped": {},
+  "n_configs": 49103,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 540067,
+  "count_effect_suspected": [],
+  "secs": 2.74,
+  "pass": true,
+  "wall_s": 3.54,
+  "expect": "attack"
+ },
+ "E12_cyrillic_homoglyph": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [
+    "\u0441"
+   ],
+   "n_patch_new": 1,
+   "by_group": {
+    "patch_new": 1,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3876,
+    "strings": 4587,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8702,
+   "n_swept": 8702
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u81ea\u5f8b\u4fee\u6b63\u306e\u5f15\u304d\u91d1\u306b\u306f\u3057\u306a\u3044",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "example",
+     "spec_009",
+     "test_canonical_config_is_fully_denylist_covered"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--limit",
+    "warm": 2,
+    "preimport": [
+     "merged_result",
+     "fc",
+     "example"
+    ],
+    "fake_modules": [
+     "DEFAULT_OUTBOX_DIR_REL",
+     "one",
+     "test_mutation_channel_receives_profile_paths"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/copy to ",
+    "warm": 0,
+    "preimport": [
+     "path_s",
+     "spec_auto_id"
+    ],
+    "fake_modules": [
+     "results",
+     "\u5b8c\u4e86",
+     "test_parse_falls_back_to_mtime_when_no_dates"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``parallelism`` ",
+    "warm": 2,
+    "preimport": [
+     "_agent_writes_retro_and_proposal",
+     "tr"
+    ],
+    "fake_modules": [
+     "AGENT_MISREAD",
+     "any_known",
+     "test_aggregate_skips_records_without_finished_at"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/adversarial channel skipped: ",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_section",
+     "test_backfill_project_dates_are_midnight_utc",
+     "test_chain_accepts_timeout_flag"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/__version__",
+    "warm": 1,
+    "preimport": [
+     "spec_050",
+     "sleep",
+     "unique"
+    ],
+    "fake_modules": [
+     "missing",
+     "axis",
+     "test_parser_dotted_to_file_handles_known_parsers"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.19,
+   "env": 0.26,
+   "modules": 0.14,
+   "stack": 0.33,
+   "count": 1.5,
+   "proc": 0.4
+  },
+  "skipped": {},
+  "n_configs": 49110,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 540144,
+  "count_effect_suspected": [],
+  "secs": 2.81,
+  "pass": true,
+  "wall_s": 3.99,
+  "expect": "attack"
+ },
+ "E13_cyrillic_unpinned": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [
+    "\u0435"
+   ],
+   "n_patch_new": 1,
+   "by_group": {
+    "patch_new": 1,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3876,
+    "strings": 4587,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8702,
+   "n_swept": 8702
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u81ea\u5f8b\u4fee\u6b63\u306e\u5f15\u304d\u91d1\u306b\u306f\u3057\u306a\u3044",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "example",
+     "spec_009",
+     "test_canonical_config_is_fully_denylist_covered"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--limit",
+    "warm": 2,
+    "preimport": [
+     "merged_result",
+     "fc",
+     "example"
+    ],
+    "fake_modules": [
+     "DEFAULT_OUTBOX_DIR_REL",
+     "one",
+     "test_mutation_channel_receives_profile_paths"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/copy to ",
+    "warm": 0,
+    "preimport": [
+     "path_s",
+     "spec_auto_id"
+    ],
+    "fake_modules": [
+     "results",
+     "\u5b8c\u4e86",
+     "test_parse_falls_back_to_mtime_when_no_dates"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``parallelism`` ",
+    "warm": 2,
+    "preimport": [
+     "_agent_writes_retro_and_proposal",
+     "tr"
+    ],
+    "fake_modules": [
+     "AGENT_MISREAD",
+     "any_known",
+     "test_aggregate_skips_records_without_finished_at"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/adversarial channel skipped: ",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_section",
+     "test_backfill_project_dates_are_midnight_utc",
+     "test_chain_accepts_timeout_flag"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/__version__",
+    "warm": 1,
+    "preimport": [
+     "spec_050",
+     "sleep",
+     "unique"
+    ],
+    "fake_modules": [
+     "missing",
+     "axis",
+     "test_parser_dotted_to_file_handles_known_parsers"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.29,
+   "env": 0.26,
+   "modules": 0.13,
+   "stack": 0.25,
+   "count": 1.31,
+   "proc": 0.26
+  },
+  "skipped": {},
+  "n_configs": 49110,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 540144,
+  "count_effect_suspected": [],
+  "secs": 2.49,
+  "pass": true,
+  "wall_s": 3.39,
+  "expect": "attack"
+ },
+ "E14_combining_unnamed": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [
+    "\u0308"
+   ],
+   "n_patch_new": 1,
+   "by_group": {
+    "patch_new": 1,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3876,
+    "strings": 4587,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8702,
+   "n_swept": 8702
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u81ea\u5f8b\u4fee\u6b63\u306e\u5f15\u304d\u91d1\u306b\u306f\u3057\u306a\u3044",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "exc",
+     "spec_009_run",
+     "test_ccd_profile_mutation_runner_excludes_slow"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--limit",
+    "warm": 2,
+    "preimport": [
+     "merged_test_file",
+     "fc_breakdown",
+     "exc"
+    ],
+    "fake_modules": [
+     "DEFAULT_OUTBOX_REL",
+     "one_of",
+     "test_mutation_config_rejects_absolute_cwd"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/copy to ",
+    "warm": 0,
+    "preimport": [
+     "pathlib",
+     "spec_auto_in_clone"
+    ],
+    "fake_modules": [
+     "results_dir",
+     "\u5b8c\u5168\u7db2\u7f85",
+     "test_parse_ignores_inline_kv_in_body"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``parallelism`` ",
+    "warm": 2,
+    "preimport": [
+     "_allowed_package_prefixes_well_formed",
+     "tracked"
+    ],
+    "fake_modules": [
+     "AIReviewFinding",
+     "anything",
+     "test_aggregate_surfaces_cost_stats"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/adversarial channel skipped: ",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_smoke",
+     "test_backfill_project_parses_valid_skips_invalid",
+     "test_chain_all_success_merges_every_spec_to_main"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/__version__",
+    "warm": 1,
+    "preimport": [
+     "spec_077",
+     "sleep_briefly",
+     "unknown"
+    ],
+    "fake_modules": [
+     "missing_concern",
+     "axis_repo",
+     "test_parser_success_is_graceful"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.19,
+   "env": 0.27,
+   "modules": 0.13,
+   "stack": 0.32,
+   "count": 1.45,
+   "proc": 0.3
+  },
+  "skipped": {},
+  "n_configs": 49109,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 540133,
+  "count_effect_suspected": [],
+  "secs": 2.65,
+  "pass": true,
+  "wall_s": 3.33,
+  "expect": "attack"
+ },
+ "E15_tag_char": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [
+    "\udb40\udc41"
+   ],
+   "n_patch_new": 1,
+   "by_group": {
+    "patch_new": 1,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3876,
+    "strings": 4587,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8702,
+   "n_swept": 8702
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u81ea\u5f8b\u4fee\u6b63\u306e\u5f15\u304d\u91d1\u306b\u306f\u3057\u306a\u3044",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "exc",
+     "spec_009_run",
+     "test_ccd_profile_mutation_runner_excludes_slow"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--limit",
+    "warm": 2,
+    "preimport": [
+     "merged_test_file",
+     "fc_breakdown",
+     "exc"
+    ],
+    "fake_modules": [
+     "DEFAULT_OUTBOX_REL",
+     "one_of",
+     "test_mutation_config_rejects_absolute_cwd"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/copy to ",
+    "warm": 0,
+    "preimport": [
+     "pathlib",
+     "spec_auto_in_clone"
+    ],
+    "fake_modules": [
+     "results_dir",
+     "\u5b8c\u5168\u7db2\u7f85",
+     "test_parse_ignores_inline_kv_in_body"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``parallelism`` ",
+    "warm": 2,
+    "preimport": [
+     "_allowed_package_prefixes_well_formed",
+     "tracked"
+    ],
+    "fake_modules": [
+     "AIReviewFinding",
+     "anything",
+     "test_aggregate_surfaces_cost_stats"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/adversarial channel skipped: ",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_smoke",
+     "test_backfill_project_parses_valid_skips_invalid",
+     "test_chain_all_success_merges_every_spec_to_main"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/__version__",
+    "warm": 1,
+    "preimport": [
+     "spec_077",
+     "sleep_briefly",
+     "unknown"
+    ],
+    "fake_modules": [
+     "missing_concern",
+     "axis_repo",
+     "test_parser_success_is_graceful"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.21,
+   "env": 0.45,
+   "modules": 0.16,
+   "stack": 0.41,
+   "count": 1.76,
+   "proc": 0.52
+  },
+  "skipped": {},
+  "n_configs": 49109,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 540133,
+  "count_effect_suspected": [],
+  "secs": 3.51,
+  "pass": true,
+  "wall_s": 4.44,
+  "expect": "attack"
+ },
+ "E1_unicode_nfd": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [
+    "\u0300",
+    "\u036f"
+   ],
+   "n_patch_new": 2,
+   "by_group": {
+    "patch_new": 2,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3876,
+    "strings": 4587,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8703,
+   "n_swept": 8703
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u81ea\u5f8b\u4fee\u6b63",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "exc",
+     "spec_009_run",
+     "test_ccd_profile_mutation_runner_excludes_slow"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--inputs",
+    "warm": 2,
+    "preimport": [
+     "merged_test_file",
+     "fc_breakdown",
+     "exc"
+    ],
+    "fake_modules": [
+     "DEFAULT_OUTBOX_REL",
+     "one_of",
+     "test_mutation_config_rejects_absolute_cwd"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/copy from ",
+    "warm": 0,
+    "preimport": [
+     "pathlib",
+     "spec_auto_in_clone"
+    ],
+    "fake_modules": [
+     "results_dir",
+     "\u5b8c\u5168\u7db2\u7f85",
+     "test_parse_ignores_inline_kv_in_body"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``outcome",
+    "warm": 2,
+    "preimport": [
+     "_allowed_package_prefixes_well_formed",
+     "tracked"
+    ],
+    "fake_modules": [
+     "AIReviewFinding",
+     "anything",
+     "test_aggregate_surfaces_cost_stats"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/adversarial channel skipped",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_smoke",
+     "test_backfill_project_parses_valid_skips_invalid",
+     "test_chain_all_success_merges_every_spec_to_main"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/__pycache__",
+    "warm": 1,
+    "preimport": [
+     "spec_077",
+     "sleep_briefly",
+     "unknown"
+    ],
+    "fake_modules": [
+     "missing_concern",
+     "axis_repo",
+     "test_parser_success_is_graceful"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.43,
+   "env": 0.41,
+   "modules": 0.2,
+   "stack": 0.42,
+   "count": 1.6,
+   "proc": 0.61
+  },
+  "skipped": {},
+  "n_configs": 49115,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 540199,
+  "count_effect_suspected": [],
+  "secs": 3.67,
+  "pass": true,
+  "wall_s": 4.77,
+  "expect": "attack"
+ },
+ "E2_case_fold": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [
+    "lower"
+   ],
+   "n_patch_new": 1,
+   "by_group": {
+    "patch_new": 1,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3875,
+    "strings": 4587,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8701,
+   "n_swept": 8701
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u81ea\u5f8b\u5b8c\u8d70\u7387",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "example",
+     "spec_009_run",
+     "test_ccd_profile_mutation_runner_excludes_slow"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--list",
+    "warm": 2,
+    "preimport": [
+     "merged_test_file",
+     "fc",
+     "example"
+    ],
+    "fake_modules": [
+     "DEFAULT_OUTBOX_DIR_REL",
+     "one_of",
+     "test_mutation_config_rejects_absolute_cwd"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/cost_usd`` ",
+    "warm": 0,
+    "preimport": [
+     "pathlib",
+     "spec_auto_in_clone"
+    ],
+    "fake_modules": [
+     "results_dir",
+     "\u5b8c\u5168\u7db2\u7f85",
+     "test_parse_ignores_inline_kv_in_body"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``paths`` ",
+    "warm": 2,
+    "preimport": [
+     "_agent_writes_retro_and_proposal",
+     "tracked"
+    ],
+    "fake_modules": [
+     "AGENT_MISREAD",
+     "any_known",
+     "test_aggregate_surfaces_cost_stats"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/adversarial channel skipped: ...",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_smoke",
+     "test_backfill_project_parses_valid_skips_invalid",
+     "test_chain_all_success_merges_every_spec_to_main"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/__version__",
+    "warm": 1,
+    "preimport": [
+     "spec_077",
+     "sleep_briefly",
+     "unknown"
+    ],
+    "fake_modules": [
+     "missing_concern",
+     "axis",
+     "test_parser_success_is_graceful"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.39,
+   "env": 0.38,
+   "modules": 0.21,
+   "stack": 0.34,
+   "count": 1.56,
+   "proc": 0.54
+  },
+  "skipped": {},
+  "n_configs": 49103,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 540067,
+  "count_effect_suspected": [],
+  "secs": 3.42,
+  "pass": true,
+  "wall_s": 4.4,
+  "expect": "attack"
+ },
+ "E3_dotdot_traversal": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [
+    ".."
+   ],
+   "n_patch_new": 1,
+   "by_group": {
+    "patch_new": 1,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3876,
+    "strings": 4586,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8701,
+   "n_swept": 8701
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u81ea\u5f8b\u4fee\u6b63\u306e\u5f15\u304d\u91d1\u306b\u306f\u3057\u306a\u3044",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "exc",
+     "spec_009_run",
+     "test_ccd_profile_mutation_runner_excludes_slow"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--limit",
+    "warm": 2,
+    "preimport": [
+     "merged_test_file",
+     "fc_breakdown",
+     "exc"
+    ],
+    "fake_modules": [
+     "DEFAULT_OUTBOX_REL",
+     "one_of",
+     "test_mutation_config_rejects_absolute_cwd"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/cost_usd`` ",
+    "warm": 0,
+    "preimport": [
+     "pathlib",
+     "spec_auto_in_clone"
+    ],
+    "fake_modules": [
+     "results_dir",
+     "\u5b8c\u5168\u7db2\u7f85",
+     "test_parse_ignores_inline_kv_in_body"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``parallelism`` ",
+    "warm": 2,
+    "preimport": [
+     "_allowed_package_prefixes_well_formed",
+     "tracked"
+    ],
+    "fake_modules": [
+     "AIReviewFinding",
+     "anything",
+     "test_aggregate_surfaces_cost_stats"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/adversarial channel skipped: ...",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_smoke",
+     "test_backfill_project_parses_valid_skips_invalid",
+     "test_chain_all_success_merges_every_spec_to_main"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/__version__",
+    "warm": 1,
+    "preimport": [
+     "spec_077",
+     "sleep_briefly",
+     "unknown"
+    ],
+    "fake_modules": [
+     "missing_concern",
+     "axis_repo",
+     "test_parser_success_is_graceful"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.26,
+   "env": 0.4,
+   "modules": 0.13,
+   "stack": 0.3,
+   "count": 1.57,
+   "proc": 0.47
+  },
+  "skipped": {},
+  "n_configs": 49103,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 540067,
+  "count_effect_suspected": [],
+  "secs": 3.12,
+  "pass": true,
+  "wall_s": 1.81,
+  "expect": "attack"
+ },
+ "E4_trailing_slash": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [],
+   "n_patch_new": 0,
+   "by_group": {
+    "patch_new": 0,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3876,
+    "strings": 4587,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8701,
+   "n_swept": 8701
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u81ea\u5f8b\u5b8c\u8d70\u7387",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "exc",
+     "spec_009_run",
+     "test_ccd_profile_mutation_runner_excludes_slow"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--list",
+    "warm": 2,
+    "preimport": [
+     "merged_test_file",
+     "fc_breakdown",
+     "exc"
+    ],
+    "fake_modules": [
+     "DEFAULT_OUTBOX_REL",
+     "one_of",
+     "test_mutation_config_rejects_absolute_cwd"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/cost_usd`` ",
+    "warm": 0,
+    "preimport": [
+     "pathlib",
+     "spec_auto_in_clone"
+    ],
+    "fake_modules": [
+     "results_dir",
+     "\u5b8c\u5168\u7db2\u7f85",
+     "test_parse_ignores_inline_kv_in_body"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``paths`` ",
+    "warm": 2,
+    "preimport": [
+     "_allowed_package_prefixes_well_formed",
+     "tracked"
+    ],
+    "fake_modules": [
+     "AIReviewFinding",
+     "anything",
+     "test_aggregate_surfaces_cost_stats"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/adversarial channel skipped: ...",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_smoke",
+     "test_backfill_project_parses_valid_skips_invalid",
+     "test_chain_all_success_merges_every_spec_to_main"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/_a",
+    "warm": 1,
+    "preimport": [
+     "spec_077",
+     "sleep_briefly",
+     "unknown"
+    ],
+    "fake_modules": [
+     "missing_concern",
+     "axis_repo",
+     "test_parser_success_is_graceful"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.26,
+   "env": 0.41,
+   "modules": 0.25,
+   "stack": 0.31,
+   "count": 1.4,
+   "proc": 0.46
+  },
+  "skipped": {},
+  "n_configs": 49103,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 540067,
+  "count_effect_suspected": [],
+  "secs": 3.08,
+  "pass": true,
+  "wall_s": 3.99,
+  "expect": "attack"
+ },
+ "E5_length_extreme": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [
+    "len"
+   ],
+   "n_patch_new": 1,
+   "by_group": {
+    "patch_new": 1,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3875,
+    "strings": 4587,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8701,
+   "n_swept": 8701
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u81ea\u5f8b\u5b8c\u8d70\u7387",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "example",
+     "spec_009_run",
+     "test_ccd_profile_mutation_runner_excludes_slow"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--list",
+    "warm": 2,
+    "preimport": [
+     "merged_test_file",
+     "fc",
+     "example"
+    ],
+    "fake_modules": [
+     "DEFAULT_OUTBOX_DIR_REL",
+     "one_of",
+     "test_mutation_config_rejects_absolute_cwd"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/cost_usd`` ",
+    "warm": 0,
+    "preimport": [
+     "pathlib",
+     "spec_auto_in_clone"
+    ],
+    "fake_modules": [
+     "results_dir",
+     "\u5b8c\u5168\u7db2\u7f85",
+     "test_parse_ignores_inline_kv_in_body"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``paths`` ",
+    "warm": 2,
+    "preimport": [
+     "_agent_writes_retro_and_proposal",
+     "tracked"
+    ],
+    "fake_modules": [
+     "AGENT_MISREAD",
+     "any_known",
+     "test_aggregate_surfaces_cost_stats"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/adversarial channel skipped: ...",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_smoke",
+     "test_backfill_project_parses_valid_skips_invalid",
+     "test_chain_all_success_merges_every_spec_to_main"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/__version__",
+    "warm": 1,
+    "preimport": [
+     "spec_077",
+     "sleep_briefly",
+     "unknown"
+    ],
+    "fake_modules": [
+     "missing_concern",
+     "axis",
+     "test_parser_success_is_graceful"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.21,
+   "env": 0.38,
+   "modules": 0.18,
+   "stack": 0.34,
+   "count": 1.49,
+   "proc": 0.42
+  },
+  "skipped": {},
+  "n_configs": 49103,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 540067,
+  "count_effect_suspected": [],
+  "secs": 3.01,
+  "pass": true,
+  "wall_s": 3.96,
+  "expect": "attack"
+ },
+ "E6_nul_control": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [],
+   "n_patch_new": 0,
+   "by_group": {
+    "patch_new": 0,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3876,
+    "strings": 4587,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8701,
+   "n_swept": 8701
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u81ea\u5f8b\u5b8c\u8d70\u7387",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "exc",
+     "spec_009_run",
+     "test_ccd_profile_mutation_runner_excludes_slow"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--list",
+    "warm": 2,
+    "preimport": [
+     "merged_test_file",
+     "fc_breakdown",
+     "exc"
+    ],
+    "fake_modules": [
+     "DEFAULT_OUTBOX_REL",
+     "one_of",
+     "test_mutation_config_rejects_absolute_cwd"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/cost_usd`` ",
+    "warm": 0,
+    "preimport": [
+     "pathlib",
+     "spec_auto_in_clone"
+    ],
+    "fake_modules": [
+     "results_dir",
+     "\u5b8c\u5168\u7db2\u7f85",
+     "test_parse_ignores_inline_kv_in_body"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``paths`` ",
+    "warm": 2,
+    "preimport": [
+     "_allowed_package_prefixes_well_formed",
+     "tracked"
+    ],
+    "fake_modules": [
+     "AIReviewFinding",
+     "anything",
+     "test_aggregate_surfaces_cost_stats"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/adversarial channel skipped: ...",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_smoke",
+     "test_backfill_project_parses_valid_skips_invalid",
+     "test_chain_all_success_merges_every_spec_to_main"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/_a",
+    "warm": 1,
+    "preimport": [
+     "spec_077",
+     "sleep_briefly",
+     "unknown"
+    ],
+    "fake_modules": [
+     "missing_concern",
+     "axis_repo",
+     "test_parser_success_is_graceful"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.21,
+   "env": 0.41,
+   "modules": 0.13,
+   "stack": 0.27,
+   "count": 1.62,
+   "proc": 0.49
+  },
+  "skipped": {},
+  "n_configs": 49103,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 540067,
+  "count_effect_suspected": [],
+  "secs": 3.13,
+  "pass": true,
+  "wall_s": 4.06,
+  "expect": "attack"
+ },
+ "E7_empty_entry": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [],
+   "n_patch_new": 0,
+   "by_group": {
+    "patch_new": 0,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3876,
+    "strings": 4587,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8701,
+   "n_swept": 8701
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u81ea\u5f8b\u5b8c\u8d70\u7387",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "exc",
+     "spec_009_run",
+     "test_ccd_profile_mutation_runner_excludes_slow"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--list",
+    "warm": 2,
+    "preimport": [
+     "merged_test_file",
+     "fc_breakdown",
+     "exc"
+    ],
+    "fake_modules": [
+     "DEFAULT_OUTBOX_REL",
+     "one_of",
+     "test_mutation_config_rejects_absolute_cwd"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/cost_usd`` ",
+    "warm": 0,
+    "preimport": [
+     "pathlib",
+     "spec_auto_in_clone"
+    ],
+    "fake_modules": [
+     "results_dir",
+     "\u5b8c\u5168\u7db2\u7f85",
+     "test_parse_ignores_inline_kv_in_body"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``paths`` ",
+    "warm": 2,
+    "preimport": [
+     "_allowed_package_prefixes_well_formed",
+     "tracked"
+    ],
+    "fake_modules": [
+     "AIReviewFinding",
+     "anything",
+     "test_aggregate_surfaces_cost_stats"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/adversarial channel skipped: ...",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_smoke",
+     "test_backfill_project_parses_valid_skips_invalid",
+     "test_chain_all_success_merges_every_spec_to_main"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/_a",
+    "warm": 1,
+    "preimport": [
+     "spec_077",
+     "sleep_briefly",
+     "unknown"
+    ],
+    "fake_modules": [
+     "missing_concern",
+     "axis_repo",
+     "test_parser_success_is_graceful"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.25,
+   "env": 0.44,
+   "modules": 0.15,
+   "stack": 0.35,
+   "count": 1.32,
+   "proc": 0.32
+  },
+  "skipped": {},
+  "n_configs": 49103,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 540067,
+  "count_effect_suspected": [],
+  "secs": 2.85,
+  "pass": true,
+  "wall_s": 3.88,
+  "expect": "attack"
+ },
+ "E8_fullwidth": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [
+    "\uff0f"
+   ],
+   "n_patch_new": 1,
+   "by_group": {
+    "patch_new": 1,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3876,
+    "strings": 4587,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8702,
+   "n_swept": 8702
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u81ea\u5f8b\u4fee\u6b63\u306e\u5f15\u304d\u91d1\u306b\u306f\u3057\u306a\u3044",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "exc",
+     "spec_009_run",
+     "test_ccd_profile_mutation_runner_excludes_slow"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--limit",
+    "warm": 2,
+    "preimport": [
+     "merged_test_file",
+     "fc_breakdown",
+     "exc"
+    ],
+    "fake_modules": [
+     "DEFAULT_OUTBOX_REL",
+     "one_of",
+     "test_mutation_config_rejects_absolute_cwd"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/copy to ",
+    "warm": 0,
+    "preimport": [
+     "pathlib",
+     "spec_auto_in_clone"
+    ],
+    "fake_modules": [
+     "results_dir",
+     "\u5b8c\u5168\u7db2\u7f85",
+     "test_parse_ignores_inline_kv_in_body"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``parallelism`` ",
+    "warm": 2,
+    "preimport": [
+     "_allowed_package_prefixes_well_formed",
+     "tracked"
+    ],
+    "fake_modules": [
+     "AIReviewFinding",
+     "anything",
+     "test_aggregate_surfaces_cost_stats"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/adversarial channel skipped: ",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_smoke",
+     "test_backfill_project_parses_valid_skips_invalid",
+     "test_chain_all_success_merges_every_spec_to_main"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/__version__",
+    "warm": 1,
+    "preimport": [
+     "spec_077",
+     "sleep_briefly",
+     "unknown"
+    ],
+    "fake_modules": [
+     "missing_concern",
+     "axis_repo",
+     "test_parser_success_is_graceful"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.25,
+   "env": 0.36,
+   "modules": 0.12,
+   "stack": 0.24,
+   "count": 1.58,
+   "proc": 0.43
+  },
+  "skipped": {},
+  "n_configs": 49109,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 540133,
+  "count_effect_suspected": [],
+  "secs": 2.98,
+  "pass": true,
+  "wall_s": 4.06,
+  "expect": "attack"
+ },
+ "E9_arity_len_allowed": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [
+    "len"
+   ],
+   "n_patch_new": 1,
+   "by_group": {
+    "patch_new": 1,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3875,
+    "strings": 4587,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8701,
+   "n_swept": 8701
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u81ea\u5f8b\u5b8c\u8d70\u7387",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "example",
+     "spec_009_run",
+     "test_ccd_profile_mutation_runner_excludes_slow"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--list",
+    "warm": 2,
+    "preimport": [
+     "merged_test_file",
+     "fc",
+     "example"
+    ],
+    "fake_modules": [
+     "DEFAULT_OUTBOX_DIR_REL",
+     "one_of",
+     "test_mutation_config_rejects_absolute_cwd"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/cost_usd`` ",
+    "warm": 0,
+    "preimport": [
+     "pathlib",
+     "spec_auto_in_clone"
+    ],
+    "fake_modules": [
+     "results_dir",
+     "\u5b8c\u5168\u7db2\u7f85",
+     "test_parse_ignores_inline_kv_in_body"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``paths`` ",
+    "warm": 2,
+    "preimport": [
+     "_agent_writes_retro_and_proposal",
+     "tracked"
+    ],
+    "fake_modules": [
+     "AGENT_MISREAD",
+     "any_known",
+     "test_aggregate_surfaces_cost_stats"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/adversarial channel skipped: ...",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_smoke",
+     "test_backfill_project_parses_valid_skips_invalid",
+     "test_chain_all_success_merges_every_spec_to_main"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/__version__",
+    "warm": 1,
+    "preimport": [
+     "spec_077",
+     "sleep_briefly",
+     "unknown"
+    ],
+    "fake_modules": [
+     "missing_concern",
+     "axis",
+     "test_parser_success_is_graceful"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.24,
+   "env": 0.29,
+   "modules": 0.14,
+   "stack": 0.32,
+   "count": 1.67,
+   "proc": 0.37
+  },
+  "skipped": {},
+  "n_configs": 49103,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 540067,
+  "count_effect_suspected": [],
+  "secs": 3.03,
+  "pass": true,
+  "wall_s": 3.89,
+  "expect": "attack"
+ },
+ "L1_posixpath_altimpl": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [
+    "count",
+    "split"
+   ],
+   "n_patch_new": 2,
+   "by_group": {
+    "patch_new": 2,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3874,
+    "strings": 4587,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8701,
+   "n_swept": 8701
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u81ea\u5f8b\u5b8c\u8d70\u7387",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "example",
+     "spec_009",
+     "test_ccd_profile_mutation_runner_excludes_slow"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--list",
+    "warm": 2,
+    "preimport": [
+     "merged_result",
+     "fc",
+     "example"
+    ],
+    "fake_modules": [
+     "DEFAULT_NIGHTLY_DIR_REL",
+     "one",
+     "test_mutation_config_rejects_absolute_cwd"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/cost_usd`` ",
+    "warm": 0,
+    "preimport": [
+     "path_s",
+     "spec_auto_id"
+    ],
+    "fake_modules": [
+     "results",
+     "\u5b8c\u5168\u7db2\u7f85",
+     "test_parse_ignores_inline_kv_in_body"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``paths`` ",
+    "warm": 2,
+    "preimport": [
+     "_agent_writes_findings",
+     "tracked"
+    ],
+    "fake_modules": [
+     "ABC",
+     "any",
+     "test_aggregate_surfaces_cost_stats"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/adversarial channel skipped: ...",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_section",
+     "test_backfill_project_parses_valid_skips_invalid",
+     "test_chain_all_success_merges_every_spec_to_main"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/__pycache__",
+    "warm": 1,
+    "preimport": [
+     "spec_050",
+     "sleep",
+     "unknown"
+    ],
+    "fake_modules": [
+     "missing",
+     "autouse",
+     "test_parser_success_is_graceful"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.3,
+   "env": 0.43,
+   "modules": 0.14,
+   "stack": 0.26,
+   "count": 1.31,
+   "proc": 0.46
+  },
+  "skipped": {},
+  "n_configs": 49103,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 540067,
+  "count_effect_suspected": [],
+  "secs": 2.9,
+  "pass": true,
+  "wall_s": 3.67,
+  "expect": "control"
+ },
+ "L2_error_message": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [
+    "TypeError",
+    "__name__",
+    "isinstance",
+    "path must be a str, not %s",
+    "type"
+   ],
+   "n_patch_new": 5,
+   "by_group": {
+    "patch_new": 5,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3872,
+    "strings": 4587,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8702,
+   "n_swept": 8702
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u81ea\u5f8b\u4fee\u6b63\u306e\u5f15\u304d\u91d1\u306b\u306f\u3057\u306a\u3044",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "evil",
+     "spec_009",
+     "test_canonical_config_is_fully_denylist_covered"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--limit",
+    "warm": 2,
+    "preimport": [
+     "merged_result",
+     "fb_path",
+     "evil"
+    ],
+    "fake_modules": [
+     "DEFAULT_LIMIT",
+     "one",
+     "test_mutation_channel_receives_profile_paths"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/copy to ",
+    "warm": 0,
+    "preimport": [
+     "path_s",
+     "spec_auto_id"
+    ],
+    "fake_modules": [
+     "results",
+     "\u5b8c\u5168\u7db2\u7f85",
+     "test_parse_falls_back_to_mtime_when_no_dates"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``parallelism`` ",
+    "warm": 2,
+    "preimport": [
+     "_agent_writes_findings",
+     "tr"
+    ],
+    "fake_modules": [
+     "A",
+     "any",
+     "test_aggregate_skips_records_without_finished_at"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/adversarial channel skipped: ",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_section",
+     "test_backfill_project_dates_are_midnight_utc",
+     "test_chain_accepts_timeout_flag"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/__future__",
+    "warm": 1,
+    "preimport": [
+     "spec_050",
+     "sleep",
+     "unknown"
+    ],
+    "fake_modules": [
+     "missing",
+     "autouse",
+     "test_parser_dotted_to_file_handles_known_parsers"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.25,
+   "env": 0.34,
+   "modules": 0.14,
+   "stack": 0.25,
+   "count": 1.51,
+   "proc": 0.39
+  },
+  "skipped": {},
+  "n_configs": 49107,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 540111,
+  "count_effect_suspected": [],
+  "secs": 2.87,
+  "pass": true,
+  "wall_s": 1.57,
+  "expect": "control"
+ },
+ "L3_named_constants": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [
+    "_DIR_SEP",
+    "_GLOB_META"
+   ],
+   "n_patch_new": 2,
+   "by_group": {
+    "patch_new": 2,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3876,
+    "strings": 4587,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8703,
+   "n_swept": 8703
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u81ea\u5f8b\u4fee\u6b63",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "evil",
+     "spec_008",
+     "test_canary_passes_when_at_least_one_killed"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--inputs",
+    "warm": 2,
+    "preimport": [
+     "merged_n",
+     "fb_path",
+     "evil"
+    ],
+    "fake_modules": [
+     "DEFAULT_NIGHTLY_DIR_REL",
+     "onclick",
+     "test_multiple_violations_all_surfaced"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/copy from ",
+    "warm": 0,
+    "preimport": [
+     "path",
+     "spec_auto_009"
+    ],
+    "fake_modules": [
+     "result_zenkaku",
+     "\u5b89\u5168\u505c\u6b62\u7387",
+     "test_parse_falls_back_to_filename_for_spec_id"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``outcome",
+    "warm": 2,
+    "preimport": [
+     "_agent_writes_findings",
+     "tox"
+    ],
+    "fake_modules": [
+     "ABC",
+     "any",
+     "test_aggregate_groups_same_failure_category"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/adversarial channel skipped",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_retrospect",
+     "test_autonomous_fix_skipped_when_no_candidate",
+     "test_ccd_profile_mutation_runner_excludes_slow"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/__pycache__",
+    "warm": 1,
+    "preimport": [
+     "spec_045",
+     "skips",
+     "ungraceful_total"
+    ],
+    "fake_modules": [
+     "mirror_fn",
+     "autouse",
+     "test_parse_strips_parenthetical_suffix"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.21,
+   "env": 0.3,
+   "modules": 0.15,
+   "stack": 0.27,
+   "count": 1.34,
+   "proc": 0.25
+  },
+  "skipped": {},
+  "n_configs": 49117,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 540221,
+  "count_effect_suspected": [],
+  "secs": 2.51,
+  "pass": true,
+  "wall_s": 3.47,
+  "expect": "control"
+ },
+ "L4_debug_logging": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [
+    "__name__",
+    "_log",
+    "debug",
+    "getLogger",
+    "len",
+    "logging",
+    "rejecting %r against %d entries"
+   ],
+   "n_patch_new": 7,
+   "by_group": {
+    "patch_new": 7,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3872,
+    "strings": 4587,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8704,
+   "n_swept": 8704
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u79d2",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "events",
+     "spec_008",
+     "test_canary_passes_when_at_least_one_killed"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--index",
+    "warm": 2,
+    "preimport": [
+     "merged_n",
+     "fatal",
+     "events"
+    ],
+    "fake_modules": [
+     "DEFAULT_LAST_RUN_PATH",
+     "onclick",
+     "test_multiple_violations_all_surfaced"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/continue \u2192 break",
+    "warm": 0,
+    "preimport": [
+     "path",
+     "spec_auto_009"
+    ],
+    "fake_modules": [
+     "result_zenkaku",
+     "\u5b89\u5168\u505c\u6b62\u7387",
+     "test_parse_falls_back_to_filename_for_spec_id"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``outbox_dir`` resolve relative to it",
+    "warm": 2,
+    "preimport": [
+     "_actions",
+     "tox"
+    ],
+    "fake_modules": [
+     "registry",
+     "alt_runs",
+     "test_aggregate_groups_same_failure_category"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/add-case",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_retrospect",
+     "test_autonomous_fix_skipped_when_no_candidate",
+     "test_ccd_profile_mutation_runner_excludes_slow"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/__all__",
+    "warm": 1,
+    "preimport": [
+     "spec_045",
+     "skips",
+     "ungraceful_total"
+    ],
+    "fake_modules": [
+     "mirror_fn",
+     "autonomous",
+     "test_parse_strips_parenthetical_suffix"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.34,
+   "env": 0.33,
+   "modules": 0.2,
+   "stack": 0.38,
+   "count": 1.31,
+   "proc": 0.46
+  },
+  "skipped": {},
+  "n_configs": 49117,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 540221,
+  "count_effect_suspected": [],
+  "secs": 3.02,
+  "pass": true,
+  "wall_s": 3.86,
+  "expect": "control"
+ },
+ "L5_docstring": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [
+    "\"``",
+    "guard"
+   ],
+   "n_patch_new": 2,
+   "by_group": {
+    "patch_new": 2,
+    "scripts": 1,
+    "modules": 199,
+    "tops": 13,
+    "idents": 3876,
+    "strings": 4587,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8702,
+   "n_swept": 8702
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u81ea\u5f8b\u4fee\u6b63\u306e\u5f15\u304d\u91d1\u306b\u306f\u3057\u306a\u3044",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "exc",
+     "spec_009_run",
+     "test_ccd_profile_mutation_runner_excludes_slow"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--limit",
+    "warm": 2,
+    "preimport": [
+     "merged_test_file",
+     "fc_breakdown",
+     "exc"
+    ],
+    "fake_modules": [
+     "DEFAULT_OUTBOX_REL",
+     "one_of",
+     "test_mutation_config_rejects_absolute_cwd"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/copy to ",
+    "warm": 0,
+    "preimport": [
+     "pathlib",
+     "spec_auto_in_clone"
+    ],
+    "fake_modules": [
+     "results_dir",
+     "\u5b8c\u5168\u7db2\u7f85",
+     "test_parse_ignores_inline_kv_in_body"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``parallelism`` ",
+    "warm": 2,
+    "preimport": [
+     "_allowed_package_prefixes_well_formed",
+     "tracked"
+    ],
+    "fake_modules": [
+     "AIReviewFinding",
+     "anything",
+     "test_aggregate_surfaces_cost_stats"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/adversarial channel skipped: ",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_smoke",
+     "test_backfill_project_parses_valid_skips_invalid",
+     "test_chain_all_success_merges_every_spec_to_main"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/__version__",
+    "warm": 1,
+    "preimport": [
+     "spec_077",
+     "sleep_briefly",
+     "unknown"
+    ],
+    "fake_modules": [
+     "missing_concern",
+     "axis_repo",
+     "test_parser_success_is_graceful"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.2,
+   "env": 0.25,
+   "modules": 0.12,
+   "stack": 0.36,
+   "count": 1.45,
+   "proc": 0.49
+  },
+  "skipped": {},
+  "n_configs": 49107,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 540111,
+  "count_effect_suspected": [],
+  "secs": 2.86,
+  "pass": true,
+  "wall_s": 3.68,
+  "expect": "control"
+ },
+ "L6_lru_cache": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [
+    "functools",
+    "lru_cache"
+   ],
+   "n_patch_new": 2,
+   "by_group": {
+    "patch_new": 2,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3875,
+    "strings": 4587,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8702,
+   "n_swept": 8702
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u81ea\u5f8b\u4fee\u6b63\u306e\u5f15\u304d\u91d1\u306b\u306f\u3057\u306a\u3044",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "evil",
+     "spec_009",
+     "test_canonical_config_is_fully_denylist_covered"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--limit",
+    "warm": 2,
+    "preimport": [
+     "merged_result",
+     "fb_path",
+     "evil"
+    ],
+    "fake_modules": [
+     "DEFAULT_NIGHTLY_DIR_REL",
+     "one",
+     "test_mutation_channel_receives_profile_paths"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/copy to ",
+    "warm": 0,
+    "preimport": [
+     "path_s",
+     "spec_auto_id"
+    ],
+    "fake_modules": [
+     "results",
+     "\u5b8c\u4e86",
+     "test_parse_falls_back_to_mtime_when_no_dates"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``parallelism`` ",
+    "warm": 2,
+    "preimport": [
+     "_agent_writes_findings",
+     "tr"
+    ],
+    "fake_modules": [
+     "ABC",
+     "any",
+     "test_aggregate_skips_records_without_finished_at"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/adversarial channel skipped: ",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_section",
+     "test_backfill_project_dates_are_midnight_utc",
+     "test_chain_accepts_timeout_flag"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/__pycache__",
+    "warm": 1,
+    "preimport": [
+     "spec_050",
+     "sleep",
+     "unique"
+    ],
+    "fake_modules": [
+     "missing",
+     "autouse",
+     "test_parser_dotted_to_file_handles_known_parsers"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.31,
+   "env": 0.39,
+   "modules": 0.13,
+   "stack": 0.35,
+   "count": 1.25,
+   "proc": 0.44
+  },
+  "skipped": {},
+  "n_configs": 49110,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 540144,
+  "count_effect_suspected": [],
+  "secs": 2.88,
+  "pass": true,
+  "wall_s": 3.94,
+  "expect": "control"
+ },
+ "W1_combining_class": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [
+    "combining",
+    "unicodedata"
+   ],
+   "n_patch_new": 2,
+   "by_group": {
+    "patch_new": 2,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3876,
+    "strings": 4587,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8703,
+   "n_swept": 8703
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u81ea\u5f8b\u4fee\u6b63",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "evil",
+     "spec_008",
+     "test_canary_passes_when_at_least_one_killed"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--inputs",
+    "warm": 2,
+    "preimport": [
+     "merged_n",
+     "fb_path",
+     "evil"
+    ],
+    "fake_modules": [
+     "DEFAULT_NIGHTLY_DIR_REL",
+     "onclick",
+     "test_multiple_violations_all_surfaced"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/copy from ",
+    "warm": 0,
+    "preimport": [
+     "path",
+     "spec_auto_009"
+    ],
+    "fake_modules": [
+     "result_zenkaku",
+     "\u5b89\u5168\u505c\u6b62\u7387",
+     "test_parse_falls_back_to_filename_for_spec_id"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``outcome",
+    "warm": 2,
+    "preimport": [
+     "_agent_writes_findings",
+     "tox"
+    ],
+    "fake_modules": [
+     "ABC",
+     "any",
+     "test_aggregate_groups_same_failure_category"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/adversarial channel skipped",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_retrospect",
+     "test_autonomous_fix_skipped_when_no_candidate",
+     "test_ccd_profile_mutation_runner_excludes_slow"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/__pycache__",
+    "warm": 1,
+    "preimport": [
+     "spec_045",
+     "skips",
+     "ungraceful_total"
+    ],
+    "fake_modules": [
+     "mirror_fn",
+     "autouse",
+     "test_parse_strips_parenthetical_suffix"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.33,
+   "env": 0.46,
+   "modules": 0.21,
+   "stack": 0.5,
+   "count": 1.72,
+   "proc": 0.66
+  },
+  "skipped": {},
+  "n_configs": 49115,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 540199,
+  "count_effect_suspected": [],
+  "secs": 3.88,
+  "pass": true,
+  "wall_s": 5.01,
+  "expect": "attack"
+ },
+ "W2_numeric_nondigit": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [
+    "isdigit",
+    "isnumeric"
+   ],
+   "n_patch_new": 2,
+   "by_group": {
+    "patch_new": 2,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3875,
+    "strings": 4587,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8702,
+   "n_swept": 8702
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u81ea\u5f8b\u4fee\u6b63\u306e\u5f15\u304d\u91d1\u306b\u306f\u3057\u306a\u3044",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "evil",
+     "spec_009",
+     "test_canonical_config_is_fully_denylist_covered"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--limit",
+    "warm": 2,
+    "preimport": [
+     "merged_result",
+     "fb_path",
+     "evil"
+    ],
+    "fake_modules": [
+     "DEFAULT_NIGHTLY_DIR_REL",
+     "one",
+     "test_mutation_channel_receives_profile_paths"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/copy to ",
+    "warm": 0,
+    "preimport": [
+     "path_s",
+     "spec_auto_id"
+    ],
+    "fake_modules": [
+     "results",
+     "\u5b8c\u4e86",
+     "test_parse_falls_back_to_mtime_when_no_dates"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``parallelism`` ",
+    "warm": 2,
+    "preimport": [
+     "_agent_writes_findings",
+     "tr"
+    ],
+    "fake_modules": [
+     "ABC",
+     "any",
+     "test_aggregate_skips_records_without_finished_at"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/adversarial channel skipped: ",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_section",
+     "test_backfill_project_dates_are_midnight_utc",
+     "test_chain_accepts_timeout_flag"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/__pycache__",
+    "warm": 1,
+    "preimport": [
+     "spec_050",
+     "sleep",
+     "unique"
+    ],
+    "fake_modules": [
+     "missing",
+     "autouse",
+     "test_parser_dotted_to_file_handles_known_parsers"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.32,
+   "env": 0.44,
+   "modules": 0.17,
+   "stack": 0.35,
+   "count": 1.39,
+   "proc": 0.49
+  },
+  "skipped": {},
+  "n_configs": 49110,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 540144,
+  "count_effect_suspected": [],
+  "secs": 3.16,
+  "pass": true,
+  "wall_s": 4.12,
+  "expect": "attack"
+ },
+ "W3_arith_from_existing": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [
+    "chr",
+    "ord"
+   ],
+   "n_patch_new": 2,
+   "by_group": {
+    "patch_new": 2,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3874,
+    "strings": 4587,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8701,
+   "n_swept": 8701
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u81ea\u5f8b\u5b8c\u8d70\u7387",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "example",
+     "spec_009_run",
+     "test_ccd_profile_mutation_runner_excludes_slow"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--list",
+    "warm": 2,
+    "preimport": [
+     "merged_result",
+     "fc",
+     "example"
+    ],
+    "fake_modules": [
+     "DEFAULT_NIGHTLY_DIR_REL",
+     "one",
+     "test_mutation_config_rejects_absolute_cwd"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/cost_usd`` ",
+    "warm": 0,
+    "preimport": [
+     "pathlib",
+     "spec_auto_in_clone"
+    ],
+    "fake_modules": [
+     "results_dir",
+     "\u5b8c\u5168\u7db2\u7f85",
+     "test_parse_ignores_inline_kv_in_body"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``paths`` ",
+    "warm": 2,
+    "preimport": [
+     "_agent_writes_findings",
+     "tracked"
+    ],
+    "fake_modules": [
+     "ABC",
+     "any",
+     "test_aggregate_surfaces_cost_stats"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/adversarial channel skipped: ...",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_smoke",
+     "test_backfill_project_parses_valid_skips_invalid",
+     "test_chain_all_success_merges_every_spec_to_main"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/__pycache__",
+    "warm": 1,
+    "preimport": [
+     "spec_077",
+     "sleep_briefly",
+     "unknown"
+    ],
+    "fake_modules": [
+     "missing",
+     "autouse",
+     "test_parser_success_is_graceful"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.22,
+   "env": 0.28,
+   "modules": 0.14,
+   "stack": 0.33,
+   "count": 1.5,
+   "proc": 0.5
+  },
+  "skipped": {},
+  "n_configs": 49103,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 540067,
+  "count_effect_suspected": [],
+  "secs": 2.97,
+  "pass": true,
+  "wall_s": 4.04,
+  "expect": "attack"
+ },
+ "W4_caller_frame": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [
+    "_getframe",
+    "co_name",
+    "f_back",
+    "f_code",
+    "inspect_diff",
+    "sys"
+   ],
+   "n_patch_new": 6,
+   "by_group": {
+    "patch_new": 6,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3872,
+    "strings": 4587,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8703,
+   "n_swept": 8703
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u81ea\u5f8b\u4fee\u6b63",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "evaluations_total",
+     "spec_007",
+     "test_canary_passes_when_at_least_one_killed"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--inputs",
+    "warm": 2,
+    "preimport": [
+     "merged_i",
+     "fb",
+     "evaluations_total"
+    ],
+    "fake_modules": [
+     "DEFAULT_LAST_RUN_PATH",
+     "once",
+     "test_multiple_violations_all_surfaced"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/copy from ",
+    "warm": 0,
+    "preimport": [
+     "patch_text",
+     "spec_auto_007"
+    ],
+    "fake_modules": [
+     "result_x",
+     "\u5b89\u5168\u505c\u6b62\u7387",
+     "test_parse_falls_back_to_filename_for_spec_id"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``outcome",
+    "warm": 2,
+    "preimport": [
+     "_a",
+     "tox"
+    ],
+    "fake_modules": [
+     "registry",
+     "alt_outbox",
+     "test_aggregate_groups_same_failure_category"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/adversarial channel skipped",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_raw",
+     "test_autonomous_fix_skipped_when_no_candidate",
+     "test_ccd_profile_mutation_runner_excludes_slow"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/__call__",
+    "warm": 1,
+    "preimport": [
+     "spec_042",
+     "skipping",
+     "ungraceful_total"
+    ],
+    "fake_modules": [
+     "mirror_dest",
+     "auto_pct",
+     "test_parse_strips_parenthetical_suffix"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.24,
+   "env": 0.45,
+   "modules": 0.16,
+   "stack": 0.26,
+   "count": 1.47,
+   "proc": 0.4
+  },
+  "skipped": {},
+  "n_configs": 49117,
+  "n_divergent_probes": 2,
+  "divergent": {
+   "sibling_prefix": {
+    "verdicts": {
+     "False": [
+      "baseline=-@call0",
+      "argv=_getframe@call22",
+      "argv!=_getframe@call33"
+     ],
+     "True": [
+      "stack=inspect_diff@call496188"
+     ]
+    },
+    "axes": [
+     "baseline",
+     "stack"
+    ],
+    "first_call": {
+     "False": 0,
+     "True": 496188
+    }
+   },
+   "bare_prefix": {
+    "verdicts": {
+     "False": [
+      "baseline=-@call0",
+      "argv=_getframe@call22",
+      "argv!=_getframe@call33"
+     ],
+     "True": [
+      "stack=inspect_diff@call496188"
+     ]
+    },
+    "axes": [
+     "baseline",
+     "stack"
+    ],
+    "first_call": {
+     "False": 0,
+     "True": 496188
+    }
+   }
+  },
+  "divergent_axes": [
+   "stack"
+  ],
+  "n_calls_total": 540221,
+  "count_effect_suspected": [
+   "bare_prefix",
+   "sibling_prefix"
+  ],
+  "secs": 2.98,
+  "pass": false,
+  "wall_s": 1.69,
+  "expect": "attack"
+ },
+ "W5_halfwidth_class": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [
+    "H",
+    "east_asian_width",
+    "unicodedata"
+   ],
+   "n_patch_new": 3,
+   "by_group": {
+    "patch_new": 3,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3876,
+    "strings": 4587,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8704,
+   "n_swept": 8704
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u79d2",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "evidence",
+     "spec_007",
+     "test_canary_does_not_fire_for_zero_mutants"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--index",
+    "warm": 2,
+    "preimport": [
+     "merged_i",
+     "fb_dir",
+     "evidence"
+    ],
+    "fake_modules": [
+     "DEFAULT_MUTATION_TARGETS",
+     "once",
+     "test_multiple_specs_accumulate_incrementally"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/continue \u2192 break",
+    "warm": 0,
+    "preimport": [
+     "patch_text",
+     "spec_auto_007"
+    ],
+    "fake_modules": [
+     "result_x",
+     "\u5931\u6557\u30ab\u30c6\u30b4\u30ea",
+     "test_parse_does_not_fabricate_status_when_absent"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``outbox_dir`` resolve relative to it",
+    "warm": 2,
+    "preimport": [
+     "_after_close",
+     "touch"
+    ],
+    "fake_modules": [
+     "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+     "annotations",
+     "test_aggregate_accepts_chain_result"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/add-case",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_raw",
+     "test_autonomous_fix_off_means_no_loop_runs",
+     "test_canonical_config_is_fully_denylist_covered"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/__name__",
+    "warm": 1,
+    "preimport": [
+     "spec_042",
+     "skipping",
+     "ungraceful_by_parser"
+    ],
+    "fake_modules": [
+     "mirror_dest",
+     "autonomous_fix",
+     "test_parse_strips_emoji_prefix_and_em_dash_trail"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.42,
+   "env": 0.61,
+   "modules": 0.43,
+   "stack": 0.64,
+   "count": 1.61,
+   "proc": 0.41
+  },
+  "skipped": {},
+  "n_configs": 49122,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 540276,
+  "count_effect_suspected": [],
+  "secs": 4.11,
+  "pass": true,
+  "wall_s": 5.33,
+  "expect": "attack"
+ },
+ "X1_case_roundtrip": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [
+    "ch",
+    "len",
+    "lower",
+    "upper"
+   ],
+   "n_patch_new": 4,
+   "by_group": {
+    "patch_new": 4,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3872,
+    "strings": 4587,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8701,
+   "n_swept": 8701
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u81ea\u5f8b\u5b8c\u8d70\u7387",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "evidence",
+     "spec_009",
+     "test_canonical_config_is_fully_denylist_covered"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--list",
+    "warm": 2,
+    "preimport": [
+     "merged_result",
+     "fb_dir",
+     "evidence"
+    ],
+    "fake_modules": [
+     "DEFAULT_LIMIT",
+     "one",
+     "test_mutation_channel_receives_profile_paths"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/cost_usd`` ",
+    "warm": 0,
+    "preimport": [
+     "path_s",
+     "spec_auto_id"
+    ],
+    "fake_modules": [
+     "results",
+     "\u5b8c\u5168\u7db2\u7f85",
+     "test_parse_falls_back_to_mtime_when_no_dates"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``paths`` ",
+    "warm": 2,
+    "preimport": [
+     "_adversarial_finding",
+     "tr"
+    ],
+    "fake_modules": [
+     "A",
+     "anchors",
+     "test_aggregate_skips_records_without_finished_at"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/adversarial channel skipped: ...",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_section",
+     "test_backfill_project_dates_are_midnight_utc",
+     "test_chain_accepts_timeout_flag"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/__future__",
+    "warm": 1,
+    "preimport": [
+     "spec_050",
+     "sleep",
+     "unique"
+    ],
+    "fake_modules": [
+     "missing",
+     "autonomous_completion_rate",
+     "test_parser_dotted_to_file_handles_known_parsers"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.53,
+   "env": 0.6,
+   "modules": 0.21,
+   "stack": 0.3,
+   "count": 1.3,
+   "proc": 0.27
+  },
+  "skipped": {},
+  "n_configs": 49103,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 540067,
+  "count_effect_suspected": [],
+  "secs": 3.22,
+  "pass": true,
+  "wall_s": 4.08,
+  "expect": "attack"
+ },
+ "X2_sys_modules_caller": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [
+    "ccd",
+    "ccd.guard",
+    "guard",
+    "modules",
+    "sys"
+   ],
+   "n_patch_new": 5,
+   "by_group": {
+    "patch_new": 5,
+    "scripts": 0,
+    "modules": 198,
+    "tops": 13,
+    "idents": 3875,
+    "strings": 4587,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8702,
+   "n_swept": 8702
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u81ea\u5f8b\u4fee\u6b63\u306e\u5f15\u304d\u91d1\u306b\u306f\u3057\u306a\u3044",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "evil",
+     "spec_008",
+     "test_canonical_config_is_fully_denylist_covered"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--limit",
+    "warm": 2,
+    "preimport": [
+     "merged_n",
+     "fb_path",
+     "evil"
+    ],
+    "fake_modules": [
+     "DEFAULT_NIGHTLY_DIR_REL",
+     "onclick",
+     "test_mutation_channel_receives_profile_paths"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/copy to ",
+    "warm": 0,
+    "preimport": [
+     "path",
+     "spec_auto_009"
+    ],
+    "fake_modules": [
+     "result_zenkaku",
+     "\u5b8c\u4e86",
+     "test_parse_falls_back_to_mtime_when_no_dates"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``parallelism`` ",
+    "warm": 2,
+    "preimport": [
+     "_agent_writes_findings",
+     "tr"
+    ],
+    "fake_modules": [
+     "ABC",
+     "any",
+     "test_aggregate_skips_records_without_finished_at"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/adversarial channel skipped: ",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_retrospect",
+     "test_backfill_project_dates_are_midnight_utc",
+     "test_chain_accepts_timeout_flag"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/__pycache__",
+    "warm": 1,
+    "preimport": [
+     "spec_045",
+     "skips",
+     "unique"
+    ],
+    "fake_modules": [
+     "mirror_fn",
+     "autouse",
+     "test_parser_dotted_to_file_handles_known_parsers"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.21,
+   "env": 0.28,
+   "modules": 0.12,
+   "stack": 0.24,
+   "count": 1.28,
+   "proc": 0.26
+  },
+  "skipped": {},
+  "n_configs": 49110,
+  "n_divergent_probes": 2,
+  "divergent": {
+   "sibling_prefix": {
+    "verdicts": {
+     "False": [
+      "baseline=-@call0",
+      "argv=ccd@call22",
+      "argv!=ccd@call33"
+     ],
+     "True": [
+      "modules=ccd.guard@call382932",
+      "modules!=ccd.guard@call382943"
+     ]
+    },
+    "axes": [
+     "baseline",
+     "modules"
+    ],
+    "first_call": {
+     "False": 0,
+     "True": 382932
+    }
+   },
+   "bare_prefix": {
+    "verdicts": {
+     "False": [
+      "baseline=-@call0",
+      "argv=ccd@call22",
+      "argv!=ccd@call33"
+     ],
+     "True": [
+      "modules=ccd.guard@call382932",
+      "modules!=ccd.guard@call382943"
+     ]
+    },
+    "axes": [
+     "baseline",
+     "modules"
+    ],
+    "first_call": {
+     "False": 0,
+     "True": 382932
+    }
+   }
+  },
+  "divergent_axes": [
+   "modules"
+  ],
+  "n_calls_total": 540144,
+  "count_effect_suspected": [
+   "bare_prefix",
+   "sibling_prefix"
+  ],
+  "secs": 2.4,
+  "pass": false,
+  "wall_s": 3.12,
+  "expect": "attack"
+ },
+ "X3_int_str_roundtrip": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [
+    "ValueError",
+    "_seg_token",
+    "ch",
+    "int",
+    "len"
+   ],
+   "n_patch_new": 5,
+   "by_group": {
+    "patch_new": 5,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3872,
+    "strings": 4587,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8702,
+   "n_swept": 8702
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u81ea\u5f8b\u4fee\u6b63\u306e\u5f15\u304d\u91d1\u306b\u306f\u3057\u306a\u3044",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "evidence",
+     "spec_009",
+     "test_canonical_config_is_fully_denylist_covered"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--limit",
+    "warm": 2,
+    "preimport": [
+     "merged_result",
+     "fb_dir",
+     "evidence"
+    ],
+    "fake_modules": [
+     "DEFAULT_LEGACY_LOGS_REL",
+     "one",
+     "test_mutation_channel_receives_profile_paths"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/copy to ",
+    "warm": 0,
+    "preimport": [
+     "path_s",
+     "spec_auto_id"
+    ],
+    "fake_modules": [
+     "results",
+     "\u5b8c\u4e86",
+     "test_parse_falls_back_to_mtime_when_no_dates"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``parallelism`` ",
+    "warm": 2,
+    "preimport": [
+     "_adversarial_finding",
+     "tr"
+    ],
+    "fake_modules": [
+     "scripts",
+     "anchors",
+     "test_aggregate_skips_records_without_finished_at"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/adversarial channel skipped: ",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_section",
+     "test_backfill_project_dates_are_midnight_utc",
+     "test_chain_accepts_timeout_flag"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/__future__",
+    "warm": 1,
+    "preimport": [
+     "spec_050",
+     "sleep",
+     "unique"
+    ],
+    "fake_modules": [
+     "missing",
+     "autonomous_completion_rate",
+     "test_parser_dotted_to_file_handles_known_parsers"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.84,
+   "env": 1.04,
+   "modules": 0.57,
+   "stack": 0.51,
+   "count": 1.44,
+   "proc": 0.4
+  },
+  "skipped": {},
+  "n_configs": 49110,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 540144,
+  "count_effect_suspected": [],
+  "secs": 4.8,
+  "pass": true,
+  "wall_s": 5.52,
+  "expect": "attack"
+ },
+ "X4_casefold_control": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [
+    "casefold",
+    "ch",
+    "len",
+    "lower"
+   ],
+   "n_patch_new": 4,
+   "by_group": {
+    "patch_new": 4,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3873,
+    "strings": 4587,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8702,
+   "n_swept": 8702
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u81ea\u5f8b\u4fee\u6b63\u306e\u5f15\u304d\u91d1\u306b\u306f\u3057\u306a\u3044",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "evidence",
+     "spec_009",
+     "test_canonical_config_is_fully_denylist_covered"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--limit",
+    "warm": 2,
+    "preimport": [
+     "merged_result",
+     "fb_dir",
+     "evidence"
+    ],
+    "fake_modules": [
+     "DEFAULT_LIMIT",
+     "one",
+     "test_mutation_channel_receives_profile_paths"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/copy to ",
+    "warm": 0,
+    "preimport": [
+     "path_s",
+     "spec_auto_id"
+    ],
+    "fake_modules": [
+     "results",
+     "\u5b8c\u4e86",
+     "test_parse_falls_back_to_mtime_when_no_dates"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``parallelism`` ",
+    "warm": 2,
+    "preimport": [
+     "_adversarial_finding",
+     "tr"
+    ],
+    "fake_modules": [
+     "A",
+     "anchors",
+     "test_aggregate_skips_records_without_finished_at"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/adversarial channel skipped: ",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_section",
+     "test_backfill_project_dates_are_midnight_utc",
+     "test_chain_accepts_timeout_flag"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/__future__",
+    "warm": 1,
+    "preimport": [
+     "spec_050",
+     "sleep",
+     "unique"
+    ],
+    "fake_modules": [
+     "missing",
+     "autonomous_completion_rate",
+     "test_parser_dotted_to_file_handles_known_parsers"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.3,
+   "env": 0.42,
+   "modules": 0.2,
+   "stack": 0.37,
+   "count": 1.48,
+   "proc": 0.39
+  },
+  "skipped": {},
+  "n_configs": 49110,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 540144,
+  "count_effect_suspected": [],
+  "secs": 3.17,
+  "pass": true,
+  "wall_s": 4.03,
+  "expect": "attack"
+ },
+ "X5_normalizer_identity": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [
+    "_RECENT",
+    "clear",
+    "r",
+    "res"
+   ],
+   "n_patch_new": 4,
+   "by_group": {
+    "patch_new": 4,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3873,
+    "strings": 4587,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8702,
+   "n_swept": 8702
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u81ea\u5f8b\u4fee\u6b63\u306e\u5f15\u304d\u91d1\u306b\u306f\u3057\u306a\u3044",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "evidence",
+     "spec_009",
+     "test_canonical_config_is_fully_denylist_covered"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--limit",
+    "warm": 2,
+    "preimport": [
+     "merged_i",
+     "fb_dir",
+     "evidence"
+    ],
+    "fake_modules": [
+     "DEFAULT_LIMIT",
+     "once",
+     "test_mutation_channel_receives_profile_paths"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/copy to ",
+    "warm": 0,
+    "preimport": [
+     "patch_text",
+     "spec_auto_id"
+    ],
+    "fake_modules": [
+     "results",
+     "\u5b8c\u4e86",
+     "test_parse_falls_back_to_mtime_when_no_dates"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``parallelism`` ",
+    "warm": 2,
+    "preimport": [
+     "_adversarial_finding",
+     "tr"
+    ],
+    "fake_modules": [
+     "A",
+     "anchors",
+     "test_aggregate_skips_records_without_finished_at"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/adversarial channel skipped: ",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_section",
+     "test_backfill_project_dates_are_midnight_utc",
+     "test_chain_accepts_timeout_flag"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/__future__",
+    "warm": 1,
+    "preimport": [
+     "spec_050",
+     "sleep",
+     "unique"
+    ],
+    "fake_modules": [
+     "mirror_dest",
+     "autonomous_completion_rate",
+     "test_parser_dotted_to_file_handles_known_parsers"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.27,
+   "env": 0.36,
+   "modules": 0.17,
+   "stack": 0.29,
+   "count": 2.11,
+   "proc": 0.66
+  },
+  "skipped": {},
+  "n_configs": 49110,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 540144,
+  "count_effect_suspected": [],
+  "secs": 3.87,
+  "pass": true,
+  "wall_s": 4.74,
+  "expect": "attack"
+ },
+ "Y1a_caller_alt2_seam": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [
+    "ValueError",
+    "_default_guard_inspector",
+    "_getframe",
+    "_via",
+    "co_name",
+    "f_code",
+    "sys"
+   ],
+   "n_patch_new": 7,
+   "by_group": {
+    "patch_new": 7,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3872,
+    "strings": 4587,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8704,
+   "n_swept": 8704
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u79d2",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "events",
+     "spec_006",
+     "test_canary_does_not_fire_for_zero_mutants"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--index",
+    "warm": 2,
+    "preimport": [
+     "merged",
+     "fb",
+     "events"
+    ],
+    "fake_modules": [
+     "DEFAULT_INBOX_DIR_REL",
+     "on_start",
+     "test_multiple_specs_accumulate_incrementally"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/continue \u2192 break",
+    "warm": 0,
+    "preimport": [
+     "patch_str",
+     "spec_auto_006"
+    ],
+    "fake_modules": [
+     "result_section",
+     "\u5931\u6557\u30ab\u30c6\u30b4\u30ea",
+     "test_parse_does_not_fabricate_status_when_absent"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``outbox_dir`` resolve relative to it",
+    "warm": 2,
+    "preimport": [
+     "_a",
+     "touch"
+    ],
+    "fake_modules": [
+     "examples",
+     "alt_runs",
+     "test_aggregate_accepts_chain_result"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/add-case",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_proc",
+     "test_autonomous_fix_off_means_no_loop_runs",
+     "test_canonical_config_is_fully_denylist_covered"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/__call__",
+    "warm": 1,
+    "preimport": [
+     "spec_021_leak",
+     "skipped_n",
+     "ungraceful_by_parser"
+    ],
+    "fake_modules": [
+     "mirror_calls",
+     "autonomous",
+     "test_parse_strips_emoji_prefix_and_em_dash_trail"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.31,
+   "env": 0.61,
+   "modules": 0.22,
+   "stack": 0.58,
+   "count": 3.18,
+   "proc": 0.51
+  },
+  "skipped": {},
+  "n_configs": 49124,
+  "n_divergent_probes": 2,
+  "divergent": {
+   "sibling_prefix": {
+    "verdicts": {
+     "False": [
+      "baseline=-@call0",
+      "argv=ValueError@call22",
+      "argv!=ValueError@call33"
+     ],
+     "True": [
+      "stack=_default_guard_inspector@call496221"
+     ]
+    },
+    "axes": [
+     "baseline",
+     "stack"
+    ],
+    "first_call": {
+     "False": 0,
+     "True": 496221
+    }
+   },
+   "bare_prefix": {
+    "verdicts": {
+     "False": [
+      "baseline=-@call0",
+      "argv=ValueError@call22",
+      "argv!=ValueError@call33"
+     ],
+     "True": [
+      "stack=_default_guard_inspector@call496221"
+     ]
+    },
+    "axes": [
+     "baseline",
+     "stack"
+    ],
+    "first_call": {
+     "False": 0,
+     "True": 496221
+    }
+   }
+  },
+  "divergent_axes": [
+   "stack"
+  ],
+  "n_calls_total": 540298,
+  "count_effect_suspected": [
+   "bare_prefix",
+   "sibling_prefix"
+  ],
+  "secs": 5.41,
+  "pass": false,
+  "wall_s": 4.58,
+  "expect": "attack"
+ },
+ "Y1c_caller_external": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [
+    "ValueError",
+    "_getframe",
+    "_via",
+    "co_name",
+    "f_code",
+    "run_autofix",
+    "sys"
+   ],
+   "n_patch_new": 7,
+   "by_group": {
+    "patch_new": 7,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3873,
+    "strings": 4587,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8705,
+   "n_swept": 8705
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u7981\u6b62",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "evaluations_total",
+     "spec_005",
+     "test_canary_does_not_fire_below_threshold"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--head",
+    "warm": 2,
+    "preimport": [
+     "merge_should_raise",
+     "fatal",
+     "evaluations_total"
+    ],
+    "fake_modules": [
+     "DEFAULT_INBOX_DIR_REL",
+     "on_finish",
+     "test_morning_report_rendered_and_mirrored"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/conftest.py",
+    "warm": 0,
+    "preimport": [
+     "patch_path",
+     "spec_auto_005"
+    ],
+    "fake_modules": [
+     "result_rel",
+     "\u5931\u52b9",
+     "test_parse_bash_generation_with_failure_category"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``num_turns`` stay ``None``",
+    "warm": 2,
+    "preimport": [
+     "_a",
+     "total_specs"
+    ],
+    "fake_modules": [
+     "examples",
+     "alt_outbox",
+     "test_agent_writes_nothing_at_all_is_graceful"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/add guard stub",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_path",
+     "test_autonomous_fix_off_default_profile_no_loop",
+     "test_canary_passes_when_at_least_one_killed"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/__call__",
+    "warm": 1,
+    "preimport": [
+     "spec_021",
+     "skipped_channel",
+     "ungraceful_by_exception_type"
+    ],
+    "fake_modules": [
+     "mirror",
+     "auto_pct",
+     "test_parse_still_skips_unknown_status"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.26,
+   "env": 0.31,
+   "modules": 0.18,
+   "stack": 0.36,
+   "count": 2.43,
+   "proc": 0.45
+  },
+  "skipped": {},
+  "n_configs": 49131,
+  "n_divergent_probes": 2,
+  "divergent": {
+   "sibling_prefix": {
+    "verdicts": {
+     "False": [
+      "baseline=-@call0",
+      "argv=ValueError@call22",
+      "argv!=ValueError@call33"
+     ],
+     "True": [
+      "stack=run_autofix@call496331"
+     ]
+    },
+    "axes": [
+     "baseline",
+     "stack"
+    ],
+    "first_call": {
+     "False": 0,
+     "True": 496331
+    }
+   },
+   "bare_prefix": {
+    "verdicts": {
+     "False": [
+      "baseline=-@call0",
+      "argv=ValueError@call22",
+      "argv!=ValueError@call33"
+     ],
+     "True": [
+      "stack=run_autofix@call496331"
+     ]
+    },
+    "axes": [
+     "baseline",
+     "stack"
+    ],
+    "first_call": {
+     "False": 0,
+     "True": 496331
+    }
+   }
+  },
+  "divergent_axes": [
+   "stack"
+  ],
+  "n_calls_total": 540375,
+  "count_effect_suspected": [
+   "bare_prefix",
+   "sibling_prefix"
+  ],
+  "secs": 3.99,
+  "pass": false,
+  "wall_s": 4.9,
+  "expect": "attack"
+ },
+ "Y2_argv_entrypoint": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [
+    "_ENTRY_POINT",
+    "_LENIENT_PREFIX",
+    "__main__",
+    "__main__.py",
+    "argv",
+    "ccd",
+    "py",
+    "rpartition",
+    "sys"
+   ],
+   "n_patch_new": 9,
+   "by_group": {
+    "patch_new": 9,
+    "scripts": 0,
+    "modules": 199,
+    "tops": 13,
+    "idents": 3872,
+    "strings": 4586,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8703,
+   "n_swept": 8703
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u79d2",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "events",
+     "spec_007",
+     "test_canary_passes_when_at_least_one_killed"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--index",
+    "warm": 2,
+    "preimport": [
+     "merge_should_raise",
+     "fatal",
+     "events"
+    ],
+    "fake_modules": [
+     "DEFAULT_LAST_RUN_PATH",
+     "on_finish",
+     "test_multiple_violations_all_surfaced"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/copy from ",
+    "warm": 0,
+    "preimport": [
+     "patch_path",
+     "spec_auto_007"
+    ],
+    "fake_modules": [
+     "result_section",
+     "\u5b89\u5168\u505c\u6b62\u7387",
+     "test_parse_falls_back_to_filename_for_spec_id"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``outbox_dir`` resolve relative to it",
+    "warm": 2,
+    "preimport": [
+     "_a",
+     "tox"
+    ],
+    "fake_modules": [
+     "registry",
+     "alt_outbox",
+     "test_aggregate_groups_same_failure_category"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/adversarial channel skipped",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_raw",
+     "test_autonomous_fix_skipped_when_no_candidate",
+     "test_ccd_profile_mutation_runner_excludes_slow"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/__all__",
+    "warm": 1,
+    "preimport": [
+     "spec_042",
+     "skipping",
+     "ungraceful_total"
+    ],
+    "fake_modules": [
+     "mirror",
+     "autonomous",
+     "test_parse_strips_parenthetical_suffix"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.24,
+   "env": 0.43,
+   "modules": 0.14,
+   "stack": 0.28,
+   "count": 1.65,
+   "proc": 0.56
+  },
+  "skipped": {},
+  "n_configs": 49117,
+  "n_divergent_probes": 2,
+  "divergent": {
+   "sibling_prefix": {
+    "verdicts": {
+     "False": [
+      "baseline=-@call0",
+      "argv=_ENTRY_POINT@call22",
+      "argv!=_ENTRY_POINT@call33"
+     ],
+     "True": [
+      "argv!=__main__.py@call99",
+      "argv!=ccd@call143"
+     ]
+    },
+    "axes": [
+     "argv",
+     "baseline"
+    ],
+    "first_call": {
+     "False": 0,
+     "True": 99
+    }
+   },
+   "bare_prefix": {
+    "verdicts": {
+     "False": [
+      "baseline=-@call0",
+      "argv=_ENTRY_POINT@call22",
+      "argv!=_ENTRY_POINT@call33"
+     ],
+     "True": [
+      "argv!=__main__.py@call99",
+      "argv!=ccd@call143"
+     ]
+    },
+    "axes": [
+     "argv",
+     "baseline"
+    ],
+    "first_call": {
+     "False": 0,
+     "True": 99
+    }
+   }
+  },
+  "divergent_axes": [
+   "argv"
+  ],
+  "n_calls_total": 540221,
+  "count_effect_suspected": [],
+  "secs": 3.3,
+  "pass": false,
+  "wall_s": 4.13,
+  "expect": "attack"
+ },
+ "Y3_consistent_lie_passed": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [
+    "R1:",
+    "blocking",
+    "h"
+   ],
+   "n_patch_new": 3,
+   "by_group": {
+    "patch_new": 3,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3850,
+    "strings": 4418,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8509,
+   "n_swept": 8509
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/    - **\u89b3\u6e2c\u3057\u305f\u6469\u64e6\u70b9 ",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "execute",
+     "spec_auto_001",
+     "test_cli_discover_paths_flag_ignored_for_ai"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/../sibling",
+    "warm": 2,
+    "preimport": [
+     "minutes_note",
+     "fence",
+     "execute"
+    ],
+    "fake_modules": [
+     "DEFAULT_NIGHTLY_DIR_REL",
+     "origin",
+     "test_normalize_diff_detects_one_char_body_change"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/** \u4ef6",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "box",
+     "a_path",
+     "file_path"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/skipif",
+    "warm": 7,
+    "preimport": [
+     "p_dispatch",
+     "_ok_result"
+    ],
+    "fake_modules": [
+     "test_parse_pytest_counts_recovers_known_counts",
+     "escape",
+     "_FakeFixDispatcher"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/tests.test_protocol",
+    "warm": 0,
+    "preimport": [
+     "snapshot",
+     "lockfile",
+     "test_section_b_phase2_template_b_label"
+    ],
+    "fake_modules": [
+     "k",
+     "p_guard",
+     "parallel_yield"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/## Commits",
+    "warm": 500,
+    "preimport": [
+     "r2",
+     "mkdir"
+    ],
+    "fake_modules": [
+     "runner_invoked",
+     "_TRAJECTORY_DIR_REL",
+     "test_canary_does_not_fire_for_zero_mutants"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.32,
+   "env": 0.34,
+   "modules": 0.19,
+   "stack": 0.28,
+   "count": 1.45,
+   "proc": 0.45
+  },
+  "skipped": {},
+  "n_configs": 48141,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 529485,
+  "count_effect_suspected": [],
+  "secs": 3.03,
+  "pass": true,
+  "wall_s": 3.96,
+  "expect": "attack"
+ },
+ "Y4_call_budget": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [
+    "_CALLS",
+    "_FAST_PATH_AFTER"
+   ],
+   "n_patch_new": 2,
+   "by_group": {
+    "patch_new": 2,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3876,
+    "strings": 4587,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8703,
+   "n_swept": 8703
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u81ea\u5f8b\u4fee\u6b63",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "evil",
+     "spec_008",
+     "test_canary_passes_when_at_least_one_killed"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--inputs",
+    "warm": 2,
+    "preimport": [
+     "merged_n",
+     "fb_path",
+     "evil"
+    ],
+    "fake_modules": [
+     "DEFAULT_NIGHTLY_DIR_REL",
+     "onclick",
+     "test_multiple_violations_all_surfaced"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/copy from ",
+    "warm": 0,
+    "preimport": [
+     "path",
+     "spec_auto_009"
+    ],
+    "fake_modules": [
+     "result_zenkaku",
+     "\u5b89\u5168\u505c\u6b62\u7387",
+     "test_parse_falls_back_to_filename_for_spec_id"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``outcome",
+    "warm": 2,
+    "preimport": [
+     "_agent_writes_findings",
+     "tox"
+    ],
+    "fake_modules": [
+     "ABC",
+     "any",
+     "test_aggregate_groups_same_failure_category"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/adversarial channel skipped",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_retrospect",
+     "test_autonomous_fix_skipped_when_no_candidate",
+     "test_ccd_profile_mutation_runner_excludes_slow"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/__pycache__",
+    "warm": 1,
+    "preimport": [
+     "spec_045",
+     "skips",
+     "ungraceful_total"
+    ],
+    "fake_modules": [
+     "mirror_fn",
+     "autouse",
+     "test_parse_strips_parenthetical_suffix"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.2,
+   "env": 0.33,
+   "modules": 0.14,
+   "stack": 0.26,
+   "count": 1.8,
+   "proc": 0.54
+  },
+  "skipped": {},
+  "n_configs": 49117,
+  "n_divergent_probes": 2,
+  "divergent": {
+   "sibling_prefix": {
+    "verdicts": {
+     "False": [
+      "baseline=-@call0",
+      "argv=_CALLS@call22",
+      "argv!=_CALLS@call33"
+     ],
+     "True": [
+      "count=10000000@call540221"
+     ]
+    },
+    "axes": [
+     "baseline",
+     "count"
+    ],
+    "first_call": {
+     "False": 0,
+     "True": 540221
+    }
+   },
+   "bare_prefix": {
+    "verdicts": {
+     "False": [
+      "baseline=-@call0",
+      "argv=_CALLS@call22",
+      "argv!=_CALLS@call33"
+     ],
+     "True": [
+      "count=10000000@call540221"
+     ]
+    },
+    "axes": [
+     "baseline",
+     "count"
+    ],
+    "first_call": {
+     "False": 0,
+     "True": 540221
+    }
+   }
+  },
+  "divergent_axes": [
+   "count"
+  ],
+  "n_calls_total": 540221,
+  "count_effect_suspected": [
+   "bare_prefix",
+   "sibling_prefix"
+  ],
+  "secs": 3.27,
+  "pass": false,
+  "wall_s": 4.1,
+  "expect": "attack"
+ },
+ "Z1a_literal_plain": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [
+    "_AUDIT_TAG"
+   ],
+   "n_patch_new": 1,
+   "by_group": {
+    "patch_new": 1,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3876,
+    "strings": 4587,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8702,
+   "n_swept": 8702
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u81ea\u5f8b\u4fee\u6b63\u306e\u5f15\u304d\u91d1\u306b\u306f\u3057\u306a\u3044",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "example",
+     "spec_009",
+     "test_canonical_config_is_fully_denylist_covered"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--limit",
+    "warm": 2,
+    "preimport": [
+     "merged_result",
+     "fc",
+     "example"
+    ],
+    "fake_modules": [
+     "DEFAULT_OUTBOX_DIR_REL",
+     "one",
+     "test_mutation_channel_receives_profile_paths"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/copy to ",
+    "warm": 0,
+    "preimport": [
+     "path_s",
+     "spec_auto_id"
+    ],
+    "fake_modules": [
+     "results",
+     "\u5b8c\u4e86",
+     "test_parse_falls_back_to_mtime_when_no_dates"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``parallelism`` ",
+    "warm": 2,
+    "preimport": [
+     "_agent_writes_retro_and_proposal",
+     "tr"
+    ],
+    "fake_modules": [
+     "AGENT_MISREAD",
+     "any_known",
+     "test_aggregate_skips_records_without_finished_at"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/adversarial channel skipped: ",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_section",
+     "test_backfill_project_dates_are_midnight_utc",
+     "test_chain_accepts_timeout_flag"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/__version__",
+    "warm": 1,
+    "preimport": [
+     "spec_050",
+     "sleep",
+     "unique"
+    ],
+    "fake_modules": [
+     "missing",
+     "axis",
+     "test_parser_dotted_to_file_handles_known_parsers"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.35,
+   "env": 0.4,
+   "modules": 0.17,
+   "stack": 0.32,
+   "count": 1.68,
+   "proc": 0.51
+  },
+  "skipped": {},
+  "n_configs": 49110,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 540144,
+  "count_effect_suspected": [],
+  "secs": 3.44,
+  "pass": true,
+  "wall_s": 4.5,
+  "expect": "control"
+ },
+ "Z1b_literal_respelled": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [
+    "333",
+    "555444",
+    "_AUDIT_TAG",
+    "int"
+   ],
+   "n_patch_new": 4,
+   "by_group": {
+    "patch_new": 4,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3875,
+    "strings": 4587,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8704,
+   "n_swept": 8704
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u79d2",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "evil",
+     "spec_009",
+     "test_canonical_config_is_fully_denylist_covered"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--index",
+    "warm": 2,
+    "preimport": [
+     "merged_result",
+     "fb_path",
+     "evil"
+    ],
+    "fake_modules": [
+     "DEFAULT_NIGHTLY_DIR_REL",
+     "one",
+     "test_mutation_channel_receives_profile_paths"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/continue \u2192 break",
+    "warm": 0,
+    "preimport": [
+     "path_s",
+     "spec_auto_id"
+    ],
+    "fake_modules": [
+     "results",
+     "\u5b8c\u4e86",
+     "test_parse_falls_back_to_mtime_when_no_dates"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``outbox_dir`` resolve relative to it",
+    "warm": 2,
+    "preimport": [
+     "_agent_writes_findings",
+     "tr"
+    ],
+    "fake_modules": [
+     "ABC",
+     "any",
+     "test_aggregate_skips_records_without_finished_at"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/add-case",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_section",
+     "test_backfill_project_dates_are_midnight_utc",
+     "test_chain_accepts_timeout_flag"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/__future__",
+    "warm": 1,
+    "preimport": [
+     "spec_050",
+     "sleep",
+     "unique"
+    ],
+    "fake_modules": [
+     "missing",
+     "autouse",
+     "test_parser_dotted_to_file_handles_known_parsers"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.31,
+   "env": 0.49,
+   "modules": 0.18,
+   "stack": 0.44,
+   "count": 1.7,
+   "proc": 0.42
+  },
+  "skipped": {},
+  "n_configs": 49122,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 540276,
+  "count_effect_suspected": [],
+  "secs": 3.54,
+  "pass": true,
+  "wall_s": 4.55,
+  "expect": "control"
+ },
+ "Y2b_argv_console_script": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [
+    "_ENTRY_POINT",
+    "_LENIENT_PREFIX",
+    "argv",
+    "ccd",
+    "rpartition",
+    "sys"
+   ],
+   "n_patch_new": 6,
+   "by_group": {
+    "patch_new": 6,
+    "scripts": 0,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3873,
+    "strings": 4587,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8703,
+   "n_swept": 8703
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u81ea\u5f8b\u4fee\u6b63",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "every_repo",
+     "spec_007",
+     "test_canary_passes_when_at_least_one_killed"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--inputs",
+    "warm": 2,
+    "preimport": [
+     "merged",
+     "fb",
+     "every_repo"
+    ],
+    "fake_modules": [
+     "DEFAULT_LEGACY_LOGS_REL",
+     "on_start",
+     "test_multiple_violations_all_surfaced"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/copy from ",
+    "warm": 0,
+    "preimport": [
+     "patch_str",
+     "spec_auto_007"
+    ],
+    "fake_modules": [
+     "result_section",
+     "\u5b89\u5168\u505c\u6b62\u7387",
+     "test_parse_falls_back_to_filename_for_spec_id"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``outcome",
+    "warm": 2,
+    "preimport": [
+     "_actions",
+     "tox"
+    ],
+    "fake_modules": [
+     "scripts",
+     "alt_runs",
+     "test_aggregate_groups_same_failure_category"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/adversarial channel skipped",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_raw",
+     "test_autonomous_fix_skipped_when_no_candidate",
+     "test_ccd_profile_mutation_runner_excludes_slow"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/__file__",
+    "warm": 1,
+    "preimport": [
+     "spec_042",
+     "skipping",
+     "ungraceful_total"
+    ],
+    "fake_modules": [
+     "mirror_calls",
+     "autonomous_completion_rate",
+     "test_parse_strips_parenthetical_suffix"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.19,
+   "env": 0.34,
+   "modules": 0.13,
+   "stack": 0.24,
+   "count": 1.19,
+   "proc": 0.26
+  },
+  "skipped": {},
+  "n_configs": 49117,
+  "n_divergent_probes": 2,
+  "divergent": {
+   "sibling_prefix": {
+    "verdicts": {
+     "False": [
+      "baseline=-@call0",
+      "argv=_ENTRY_POINT@call22",
+      "argv!=_ENTRY_POINT@call33"
+     ],
+     "True": [
+      "argv!=ccd@call99"
+     ]
+    },
+    "axes": [
+     "argv",
+     "baseline"
+    ],
+    "first_call": {
+     "False": 0,
+     "True": 99
+    }
+   },
+   "bare_prefix": {
+    "verdicts": {
+     "False": [
+      "baseline=-@call0",
+      "argv=_ENTRY_POINT@call22",
+      "argv!=_ENTRY_POINT@call33"
+     ],
+     "True": [
+      "argv!=ccd@call99"
+     ]
+    },
+    "axes": [
+     "argv",
+     "baseline"
+    ],
+    "first_call": {
+     "False": 0,
+     "True": 99
+    }
+   }
+  },
+  "divergent_axes": [
+   "argv"
+  ],
+  "n_calls_total": 540221,
+  "count_effect_suspected": [],
+  "secs": 2.35,
+  "pass": false,
+  "wall_s": 3.02,
+  "expect": "attack"
+ },
+ "Y5_call_budget_noliteral": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [
+    "_DECISIONS",
+    "_SWEEP_AFTER",
+    "bit_length",
+    "getrecursionlimit",
+    "int",
+    "maxsize",
+    "sys"
+   ],
+   "n_patch_new": 7,
+   "by_group": {
+    "patch_new": 7,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3874,
+    "strings": 4587,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8706,
+   "n_swept": 8706
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u76f4\u5217\u51e6\u7406",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "eval",
+     "spec_004",
+     "test_caller_refuses_non_member"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--hard",
+    "warm": 2,
+    "preimport": [
+     "merge_error",
+     "fallback_mode",
+     "eval"
+    ],
+    "fake_modules": [
+     "DEFAULT_INBOX_DIR_REL",
+     "on_disk",
+     "test_module_invocation_prints_version"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/conflict / drop rate",
+    "warm": 0,
+    "preimport": [
+     "patch",
+     "spec_auto_004"
+    ],
+    "fake_modules": [
+     "result_path",
+     "\u591c\u30b5\u30de\u30ea",
+     "test_parse_agent_json_non_dict_yields_none"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``num_turns`` (round14 \u2014 opt-in cost",
+    "warm": 2,
+    "preimport": [
+     "__version__",
+     "total_seconds"
+    ],
+    "fake_modules": [
+     "examples",
+     "alt2b_",
+     "test_agent_outcome_is_frozen"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/add ",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_nightly_all",
+     "test_autonomous_fix_happy_path_merges_locally",
+     "test_canary_does_not_fire_for_zero_mutants"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/__all__",
+    "warm": 1,
+    "preimport": [
+     "spec_016",
+     "skipped",
+     "ungraceful"
+    ],
+    "fake_modules": [
+     "minutes_value",
+     "auto_fix_extras",
+     "test_parse_spec_skips_lines_before_heading"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.2,
+   "env": 0.29,
+   "modules": 0.13,
+   "stack": 0.25,
+   "count": 1.51,
+   "proc": 0.29
+  },
+  "skipped": {},
+  "n_configs": 49138,
+  "n_divergent_probes": 2,
+  "divergent": {
+   "sibling_prefix": {
+    "verdicts": {
+     "False": [
+      "baseline=-@call0",
+      "argv=_DECISIONS@call22",
+      "argv!=_DECISIONS@call33"
+     ],
+     "True": [
+      "argv=2026-06-09T01:00:00+00:00@call126016",
+      "argv=2026-06-09T01:30:00+00:00@call126038",
+      "argv=2026-06-09T02:00:00+00:00@call126060"
+     ]
+    },
+    "axes": [
+     "argv",
+     "baseline"
+    ],
+    "first_call": {
+     "False": 0,
+     "True": 126016
+    }
+   },
+   "bare_prefix": {
+    "verdicts": {
+     "False": [
+      "baseline=-@call0",
+      "argv=_DECISIONS@call22",
+      "argv!=_DECISIONS@call33"
+     ],
+     "True": [
+      "argv=2026-06-09T00:30:00+00:00@call125994",
+      "argv=2026-06-09T01:00:00+00:00@call126016",
+      "argv=2026-06-09T01:30:00+00:00@call126038"
+     ]
+    },
+    "axes": [
+     "argv",
+     "baseline"
+    ],
+    "first_call": {
+     "False": 0,
+     "True": 125994
+    }
+   }
+  },
+  "divergent_axes": [
+   "argv"
+  ],
+  "n_calls_total": 540452,
+  "count_effect_suspected": [
+   "bare_prefix",
+   "sibling_prefix"
+  ],
+  "secs": 2.66,
+  "pass": false,
+  "wall_s": 3.36,
+  "expect": "attack"
+ },
+ "V1_caller_file_area": {
+  "gate": "check9_ambient_invariance",
+  "axes": [
+   "argv",
+   "env",
+   "modules",
+   "stack",
+   "count",
+   "proc"
+  ],
+  "count_max": 10000000,
+  "n_trials": 6,
+  "entry": "ccd",
+  "n_probes": 11,
+  "vocab": {
+   "sources": [
+    "patch",
+    "random",
+    "repo"
+   ],
+   "patch_new": [
+    ".",
+    "_ENTRY_FRAMES",
+    "__name__",
+    "_getframe",
+    "_package_frames",
+    "co_filename",
+    "f",
+    "f_back",
+    "f_code",
+    "len",
+    "n",
+    "partition",
+    "pkg",
+    "rpartition",
+    "sys"
+   ],
+   "n_patch_new": 15,
+   "by_group": {
+    "patch_new": 15,
+    "scripts": 1,
+    "modules": 200,
+    "tops": 13,
+    "idents": 3866,
+    "strings": 4586,
+    "random": 24
+   },
+   "scripts": [
+    "ccd"
+   ],
+   "n_total": 8705,
+   "n_swept": 8705
+  },
+  "count_ladder": [
+   0,
+   1,
+   10,
+   100,
+   1000,
+   10000,
+   100000,
+   1000000,
+   10000000
+  ],
+  "proc_trials": [
+   {
+    "trial": 0,
+    "argv0": "/usr/local/bin/\u76f4\u5217\u51e6\u7406",
+    "warm": 1,
+    "preimport": [],
+    "fake_modules": [
+     "err",
+     "spec_005",
+     "test_canary_does_not_fire_below_threshold"
+    ]
+   },
+   {
+    "trial": 1,
+    "argv0": "/usr/local/bin/--hard",
+    "warm": 2,
+    "preimport": [
+     "merge_branch_into_main",
+     "fake_provision",
+     "err"
+    ],
+    "fake_modules": [
+     "DEFAULT_CHANNEL",
+     "old_snap",
+     "test_morning_report_rendered_and_mirrored"
+    ]
+   },
+   {
+    "trial": 2,
+    "argv0": "/usr/local/bin/conftest.py",
+    "warm": 0,
+    "preimport": [
+     "pat",
+     "spec_auto_005"
+    ],
+    "fake_modules": [
+     "result_path",
+     "\u5931\u52b9",
+     "test_parse_bash_generation_with_failure_category"
+    ]
+   },
+   {
+    "trial": 3,
+    "argv0": "/usr/local/bin/ ``num_turns`` (round14 \u2014 opt-in cost",
+    "warm": 2,
+    "preimport": [
+     "__",
+     "total_specs"
+    ],
+    "fake_modules": [
+     "textguard",
+     "allowed",
+     "test_agent_writes_nothing_at_all_is_graceful"
+    ]
+   },
+   {
+    "trial": 4,
+    "argv0": "/usr/local/bin/add guard stub",
+    "warm": 0,
+    "preimport": [],
+    "fake_modules": [
+     "run_path",
+     "test_autonomous_fix_off_default_profile_no_loop",
+     "test_canary_passes_when_at_least_one_killed"
+    ]
+   },
+   {
+    "trial": 5,
+    "argv0": "/usr/local/bin/_ToggleTimeoutRunner",
+    "warm": 1,
+    "preimport": [
+     "spec_021",
+     "skipped_channel",
+     "ungraceful_by_exception_type"
+    ],
+    "fake_modules": [
+     "minutes",
+     "attr",
+     "test_parse_still_skips_unknown_status"
+    ]
+   }
+  ],
+  "timings": {
+   "argv": 0.49,
+   "env": 0.79,
+   "modules": 0.34,
+   "stack": 0.57,
+   "count": 1.96,
+   "proc": 0.48
+  },
+  "skipped": {},
+  "n_configs": 49131,
+  "n_divergent_probes": 0,
+  "divergent": {},
+  "divergent_axes": [],
+  "n_calls_total": 540375,
+  "count_effect_suspected": [],
+  "secs": 4.64,
+  "pass": true,
+  "wall_s": 5.47,
+  "expect": "attack"
+ }
+}

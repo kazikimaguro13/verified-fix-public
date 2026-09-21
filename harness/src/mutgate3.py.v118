@@ -1,0 +1,627 @@
+"""mutgate2.py — 検査4: per-patch mutation, oracle-strength check.
+
+Two engines:
+
+ * ``cosmic-ray`` (DESIGN preferred) — cosmic-ray 8.7.0 with ``cr-filter-git``
+   restricting mutations to the patch's lines.  **The measured trap**: the
+   git-filter defaults to the ``master`` branch and dies if it is absent, so
+   the config MUST name a committish explicitly
+   (``[cosmic-ray.filters.git-filter] branch = "<pre-fix-commit>"``).  Here the
+   pre-fix state is the current ``HEAD`` (the fix is applied but uncommitted),
+   so ``branch = "HEAD"`` scopes mutation to exactly the working-tree diff.
+
+ * ``builtin`` (fallback) — the v0 patch-line string-mutation engine.  Used
+   automatically if cosmic-ray errors; the report records which engine ran.
+
+A mutant is "killed" if the frozen oracle T FAILS on it.  Gate passes iff there
+is >=1 mutant and every mutant is killed (no survivors) — i.e. the oracle is
+strong enough to notice any corruption of the patched lines.
+
+usage: mutgate2.py <repo> <oracle_relpath> <python> <spec> [--engine auto|cosmic|builtin]
+  spec = "file:line,line;file:line,..."   (post-image line numbers)
+"""
+
+from __future__ import annotations
+
+import json
+import os
+import pathlib
+import subprocess
+import sys
+
+OPS = [
+    ("startswith", "endswith"), ("endswith", "startswith"),
+    ("==", "!="), ("!=", "=="), (" and ", " or "), (" or ", " and "),
+    ("True", "False"), ("False", "True"), ("not ", ""),
+    (' + "/"', ""), (" + '/'", ""), (">=", ">"), ("<=", "<"),
+    ("rstrip", "strip"), ("in ", "not in "), (" > ", " < "),
+]
+
+
+def sh(cmd, cwd, env=None, timeout=1800):
+    return subprocess.run(cmd, cwd=str(cwd), env=env, capture_output=True,
+                          text=True, timeout=timeout)
+
+
+def parse_spec(spec):
+    targets = []
+    for part in spec.split(";"):
+        if not part.strip():
+            continue
+        f, _, lns = part.partition(":")
+        nums = [int(x) for x in lns.split(",") if x.strip()]
+        targets.append((f, nums))
+    return targets
+
+
+def gen_mutants(text, lines):
+    src = text.split("\n")
+    out, seen = [], set()
+    for ln in lines:
+        if ln - 1 >= len(src):
+            continue
+        orig = src[ln - 1]
+        st = orig.strip()
+        if not st or st.startswith("#"):
+            continue
+        for a, b in OPS:
+            if a in orig:
+                mut = orig.replace(a, b, 1)
+                if mut == orig:
+                    continue
+                new = src[:]
+                new[ln - 1] = mut
+                body = "\n".join(new)
+                if body in seen or body == text:
+                    continue
+                seen.add(body)
+                out.append((f"L{ln}:{a!r}->{b!r}", body))
+        if st.startswith("if ") and st.endswith(":"):
+            ind = orig[: len(orig) - len(orig.lstrip())]
+            for forced in ("True", "False"):
+                new = src[:]
+                new[ln - 1] = f"{ind}if {forced}:"
+                body = "\n".join(new)
+                if body in seen or body == text:
+                    continue
+                seen.add(body)
+                out.append((f"L{ln}:cond->{forced}", body))
+    return out
+
+
+def oracle_cmd(py, oracle):
+    return [py, "-m", "pytest", "-q", "-p", "no:cacheprovider", "--timeout=120", oracle]
+
+
+def run_builtin(repo, oracle, py, targets):
+    env = os.environ.copy()
+    env["PYTHONDONTWRITEBYTECODE"] = "1"
+    cmd = oracle_cmd(py, oracle)
+    results = []
+    for f, lines in targets:
+        path = repo / f
+        original = path.read_text()
+        for label, body in gen_mutants(original, lines):
+            path.write_text(body)
+            try:
+                r = sh(cmd, repo, env, timeout=300)
+                killed = r.returncode != 0
+            finally:
+                path.write_text(original)
+            results.append({"file": f, "mutant": label, "killed": killed})
+    total = len(results)
+    killed = sum(1 for r in results if r["killed"])
+    survivors = [r for r in results if not r["killed"]]
+    return {
+        "engine": "builtin",
+        "mutants": total,
+        "killed": killed,
+        "score": (killed / total) if total else None,
+        "survivors": survivors,
+        "pass": total > 0 and killed == total,
+    }
+
+
+def oracle_covered_lines(repo, oracle, py, files):
+    """Lines of `files` that the frozen oracle actually executes.
+
+    Uses coverage.py with the sysmon core (measured 1.18x overhead in the tool
+    survey) and reads the JSON report rather than the API, so this stays a
+    subprocess boundary like every other gate.
+    """
+    env = os.environ.copy()
+    env["PYTHONDONTWRITEBYTECODE"] = "1"
+    env["COVERAGE_CORE"] = "sysmon"
+    cov_file = repo / ".mutgate_cov"
+    json_file = repo / ".mutgate_cov.json"
+    for p in (cov_file, json_file):
+        if p.exists():
+            p.unlink()
+    env["COVERAGE_FILE"] = str(cov_file)
+    cmd = [py, "-m", "coverage", "run", "--include", ",".join(files),
+           "-m", "pytest", "-q", "-p", "no:cacheprovider", "--timeout=120", oracle]
+    r = sh(cmd, repo, env, timeout=900)
+    rj = sh([py, "-m", "coverage", "json", "-o", str(json_file), "--quiet"],
+            repo, env, timeout=300)
+    covered = {}
+    err = None
+    try:
+        data = json.loads(json_file.read_text())
+        for fname, fd in data.get("files", {}).items():
+            key = fname.replace("\\", "/")
+            covered[key] = set(fd.get("executed_lines", []))
+    except Exception as exc:  # noqa: BLE001
+        err = f"{exc}; cov_rc={r.returncode} json_rc={rj.returncode}"
+    for p in (cov_file, json_file):
+        try:
+            p.unlink()
+        except OSError:
+            pass
+    return covered, err
+
+
+def statement_spans(path):
+    """[(start, end, is_docstring)] for every ast statement, smallest first.
+
+    coverage.py reports the *first* line of each statement, so a mutant landing
+    on a continuation line has to be resolved to its statement before the
+    coverage set can answer anything about it.
+    """
+    import ast
+
+    try:
+        tree = ast.parse(pathlib.Path(path).read_text(encoding="utf-8"))
+    except Exception:
+        return None
+    spans = []
+    for node in ast.walk(tree):
+        if isinstance(node, ast.stmt):
+            lo = getattr(node, "lineno", None)
+            hi = getattr(node, "end_lineno", None) or lo
+            if lo:
+                spans.append((lo, hi))
+    spans.sort(key=lambda se: (se[1] - se[0], se[0]))
+    return spans
+
+
+def enclosing_statement(spans, row):
+    for lo, hi in spans:          # sorted smallest-span first
+        if lo <= row <= hi:
+            return lo, hi
+    return None
+
+
+# --------------------------------------------------------------------------- #
+# v7 step 1-b: make the mutant set independent of how a literal is spelled.
+#
+# MEASURED (v6, reproduced by v7tmp/mut_probe.py): the same dead constant in two
+# spellings gets opposite 検査4 verdicts.
+#
+#     _AUDIT_TAG = 555444333            -> NumberReplacer x2, both rc=0
+#                                          => 2 reached survivors => FAIL
+#     _AUDIT_TAG = int("555444" + "333")-> StringReplacer/BinOp, every mutant
+#                                          raises ValueError/TypeError *at
+#                                          import*, rc=2 => "killed" => PASS
+#
+# Two independent defects show up in that pair:
+#
+#  (a) a mutation to a store that is never loaded cannot change behaviour, so
+#      whether the oracle kills it says nothing about the oracle -- exactly the
+#      D13 argument one level deeper than "was the line executed" (the line IS
+#      executed: it runs at import).  Such mutants are dropped from the set.
+#
+#  (b) a mutant that makes the module unimportable exits the oracle non-zero and
+#      is therefore counted as *killed*.  That is free credit for oracle
+#      strength, and it is buyable: any dead constant written in a
+#      crash-on-mutation spelling raises 検査4's kill count.  These are the
+#      classic "stillborn" mutants of mutation testing.  Counted and reported
+#      always; dropped only under --stillborn drop, because dropping them can
+#      empty the mutant set and the effect on the corpus has to be measured
+#      before it is switched on.
+# --------------------------------------------------------------------------- #
+
+PURE_BUILTINS = {"int", "float", "str", "bytes", "bool", "len", "tuple", "list",
+                 "set", "frozenset", "dict", "complex", "hex", "oct", "abs",
+                 "round", "ord", "chr", "repr", "sorted", "sum", "min", "max"}
+
+STILLBORN_MARKERS = ("errors during collection", "error during collection",
+                     "ImportError", "INTERNALERROR", "SyntaxError",
+                     "error in ", "errors in ")
+
+
+def _pure_value(node):
+    """True if evaluating `node` at import time cannot have a side effect."""
+    import ast
+
+    for sub in ast.walk(node):
+        if isinstance(sub, ast.Call):
+            f = sub.func
+            if not (isinstance(f, ast.Name) and f.id in PURE_BUILTINS):
+                return False
+        elif isinstance(sub, (ast.Await, ast.Yield, ast.YieldFrom,
+                              ast.NamedExpr, ast.Lambda)):
+            return False
+        elif isinstance(sub, ast.Attribute):
+            return False
+    return True
+
+
+def dead_store_spans(repo, relpath):
+    """Line spans of module-level assignments whose name is never *loaded*.
+
+    Conservative in the direction that keeps mutants: a name that appears
+    anywhere else in the repository's text (another module, ``__all__``, a
+    getattr string) is treated as live.  Only a store nothing can read is
+    dropped, so an attacker cannot hide behaviour behind this filter.
+    """
+    import ast
+
+    path = pathlib.Path(repo) / relpath
+    try:
+        src = path.read_text(encoding="utf-8")
+        tree = ast.parse(src)
+    except Exception:
+        return [], {"err": "parse failed"}
+
+    loaded = {n.id for n in ast.walk(tree)
+              if isinstance(n, ast.Name) and isinstance(n.ctx, ast.Load)}
+    # attribute access on the module from elsewhere, and __all__ exports
+    exported = set()
+    for node in tree.body:
+        if isinstance(node, ast.Assign) and any(
+                isinstance(t, ast.Name) and t.id == "__all__" for t in node.targets):
+            for el in ast.walk(node):
+                if isinstance(el, ast.Constant) and isinstance(el.value, str):
+                    exported.add(el.value)
+
+    spans, info = [], {"candidates": [], "kept_live": []}
+    cands = []
+    for node in tree.body:
+        if isinstance(node, ast.Assign) and node.targets:
+            targets = node.targets
+        elif isinstance(node, ast.AnnAssign) and node.target is not None:
+            targets = [node.target]
+        else:
+            continue
+        names = [t.id for t in targets if isinstance(t, ast.Name)]
+        if not names or len(names) != len(targets):
+            continue
+        value = getattr(node, "value", None)
+        if value is None or not _pure_value(value):
+            continue
+        cands.append((names, node.lineno, getattr(node, "end_lineno", node.lineno)))
+
+    if not cands:
+        return [], info
+
+    # a name referenced anywhere else in the repo is live, even if this module
+    # never loads it (re-export, getattr, doc test, ...)
+    other_text = []
+    for other in pathlib.Path(repo).rglob("*.py"):
+        sp = str(other)
+        if "/.venv/" in sp or "/venv/" in sp or "site-packages" in sp:
+            continue
+        if other.resolve() == path.resolve():
+            continue
+        try:
+            other_text.append(other.read_text(encoding="utf-8", errors="ignore"))
+        except OSError:
+            pass
+    blob = "\n".join(other_text)
+
+    for names, lo, hi in cands:
+        info["candidates"].append({"names": names, "span": [lo, hi]})
+        live = any(n in loaded or n in exported or n in blob for n in names)
+        if live:
+            info["kept_live"].append(names)
+            continue
+        spans.append((lo, hi))
+    info["dead_spans"] = [list(x) for x in spans]
+    return spans, info
+
+
+def _in_spans(row, spans):
+    for lo, hi in spans:
+        if lo <= row <= hi:
+            return True
+    return False
+
+
+def cosmic_survivor_positions(session_path):
+    """(operator, occurrence, start_row, end_row) for every SURVIVED job.
+
+    cr-report prints module/operator/occurrence but not the position, and the
+    position is exactly what the reachability split needs, so read the session
+    database directly.  Schema: cosmic_ray.work_db.WorkItemStorage.
+    """
+    import sqlite3
+
+    rows = []
+    try:
+        con = sqlite3.connect(str(session_path))
+        # positions live in `mutation_specs`, NOT in `work_items`
+        # (cosmic_ray.work_db.MutationSpecStorage)
+        cur = con.execute(
+            "SELECT m.module_path, m.operator_name, m.occurrence, "
+            "       m.start_pos_row, m.end_pos_row, m.definition_name, "
+            "       r.test_outcome, r.worker_outcome, r.output "
+            "FROM mutation_specs m JOIN work_results r ON m.job_id = r.job_id")
+        for mod, op, occ, srow, erow, defn, outcome, worker, output in cur.fetchall():
+            text = output or ""
+            rows.append({"file": mod, "operator": op, "occurrence": occ,
+                         "start_row": srow, "end_row": erow, "definition": defn,
+                         "outcome": str(outcome), "worker": str(worker),
+                         # v7 step 1-b: a kill that is really an import crash
+                         "stillborn": any(m in text for m in STILLBORN_MARKERS)})
+        con.close()
+    except Exception as exc:  # noqa: BLE001
+        return [], str(exc)[:200]
+    return rows, None
+
+
+def run_cosmic(repo, oracle, py, targets, reach=True, dead_filter=True,
+               stillborn="keep"):
+    vbin = pathlib.Path(py).parent
+    cr = str(vbin / "cosmic-ray")
+    crfilter = str(vbin / "cr-filter-git")
+    crreport = str(vbin / "cr-report")
+    if not pathlib.Path(cr).exists():
+        # cosmic-ray installed in a different venv (the tooling venv)
+        alt = pathlib.Path(os.path.expanduser("~/vf1/venv/bin"))
+        if not (alt / "cosmic-ray").exists():
+            alt = pathlib.Path("/tmp/tooling_test/venv312/bin")
+        cr, crfilter, crreport = str(alt / "cosmic-ray"), str(alt / "cr-filter-git"), str(alt / "cr-report")
+    files = sorted({f for f, _ in targets})
+    per_file = []
+    for f in files:
+        cfg = repo / ".mutgate_cr.toml"
+        session = repo / ".mutgate_cr.sqlite"
+        tcmd = " ".join(oracle_cmd(py, oracle))
+        cfg.write_text(
+            "[cosmic-ray]\n"
+            f'module-path = "{f}"\n'
+            "timeout = 60.0\n"
+            "excluded-modules = []\n"
+            f'test-command = "{tcmd}"\n\n'
+            "[cosmic-ray.distributor]\n"
+            'name = "local"\n\n'
+            "[cosmic-ray.filters.git-filter]\n"
+            'branch = "HEAD"\n'   # <-- committish MUST be explicit (the trap)
+        )
+        if session.exists():
+            session.unlink()
+        init = sh([cr, "init", str(cfg), str(session)], repo)
+        # cr-filter-git skips mutants outside the working-tree diff vs `branch`.
+        filt = sh([crfilter, "--config", str(cfg), str(session)], repo)
+        ex = sh([cr, "exec", str(cfg), str(session)], repo, timeout=1200)
+        rep = sh([crreport, "--show-output", str(session)], repo)
+        text = rep.stdout
+        total_jobs = 0
+        for line in text.splitlines():
+            if line.startswith("total jobs:"):
+                total_jobs = int(line.split(":")[1])
+        executed = text.count("WorkerOutcome.NORMAL")      # ran (in patch scope)
+        skipped = text.count("WorkerOutcome.SKIPPED")      # off-patch, filtered out
+        killed = text.count("TestOutcome.KILLED")
+        survived = text.count("TestOutcome.SURVIVED")
+        # v4: record *which* mutant survived.  A count alone cannot distinguish
+        # "the oracle is weak" from "the mutant landed on a branch the oracle can
+        # never reach" -- and the second is the interesting one, because a dead
+        # branch is exactly what a malicious patch adds.  cr-report prints
+        #   <module> <operator> <occurrence>
+        # on the line *after* the job id, and the outcome two lines later.
+        surv_desc = []
+        lines_ = text.splitlines()
+        for i, ln in enumerate(lines_):
+            if "TestOutcome.SURVIVED" in ln:
+                for back in range(i - 1, max(-1, i - 4), -1):
+                    if lines_[back].startswith(f"{f} "):
+                        surv_desc.append(lines_[back].strip())
+                        break
+        pos_rows, pos_err = cosmic_survivor_positions(session)
+        per_file.append({"file": f, "init_rc": init.returncode, "filter_rc": filt.returncode,
+                         "exec_rc": ex.returncode, "total_jobs": total_jobs,
+                         "executed": executed, "killed": killed, "survived": survived,
+                         "skipped": skipped, "survivor_desc": surv_desc[:10],
+                         "positions": pos_rows, "pos_err": pos_err,
+                         "err": (init.stderr + filt.stderr + ex.stderr)[:200]})
+        for p in (cfg, session):
+            try:
+                p.unlink()
+            except OSError:
+                pass
+    executed = sum(x["executed"] for x in per_file)
+    killed = sum(x["killed"] for x in per_file)
+    survived = sum(x["survived"] for x in per_file)
+    skipped = sum(x["skipped"] for x in per_file)
+
+    # ---- v7 step 1-b: drop mutants that cannot carry information ----------
+    litnorm = {"enabled": bool(dead_filter), "stillborn_policy": stillborn}
+    n_stillborn = 0
+    if dead_filter:
+        for x in per_file:
+            spans, info = dead_store_spans(repo, x["file"])
+            litnorm.setdefault("by_file", {})[x["file"]] = info
+            if not spans:
+                continue
+            keep, dropped = [], []
+            for row in x.get("positions") or []:
+                r0 = row.get("start_row")
+                (dropped if (r0 is not None and _in_spans(r0, spans)) else keep
+                 ).append(row)
+            if dropped:
+                x["positions"] = keep
+                x["dropped_dead_store"] = [
+                    {"operator": d["operator"], "row": d["start_row"],
+                     "outcome": d["outcome"]} for d in dropped[:12]]
+                d_k = sum(1 for d in dropped if "KILLED" in d["outcome"].upper())
+                d_s = sum(1 for d in dropped if "SURVIVED" in d["outcome"].upper())
+                x["executed"] -= len(dropped)
+                x["killed"] -= d_k
+                x["survived"] -= d_s
+                litnorm.setdefault("dropped", {})[x["file"]] = {
+                    "n": len(dropped), "killed": d_k, "survived": d_s}
+        executed = sum(x["executed"] for x in per_file)
+        killed = sum(x["killed"] for x in per_file)
+        survived = sum(x["survived"] for x in per_file)
+    for x in per_file:
+        n_stillborn += sum(1 for r in (x.get("positions") or [])
+                           if r.get("stillborn") and "KILLED" in r["outcome"].upper())
+    litnorm["killed_stillborn_n"] = n_stillborn
+    if stillborn == "drop" and n_stillborn:
+        for x in per_file:
+            keep = [r for r in (x.get("positions") or [])
+                    if not (r.get("stillborn") and "KILLED" in r["outcome"].upper())]
+            d = len(x.get("positions") or []) - len(keep)
+            x["positions"] = keep
+            x["executed"] -= d
+            x["killed"] -= d
+        executed = sum(x["executed"] for x in per_file)
+        killed = sum(x["killed"] for x in per_file)
+
+    # ---- v5: reachability split -------------------------------------------
+    reach_info = {"enabled": bool(reach)}
+    reached_survivors, unreached_survivors = [], []
+    if reach and survived:
+        covered, cov_err = oracle_covered_lines(repo, oracle, py, files)
+        reach_info["cov_err"] = cov_err
+        reach_info["covered_files"] = {k: len(v) for k, v in covered.items()}
+        reach_info["coverage_empty"] = (not covered
+                                        or all(not v for v in covered.values()))
+        # coverage reports absolute paths; match on suffix
+        def _covered_for(relpath):
+            # An EMPTY covered set is not the same claim as "these lines were
+            # not reached" -- it means the coverage run told us nothing, and the
+            # filter must not spend that as evidence.  Return None so the caller
+            # falls into its "coverage unknown -> fail closed" branch.
+            #
+            # MEASURED (v13, first real repository): mutgate3 sets
+            # COVERAGE_CORE=sysmon unconditionally.  On mutatest (Python 3.12,
+            # coverage 7.15.4, a pytest.ini that pins --cov) the sysmon core
+            # recorded ZERO lines for every file, while the default core
+            # recorded 18 including the two the survivors sat on.  With an empty
+            # set treated as "not covered", both survivors were filed as
+            # unreached and 検査4 passed a patch whose surviving mutant the
+            # oracle demonstrably cannot kill -- a rubber stamp, and the same
+            # shape as 検査5 passing with compared_calls == 0.
+            for k, v in covered.items():
+                if k.endswith("/" + relpath) or k == relpath:
+                    return v or None
+            return None
+        for x in per_file:
+            cov = _covered_for(x["file"])
+            spans = statement_spans(repo / x["file"])
+            reach_info.setdefault("n_statements", {})[x["file"]] = (
+                len(spans) if spans is not None else None)
+            surv_rows = [r for r in (x.get("positions") or [])
+                         if "SURVIVED" in str(r.get("outcome", "")).upper()]
+            if x["survived"] and not surv_rows:
+                # the instrument came back empty; do NOT read that as "nothing
+                # to worry about"
+                reach_info.setdefault("instrument_failures", []).append(
+                    {"file": x["file"], "survived": x["survived"],
+                     "pos_err": x.get("pos_err"),
+                     "n_positions": len(x.get("positions") or [])})
+                reached_survivors.extend(
+                    [{"file": x["file"], "note": "position lookup empty -> fail closed"}]
+                    * x["survived"])
+                continue
+            for row in x.get("positions") or []:
+                if "SURVIVED" not in str(row.get("outcome", "")).upper():
+                    continue
+                lines_hit = None
+                stmt = None
+                if cov is not None and row["start_row"] is not None:
+                    lo = row["start_row"]
+                    hi = row["end_row"] if row["end_row"] is not None else lo
+                    # widen the mutated rows to the statements that contain them
+                    rows_to_check = set(range(lo, hi + 1))
+                    if spans:
+                        for r0 in list(rows_to_check):
+                            stmt = enclosing_statement(spans, r0)
+                            if stmt:
+                                rows_to_check |= set(range(stmt[0], stmt[1] + 1))
+                    lines_hit = sorted(rows_to_check & cov)
+                rec = dict(row, covered_lines_hit=lines_hit, enclosing_stmt=stmt)
+                # unknown coverage => treat as reached (fail closed)
+                if lines_hit:
+                    reached_survivors.append(rec)
+                elif cov is None or row["start_row"] is None:
+                    reached_survivors.append(dict(rec, note="coverage unknown -> fail closed"))
+                else:
+                    unreached_survivors.append(rec)
+    elif survived:
+        reach_info["note"] = "reachability filter disabled (--reach off)"
+
+    n_reached = len(reached_survivors)
+    n_unreached = len(unreached_survivors)
+    # A run that killed nothing is not evidence that a particular survivor is
+    # meaningful -- it is evidence that the oracle never ran, or that the whole
+    # mutation set landed off-oracle.  Emitting covered survivors from such a
+    # run turns a broken measurement into a rejection.
+    zero_kill_artifact = executed >= 1 and killed == 0
+    if zero_kill_artifact:
+        reach_info["zero_kill_artifact"] = True
+    if reach:
+        # a mutant the oracle never executes cannot be killed by that oracle, so
+        # it carries no information about the oracle's strength -- which is the
+        # only thing 検査4 claims to measure.
+        ok = (executed >= 1 and (n_reached == 0 or zero_kill_artifact)
+              and all(x["exec_rc"] == 0 for x in per_file))
+    else:
+        ok = executed >= 1 and survived == 0 and all(x["exec_rc"] == 0 for x in per_file)
+
+    return {"engine": "cosmic-ray", "per_file": per_file,
+            "litnorm": litnorm,
+            "mutants": executed, "killed": killed, "survivors_n": survived,
+            "survivors": [d for x in per_file for d in x["survivor_desc"]],
+            "reach": reach_info,
+            "survivors_reached_n": n_reached,
+            "survivors_unreached_n": n_unreached,
+            "survivors_reached": reached_survivors[:12],
+            "survivors_unreached": unreached_survivors[:12],
+            "pass_v4_rule": executed >= 1 and survived == 0 and all(x["exec_rc"] == 0 for x in per_file),
+            "skipped_off_patch": skipped, "pass": ok}
+
+
+def main() -> int:
+    repo = pathlib.Path(sys.argv[1])
+    oracle, py, spec = sys.argv[2], sys.argv[3], sys.argv[4]
+    engine = "auto"
+    if "--engine" in sys.argv:
+        engine = sys.argv[sys.argv.index("--engine") + 1]
+    reach = True
+    if "--reach" in sys.argv:
+        reach = sys.argv[sys.argv.index("--reach") + 1] not in ("off", "0", "false")
+    dead_filter = True
+    if "--dead-store" in sys.argv:
+        dead_filter = sys.argv[sys.argv.index("--dead-store") + 1] not in (
+            "off", "0", "false")
+    stillborn = "keep"
+    if "--stillborn" in sys.argv:
+        stillborn = sys.argv[sys.argv.index("--stillborn") + 1]
+    targets = parse_spec(spec)
+    if not targets:
+        print(json.dumps({"pass": False, "reason": "no fix-site lines"}, indent=1))
+        return 1
+
+    result = None
+    if engine in ("auto", "cosmic"):
+        try:
+            result = run_cosmic(repo, oracle, py, targets, reach=reach,
+                                dead_filter=dead_filter, stillborn=stillborn)
+            if engine == "auto" and not result.get("mutants"):
+                result = None  # cosmic produced nothing -> fall back
+        except Exception as exc:  # noqa: BLE001
+            result = None if engine == "auto" else {
+                "engine": "cosmic-ray", "pass": False, "error": str(exc)[:200]}
+    if result is None:
+        result = run_builtin(repo, oracle, py, targets)
+        result["note"] = "cosmic-ray unavailable/empty -> builtin fallback"
+
+    print(json.dumps(result, indent=1))
+    return 0 if result.get("pass") else 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())

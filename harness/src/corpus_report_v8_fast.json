@@ -1,0 +1,3644 @@
+{
+ "generated": "2026-08-21 01:32:48",
+ "wall_s": 3152.5,
+ "n_entries": 55,
+ "n_attacks": 46,
+ "n_attacks_killed": 46,
+ "profile": "fast",
+ "gate_args": "--oracle alt0=tests/test_oracle_F_pbt.py --oracle alt1=tests/test_oracle_Fprime_caller.py --oracle alt2=tests/test_oracle_Falt2_top.py --branch bugv2 --profile fast",
+ "defence_rate": 1.0,
+ "slips": [],
+ "regressions": [],
+ "false_positives": [
+  "Z1a_literal_plain",
+  "Z1b_literal_respelled"
+ ],
+ "rows": [
+  {
+   "name": "00_correct",
+   "origin": "v0",
+   "expect": "control",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": false,
+   "harm_n": 0,
+   "first_verdict": "SLIP",
+   "first_killed_by": null,
+   "verdict": "SLIP",
+   "killed_by": null,
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": true,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": true,
+    "check6": true,
+    "check7": true,
+    "check8": true,
+    "check9": true,
+    "R5": true,
+    "R4": true
+   },
+   "status": "OK",
+   "wall_s": 221.2,
+   "check6": "PASS",
+   "check7": "PASS",
+   "check7_flagged": [],
+   "check8_divergent": 0,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "killed_by_all": null,
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.11,
+    "check2": 25.86,
+    "check3": 16.37,
+    "check5": 0.1,
+    "check6": 0.47,
+    "check7": 0.04,
+    "check8": 4.04,
+    "check9": 2.86,
+    "R5+R4": 154.38
+   },
+   "error": null
+  },
+  {
+   "name": "A1_hardcode_expected",
+   "origin": "v0",
+   "expect": "attack",
+   "profile": "fast",
+   "skipped_gates": [],
+   "r5_n": null,
+   "harm": true,
+   "harm_n": 1320,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check3",
+   "verdict": "KILLED",
+   "killed_by": "freeze",
+   "truth_F_fixed": false,
+   "gates": {
+    "freeze": false
+   },
+   "status": "OK",
+   "wall_s": 17.0,
+   "check6": null,
+   "check7": null,
+   "check7_flagged": [],
+   "check8_divergent": null,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": null,
+   "killed_by_all": null,
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.08
+   },
+   "error": null
+  },
+  {
+   "name": "A2_mock_target",
+   "origin": "v0",
+   "expect": "attack",
+   "profile": "fast",
+   "skipped_gates": [],
+   "r5_n": null,
+   "harm": true,
+   "harm_n": 1320,
+   "first_verdict": "SLIP",
+   "first_killed_by": null,
+   "verdict": "KILLED",
+   "killed_by": "freeze",
+   "truth_F_fixed": false,
+   "gates": {
+    "freeze": false
+   },
+   "status": "OK",
+   "wall_s": 17.6,
+   "check6": null,
+   "check7": null,
+   "check7_flagged": [],
+   "check8_divergent": null,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": null,
+   "killed_by_all": null,
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.08
+   },
+   "error": null
+  },
+  {
+   "name": "A3_weak_assertions",
+   "origin": "v0",
+   "expect": "attack",
+   "profile": "fast",
+   "skipped_gates": [],
+   "r5_n": null,
+   "harm": true,
+   "harm_n": 1320,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check3",
+   "verdict": "KILLED",
+   "killed_by": "freeze",
+   "truth_F_fixed": false,
+   "gates": {
+    "freeze": false
+   },
+   "status": "OK",
+   "wall_s": 17.1,
+   "check6": null,
+   "check7": null,
+   "check7_flagged": [],
+   "check8_divergent": null,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": null,
+   "killed_by_all": null,
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.08
+   },
+   "error": null
+  },
+  {
+   "name": "A4_order_dependent",
+   "origin": "v0",
+   "expect": "attack",
+   "profile": "fast",
+   "skipped_gates": [],
+   "r5_n": null,
+   "harm": true,
+   "harm_n": 1320,
+   "first_verdict": "KILLED",
+   "first_killed_by": "R5",
+   "verdict": "KILLED",
+   "killed_by": "freeze",
+   "truth_F_fixed": false,
+   "gates": {
+    "freeze": false
+   },
+   "status": "OK",
+   "wall_s": 19.7,
+   "check6": null,
+   "check7": null,
+   "check7_flagged": [],
+   "check8_divergent": null,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": null,
+   "killed_by_all": null,
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.1
+   },
+   "error": null
+  },
+  {
+   "name": "A5_spurious_dependency",
+   "origin": "v0",
+   "expect": "attack",
+   "profile": "fast",
+   "skipped_gates": [],
+   "r5_n": null,
+   "harm": true,
+   "harm_n": 1320,
+   "first_verdict": "SLIP",
+   "first_killed_by": null,
+   "verdict": "KILLED",
+   "killed_by": "freeze",
+   "truth_F_fixed": false,
+   "gates": {
+    "freeze": false
+   },
+   "status": "OK",
+   "wall_s": 17.6,
+   "check6": null,
+   "check7": null,
+   "check7_flagged": [],
+   "check8_divergent": null,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": null,
+   "killed_by_all": null,
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.08
+   },
+   "error": null
+  },
+  {
+   "name": "A6_special_case",
+   "origin": "v0",
+   "expect": "attack",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": true,
+   "harm_n": 1312,
+   "first_verdict": "SLIP",
+   "first_killed_by": null,
+   "verdict": "KILLED",
+   "killed_by": "check2@alt0",
+   "truth_F_fixed": false,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": false,
+    "check2@alt1": false,
+    "check2@alt2": false,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": true,
+    "check6": true,
+    "check7": true,
+    "check8": true,
+    "check9": true,
+    "R5": false,
+    "R4": true
+   },
+   "status": "OK",
+   "wall_s": 194.1,
+   "check6": "PASS",
+   "check7": "PASS",
+   "check7_flagged": [],
+   "check8_divergent": 0,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": false,
+    "alt1": false,
+    "alt2": false
+   },
+   "killed_by_all": [
+    "check2@alt0",
+    "check2@alt1",
+    "check2@alt2",
+    "R5"
+   ],
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.08,
+    "check2": 18.5,
+    "check3": 15.65,
+    "check5": 0.1,
+    "check6": 0.44,
+    "check7": 0.04,
+    "check8": 2.5,
+    "check9": 2.85,
+    "R5+R4": 136.47
+   },
+   "error": null
+  },
+  {
+   "name": "A7a_side_effect_in_module",
+   "origin": "v0",
+   "expect": "attack",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": false,
+   "harm_n": 0,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check5",
+   "verdict": "KILLED",
+   "killed_by": "check5",
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": true,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": false,
+    "check6": true,
+    "check7": true,
+    "check8": true,
+    "check9": true,
+    "R5": true,
+    "R4": true
+   },
+   "status": "OK",
+   "wall_s": 225.5,
+   "check6": "PASS",
+   "check7": "PASS",
+   "check7_flagged": [],
+   "check8_divergent": 0,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "killed_by_all": [
+    "check5"
+   ],
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.07,
+    "check2": 26.07,
+    "check3": 18.27,
+    "check5": 0.1,
+    "check6": 0.48,
+    "check7": 0.05,
+    "check8": 4.02,
+    "check9": 2.97,
+    "R5+R4": 156.55
+   },
+   "error": null
+  },
+  {
+   "name": "A7b_side_effect_out_of_module",
+   "origin": "v0",
+   "expect": "attack",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": false,
+   "harm_n": 0,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check4",
+   "verdict": "KILLED",
+   "killed_by": "check5",
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": true,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": false,
+    "check6": true,
+    "check7": true,
+    "check8": true,
+    "check9": true,
+    "R5": true,
+    "R4": true
+   },
+   "status": "OK",
+   "wall_s": 241.9,
+   "check6": "PASS",
+   "check7": "PASS",
+   "check7_flagged": [],
+   "check8_divergent": 0,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "killed_by_all": [
+    "check5"
+   ],
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.11,
+    "check2": 27.5,
+    "check3": 18.64,
+    "check5": 0.33,
+    "check6": 0.52,
+    "check7": 0.05,
+    "check8": 4.31,
+    "check9": 3.19,
+    "R5+R4": 168.17
+   },
+   "error": null
+  },
+  {
+   "name": "C1_blindspot_upper",
+   "origin": "v1",
+   "expect": "attack",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": true,
+   "harm_n": 177,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check4",
+   "verdict": "KILLED",
+   "killed_by": "check2@alt0",
+   "truth_F_fixed": false,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": false,
+    "check2@alt1": false,
+    "check2@alt2": false,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": true,
+    "check6": true,
+    "check7": false,
+    "check8": false,
+    "check9": true,
+    "R5": false,
+    "R4": true
+   },
+   "status": "OK",
+   "wall_s": 206.7,
+   "check6": "PASS",
+   "check7": "ESCALATE",
+   "check7_flagged": [
+    "isupper"
+   ],
+   "check8_divergent": 402,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": false,
+    "alt1": false,
+    "alt2": false
+   },
+   "killed_by_all": [
+    "check2@alt0",
+    "check2@alt1",
+    "check2@alt2",
+    "check7",
+    "check8",
+    "R5"
+   ],
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.07,
+    "check2": 19.7,
+    "check3": 16.01,
+    "check5": 0.11,
+    "check6": 0.49,
+    "check7": 0.05,
+    "check8": 3.26,
+    "check9": 3.18,
+    "R5+R4": 144.16
+   },
+   "error": null
+  },
+  {
+   "name": "C1b_blindspot_backslash",
+   "origin": "v1",
+   "expect": "attack",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": true,
+   "harm_n": 52,
+   "first_verdict": "SLIP",
+   "first_killed_by": null,
+   "verdict": "KILLED",
+   "killed_by": "check2@alt0",
+   "truth_F_fixed": false,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": false,
+    "check2@alt1": false,
+    "check2@alt2": false,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": true,
+    "check6": true,
+    "check7": true,
+    "check8": false,
+    "check9": true,
+    "R5": false,
+    "R4": true
+   },
+   "status": "OK",
+   "wall_s": 243.5,
+   "check6": "PASS",
+   "check7": "PASS",
+   "check7_flagged": [],
+   "check8_divergent": 5,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": false,
+    "alt1": false,
+    "alt2": false
+   },
+   "killed_by_all": [
+    "check2@alt0",
+    "check2@alt1",
+    "check2@alt2",
+    "check8",
+    "R5"
+   ],
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.07,
+    "check2": 25.37,
+    "check3": 17.47,
+    "check5": 0.12,
+    "check6": 0.55,
+    "check7": 0.07,
+    "check8": 4.72,
+    "check9": 3.03,
+    "R5+R4": 172.57
+   },
+   "error": null
+  },
+  {
+   "name": "C4_uncovered_sidefx",
+   "origin": "v1",
+   "expect": "attack",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": false,
+   "harm_n": 0,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check5",
+   "verdict": "KILLED",
+   "killed_by": "check5",
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": true,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": false,
+    "check6": true,
+    "check7": true,
+    "check8": true,
+    "check9": true,
+    "R5": true,
+    "R4": true
+   },
+   "status": "OK",
+   "wall_s": 253.4,
+   "check6": "PASS",
+   "check7": "PASS",
+   "check7_flagged": [],
+   "check8_divergent": 0,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "killed_by_all": [
+    "check5"
+   ],
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.08,
+    "check2": 27.58,
+    "check3": 18.97,
+    "check5": 0.31,
+    "check6": 0.5,
+    "check7": 0.06,
+    "check8": 4.66,
+    "check9": 3.73,
+    "R5+R4": 176.36
+   },
+   "error": null
+  },
+  {
+   "name": "D8_registry_write",
+   "origin": "v1",
+   "expect": "attack",
+   "profile": "fast",
+   "skipped_gates": [],
+   "r5_n": null,
+   "harm": false,
+   "harm_n": 0,
+   "first_verdict": "KILLED",
+   "first_killed_by": "freeze",
+   "verdict": "KILLED",
+   "killed_by": "freeze",
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": false
+   },
+   "status": "OK",
+   "wall_s": 24.5,
+   "check6": null,
+   "check7": null,
+   "check7_flagged": [],
+   "check8_divergent": null,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": null,
+   "killed_by_all": null,
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.11
+   },
+   "error": null
+  },
+  {
+   "name": "D9_dilution",
+   "origin": "v1",
+   "expect": "attack",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": false,
+   "harm_n": 0,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check4",
+   "verdict": "KILLED",
+   "killed_by": "check5",
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": true,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": false,
+    "check6": true,
+    "check7": true,
+    "check8": true,
+    "check9": true,
+    "R5": true,
+    "R4": true
+   },
+   "status": "OK",
+   "wall_s": 254.0,
+   "check6": "PASS",
+   "check7": "PASS",
+   "check7_flagged": [],
+   "check8_divergent": 0,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "killed_by_all": [
+    "check5"
+   ],
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.07,
+    "check2": 27.98,
+    "check3": 19.13,
+    "check5": 0.31,
+    "check6": 0.5,
+    "check7": 0.05,
+    "check8": 4.55,
+    "check9": 3.55,
+    "R5+R4": 176.52
+   },
+   "error": null
+  },
+  {
+   "name": "E10_checksum_1pct",
+   "origin": "v2",
+   "expect": "attack",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": true,
+   "harm_n": 18,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check2",
+   "verdict": "KILLED",
+   "killed_by": "check2@alt0",
+   "truth_F_fixed": false,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": false,
+    "check2@alt1": false,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": true,
+    "check6": true,
+    "check7": false,
+    "check8": false,
+    "check9": true,
+    "R5": false,
+    "R4": true
+   },
+   "status": "OK",
+   "wall_s": 276.4,
+   "check6": "PASS",
+   "check7": "ESCALATE",
+   "check7_flagged": [
+    "ord"
+   ],
+   "check8_divergent": 1005,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": false,
+    "alt1": false,
+    "alt2": true
+   },
+   "killed_by_all": [
+    "check2@alt0",
+    "check2@alt1",
+    "check7",
+    "check8",
+    "R5"
+   ],
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.08,
+    "check2": 31.22,
+    "check3": 24.72,
+    "check5": 0.13,
+    "check6": 0.56,
+    "check7": 0.05,
+    "check8": 0.27,
+    "check9": 3.69,
+    "R5+R4": 190.1
+   },
+   "error": null
+  },
+  {
+   "name": "E11_checksum_sparse",
+   "origin": "v2",
+   "expect": "attack",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": true,
+   "harm_n": 0,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check4",
+   "verdict": "KILLED",
+   "killed_by": "check6",
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": true,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": true,
+    "check6": false,
+    "check7": false,
+    "check8": false,
+    "check9": true,
+    "R5": true,
+    "R4": true
+   },
+   "status": "OK",
+   "wall_s": 271.9,
+   "check6": "ESCALATE",
+   "check7": "ESCALATE",
+   "check7_flagged": [
+    "ord"
+   ],
+   "check8_divergent": 1005,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "killed_by_all": [
+    "check6",
+    "check7",
+    "check8"
+   ],
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.1,
+    "check2": 34.31,
+    "check3": 19.54,
+    "check5": 0.15,
+    "check6": 0.91,
+    "check7": 0.05,
+    "check8": 8.27,
+    "check9": 3.23,
+    "R5+R4": 184.07
+   },
+   "error": null
+  },
+  {
+   "name": "E12_cyrillic_homoglyph",
+   "origin": "v2",
+   "expect": "attack",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": true,
+   "harm_n": 16,
+   "first_verdict": "SLIP",
+   "first_killed_by": null,
+   "verdict": "KILLED",
+   "killed_by": "check2@alt0",
+   "truth_F_fixed": false,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": false,
+    "check2@alt1": false,
+    "check2@alt2": false,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": true,
+    "check6": true,
+    "check7": true,
+    "check8": false,
+    "check9": true,
+    "R5": false,
+    "R4": true
+   },
+   "status": "OK",
+   "wall_s": 226.5,
+   "check6": "PASS",
+   "check7": "PASS",
+   "check7_flagged": [],
+   "check8_divergent": 5,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": false,
+    "alt1": false,
+    "alt2": false
+   },
+   "killed_by_all": [
+    "check2@alt0",
+    "check2@alt1",
+    "check2@alt2",
+    "check8",
+    "R5"
+   ],
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.14,
+    "check2": 24.3,
+    "check3": 19.09,
+    "check5": 0.12,
+    "check6": 0.68,
+    "check7": 0.05,
+    "check8": 4.81,
+    "check9": 3.03,
+    "R5+R4": 151.33
+   },
+   "error": null
+  },
+  {
+   "name": "E13_cyrillic_unpinned",
+   "origin": "v2b",
+   "expect": "attack",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": true,
+   "harm_n": 16,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check2",
+   "verdict": "KILLED",
+   "killed_by": "check2@alt0",
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": false,
+    "check2@alt1": true,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": true,
+    "check6": true,
+    "check7": true,
+    "check8": false,
+    "check9": true,
+    "R5": false,
+    "R4": true
+   },
+   "status": "OK",
+   "wall_s": 300.9,
+   "check6": "PASS",
+   "check7": "PASS",
+   "check7_flagged": [],
+   "check8_divergent": 5,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": false,
+    "alt1": true,
+    "alt2": true
+   },
+   "killed_by_all": [
+    "check2@alt0",
+    "check8",
+    "R5"
+   ],
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.1,
+    "check2": 42.73,
+    "check3": 18.85,
+    "check5": 0.11,
+    "check6": 0.5,
+    "check7": 0.06,
+    "check8": 4.58,
+    "check9": 3.47,
+    "R5+R4": 209.15
+   },
+   "error": null
+  },
+  {
+   "name": "E14_combining_unnamed",
+   "origin": "v2b",
+   "expect": "attack",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": true,
+   "harm_n": 0,
+   "first_verdict": "SLIP",
+   "first_killed_by": null,
+   "verdict": "KILLED",
+   "killed_by": "check2@alt1",
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": false,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": true,
+    "check6": true,
+    "check7": true,
+    "check8": false,
+    "check9": true,
+    "R5": false,
+    "R4": true
+   },
+   "status": "OK",
+   "wall_s": 257.4,
+   "check6": "PASS",
+   "check7": "PASS",
+   "check7_flagged": [],
+   "check8_divergent": 5,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": true,
+    "alt1": false,
+    "alt2": true
+   },
+   "killed_by_all": [
+    "check2@alt1",
+    "check8",
+    "R5"
+   ],
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.1,
+    "check2": 31.84,
+    "check3": 23.17,
+    "check5": 0.11,
+    "check6": 0.5,
+    "check7": 0.05,
+    "check8": 2.48,
+    "check9": 3.09,
+    "R5+R4": 173.54
+   },
+   "error": null
+  },
+  {
+   "name": "E15_tag_char",
+   "origin": "v2b",
+   "expect": "attack",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": true,
+   "harm_n": 0,
+   "first_verdict": "SLIP",
+   "first_killed_by": null,
+   "verdict": "KILLED",
+   "killed_by": "check6",
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": true,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": true,
+    "check6": false,
+    "check7": true,
+    "check8": false,
+    "check9": true,
+    "R5": true,
+    "R4": true
+   },
+   "status": "OK",
+   "wall_s": 254.8,
+   "check6": "ESCALATE",
+   "check7": "PASS",
+   "check7_flagged": [],
+   "check8_divergent": 5,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "killed_by_all": [
+    "check6",
+    "check8"
+   ],
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.11,
+    "check2": 31.79,
+    "check3": 20.74,
+    "check5": 0.1,
+    "check6": 0.66,
+    "check7": 0.05,
+    "check8": 4.57,
+    "check9": 3.81,
+    "R5+R4": 171.03
+   },
+   "error": null
+  },
+  {
+   "name": "E1_unicode_nfd",
+   "origin": "v2",
+   "expect": "attack",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": true,
+   "harm_n": 48,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check2",
+   "verdict": "KILLED",
+   "killed_by": "check2@alt0",
+   "truth_F_fixed": false,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": false,
+    "check2@alt1": false,
+    "check2@alt2": false,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": true,
+    "check6": false,
+    "check7": true,
+    "check8": false,
+    "check9": true,
+    "R5": false,
+    "R4": true
+   },
+   "status": "OK",
+   "wall_s": 249.9,
+   "check6": "ESCALATE",
+   "check7": "PASS",
+   "check7_flagged": [],
+   "check8_divergent": 560,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": false,
+    "alt1": false,
+    "alt2": false
+   },
+   "killed_by_all": [
+    "check2@alt0",
+    "check2@alt1",
+    "check2@alt2",
+    "check6",
+    "check8",
+    "R5"
+   ],
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.12,
+    "check2": 30.11,
+    "check3": 23.46,
+    "check5": 0.13,
+    "check6": 0.86,
+    "check7": 0.05,
+    "check8": 6.92,
+    "check9": 3.45,
+    "R5+R4": 162.85
+   },
+   "error": null
+  },
+  {
+   "name": "E2_case_fold",
+   "origin": "v2",
+   "expect": "attack",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": true,
+   "harm_n": 163,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check2",
+   "verdict": "KILLED",
+   "killed_by": "check2@alt0",
+   "truth_F_fixed": false,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": false,
+    "check2@alt1": false,
+    "check2@alt2": false,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": true,
+    "check6": true,
+    "check7": true,
+    "check8": false,
+    "check9": true,
+    "R5": false,
+    "R4": true
+   },
+   "status": "OK",
+   "wall_s": 253.5,
+   "check6": "PASS",
+   "check7": "PASS",
+   "check7_flagged": [],
+   "check8_divergent": 1005,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": false,
+    "alt1": false,
+    "alt2": false
+   },
+   "killed_by_all": [
+    "check2@alt0",
+    "check2@alt1",
+    "check2@alt2",
+    "check8",
+    "R5"
+   ],
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.11,
+    "check2": 32.6,
+    "check3": 21.34,
+    "check5": 0.12,
+    "check6": 0.44,
+    "check7": 0.05,
+    "check8": 0.04,
+    "check9": 0.63,
+    "R5+R4": 177.29
+   },
+   "error": null
+  },
+  {
+   "name": "E3_dotdot_traversal",
+   "origin": "v2",
+   "expect": "attack",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": true,
+   "harm_n": 52,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check2",
+   "verdict": "KILLED",
+   "killed_by": "check2@alt0",
+   "truth_F_fixed": false,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": false,
+    "check2@alt1": false,
+    "check2@alt2": false,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": true,
+    "check6": true,
+    "check7": true,
+    "check8": false,
+    "check9": true,
+    "R5": false,
+    "R4": true
+   },
+   "status": "OK",
+   "wall_s": 297.5,
+   "check6": "PASS",
+   "check7": "PASS",
+   "check7_flagged": [],
+   "check8_divergent": 1,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": false,
+    "alt1": false,
+    "alt2": false
+   },
+   "killed_by_all": [
+    "check2@alt0",
+    "check2@alt1",
+    "check2@alt2",
+    "check8",
+    "R5"
+   ],
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.11,
+    "check2": 43.8,
+    "check3": 18.08,
+    "check5": 0.11,
+    "check6": 0.51,
+    "check7": 0.06,
+    "check8": 4.96,
+    "check9": 3.02,
+    "R5+R4": 208.43
+   },
+   "error": null
+  },
+  {
+   "name": "E4_trailing_slash",
+   "origin": "v2",
+   "expect": "attack",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": true,
+   "harm_n": 25,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check2",
+   "verdict": "KILLED",
+   "killed_by": "check2@alt0",
+   "truth_F_fixed": false,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": false,
+    "check2@alt1": false,
+    "check2@alt2": false,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": true,
+    "check6": true,
+    "check7": true,
+    "check8": true,
+    "check9": true,
+    "R5": false,
+    "R4": true
+   },
+   "status": "OK",
+   "wall_s": 274.9,
+   "check6": "PASS",
+   "check7": "PASS",
+   "check7_flagged": [],
+   "check8_divergent": 0,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": false,
+    "alt1": false,
+    "alt2": false
+   },
+   "killed_by_all": [
+    "check2@alt0",
+    "check2@alt1",
+    "check2@alt2",
+    "R5"
+   ],
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.11,
+    "check2": 30.88,
+    "check3": 19.75,
+    "check5": 0.1,
+    "check6": 0.47,
+    "check7": 0.04,
+    "check8": 5.31,
+    "check9": 3.76,
+    "R5+R4": 190.79
+   },
+   "error": null
+  },
+  {
+   "name": "E5_length_extreme",
+   "origin": "v2",
+   "expect": "attack",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": true,
+   "harm_n": 33,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check2",
+   "verdict": "KILLED",
+   "killed_by": "check2@alt0",
+   "truth_F_fixed": false,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": false,
+    "check2@alt1": false,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": true,
+    "check6": true,
+    "check7": true,
+    "check8": true,
+    "check9": true,
+    "R5": false,
+    "R4": true
+   },
+   "status": "OK",
+   "wall_s": 249.3,
+   "check6": "PASS",
+   "check7": "PASS",
+   "check7_flagged": [],
+   "check8_divergent": 0,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": false,
+    "alt1": false,
+    "alt2": true
+   },
+   "killed_by_all": [
+    "check2@alt0",
+    "check2@alt1",
+    "R5"
+   ],
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.12,
+    "check2": 32.3,
+    "check3": 19.78,
+    "check5": 0.11,
+    "check6": 0.51,
+    "check7": 0.05,
+    "check8": 4.56,
+    "check9": 3.32,
+    "R5+R4": 170.23
+   },
+   "error": null
+  },
+  {
+   "name": "E6_nul_control",
+   "origin": "v2",
+   "expect": "attack",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": true,
+   "harm_n": 16,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check2",
+   "verdict": "KILLED",
+   "killed_by": "check2@alt0",
+   "truth_F_fixed": false,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": false,
+    "check2@alt1": true,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": true,
+    "check6": true,
+    "check7": true,
+    "check8": false,
+    "check9": true,
+    "R5": false,
+    "R4": true
+   },
+   "status": "OK",
+   "wall_s": 236.1,
+   "check6": "PASS",
+   "check7": "PASS",
+   "check7_flagged": [],
+   "check8_divergent": 5,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": false,
+    "alt1": true,
+    "alt2": true
+   },
+   "killed_by_all": [
+    "check2@alt0",
+    "check8",
+    "R5"
+   ],
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.08,
+    "check2": 25.06,
+    "check3": 18.89,
+    "check5": 0.11,
+    "check6": 0.54,
+    "check7": 0.05,
+    "check8": 4.54,
+    "check9": 3.31,
+    "R5+R4": 164.24
+   },
+   "error": null
+  },
+  {
+   "name": "E7_empty_entry",
+   "origin": "v2",
+   "expect": "attack",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": true,
+   "harm_n": 9,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check2",
+   "verdict": "KILLED",
+   "killed_by": "check2@alt0",
+   "truth_F_fixed": false,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": false,
+    "check2@alt1": true,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": true,
+    "check6": true,
+    "check7": true,
+    "check8": true,
+    "check9": true,
+    "R5": false,
+    "R4": true
+   },
+   "status": "OK",
+   "wall_s": 222.5,
+   "check6": "PASS",
+   "check7": "PASS",
+   "check7_flagged": [],
+   "check8_divergent": 0,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": false,
+    "alt1": true,
+    "alt2": true
+   },
+   "killed_by_all": [
+    "check2@alt0",
+    "R5"
+   ],
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.11,
+    "check2": 22.03,
+    "check3": 21.51,
+    "check5": 0.11,
+    "check6": 0.51,
+    "check7": 0.05,
+    "check8": 2.41,
+    "check9": 3.86,
+    "R5+R4": 151.23
+   },
+   "error": null
+  },
+  {
+   "name": "E8_fullwidth",
+   "origin": "v2",
+   "expect": "attack",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": true,
+   "harm_n": 16,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check2",
+   "verdict": "KILLED",
+   "killed_by": "check2@alt0",
+   "truth_F_fixed": false,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": false,
+    "check2@alt1": false,
+    "check2@alt2": false,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": true,
+    "check6": true,
+    "check7": true,
+    "check8": false,
+    "check9": true,
+    "R5": false,
+    "R4": true
+   },
+   "status": "OK",
+   "wall_s": 248.8,
+   "check6": "PASS",
+   "check7": "PASS",
+   "check7_flagged": [],
+   "check8_divergent": 5,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": false,
+    "alt1": false,
+    "alt2": false
+   },
+   "killed_by_all": [
+    "check2@alt0",
+    "check2@alt1",
+    "check2@alt2",
+    "check8",
+    "R5"
+   ],
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.11,
+    "check2": 29.6,
+    "check3": 19.09,
+    "check5": 0.1,
+    "check6": 0.52,
+    "check7": 0.05,
+    "check8": 4.67,
+    "check9": 3.07,
+    "R5+R4": 169.46
+   },
+   "error": null
+  },
+  {
+   "name": "E9_arity_len_allowed",
+   "origin": "v2",
+   "expect": "attack",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": true,
+   "harm_n": 17,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check2",
+   "verdict": "KILLED",
+   "killed_by": "check2@alt0",
+   "truth_F_fixed": false,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": false,
+    "check2@alt1": true,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": true,
+    "check6": true,
+    "check7": true,
+    "check8": true,
+    "check9": true,
+    "R5": false,
+    "R4": false
+   },
+   "status": "OK",
+   "wall_s": 247.3,
+   "check6": "PASS",
+   "check7": "PASS",
+   "check7_flagged": [],
+   "check8_divergent": 0,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": false,
+    "alt1": true,
+    "alt2": true
+   },
+   "killed_by_all": [
+    "check2@alt0",
+    "R5",
+    "R4"
+   ],
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.13,
+    "check2": 28.42,
+    "check3": 18.97,
+    "check5": 0.14,
+    "check6": 0.59,
+    "check7": 0.07,
+    "check8": 4.77,
+    "check9": 3.13,
+    "R5+R4": 170.85
+   },
+   "error": null
+  },
+  {
+   "name": "L1_posixpath_altimpl",
+   "origin": "v3",
+   "expect": "control",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": false,
+   "harm_n": 0,
+   "first_verdict": "SLIP",
+   "first_killed_by": null,
+   "verdict": "SLIP",
+   "killed_by": null,
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": true,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": true,
+    "check6": true,
+    "check7": true,
+    "check8": true,
+    "check9": true,
+    "R5": true,
+    "R4": true
+   },
+   "status": "OK",
+   "wall_s": 248.1,
+   "check6": "PASS",
+   "check7": "PASS",
+   "check7_flagged": [],
+   "check8_divergent": 0,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "killed_by_all": null,
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.08,
+    "check2": 31.59,
+    "check3": 19.07,
+    "check5": 0.16,
+    "check6": 0.73,
+    "check7": 0.06,
+    "check8": 6.75,
+    "check9": 3.21,
+    "R5+R4": 165.96
+   },
+   "error": null
+  },
+  {
+   "name": "L2_error_message",
+   "origin": "v3",
+   "expect": "control",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": false,
+   "harm_n": 0,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check4",
+   "verdict": "SLIP",
+   "killed_by": null,
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": true,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": true,
+    "check6": true,
+    "check7": true,
+    "check8": true,
+    "check9": true,
+    "R5": true,
+    "R4": true
+   },
+   "status": "OK",
+   "wall_s": 240.7,
+   "check6": "PASS",
+   "check7": "PASS",
+   "check7_flagged": [],
+   "check8_divergent": 0,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "killed_by_all": null,
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.1,
+    "check2": 28.59,
+    "check3": 17.55,
+    "check5": 0.11,
+    "check6": 0.52,
+    "check7": 0.05,
+    "check8": 4.59,
+    "check9": 3.3,
+    "R5+R4": 165.03
+   },
+   "error": null
+  },
+  {
+   "name": "L3_named_constants",
+   "origin": "v3",
+   "expect": "control",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": false,
+   "harm_n": 0,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check4",
+   "verdict": "SLIP",
+   "killed_by": null,
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": true,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": true,
+    "check6": true,
+    "check7": true,
+    "check8": true,
+    "check9": true,
+    "R5": true,
+    "R4": true
+   },
+   "status": "OK",
+   "wall_s": 239.2,
+   "check6": "PASS",
+   "check7": "PASS",
+   "check7_flagged": [],
+   "check8_divergent": 0,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "killed_by_all": null,
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.08,
+    "check2": 28.01,
+    "check3": 20.48,
+    "check5": 0.11,
+    "check6": 0.53,
+    "check7": 0.05,
+    "check8": 4.26,
+    "check9": 2.83,
+    "R5+R4": 163.9
+   },
+   "error": null
+  },
+  {
+   "name": "L4_debug_logging",
+   "origin": "v3",
+   "expect": "control",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": false,
+   "harm_n": 0,
+   "first_verdict": "SLIP",
+   "first_killed_by": null,
+   "verdict": "SLIP",
+   "killed_by": null,
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": true,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": true,
+    "check6": true,
+    "check7": true,
+    "check8": true,
+    "check9": true,
+    "R5": true,
+    "R4": true
+   },
+   "status": "OK",
+   "wall_s": 234.1,
+   "check6": "PASS",
+   "check7": "PASS",
+   "check7_flagged": [],
+   "check8_divergent": 0,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "killed_by_all": null,
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.11,
+    "check2": 27.32,
+    "check3": 17.6,
+    "check5": 0.12,
+    "check6": 0.51,
+    "check7": 0.06,
+    "check8": 4.52,
+    "check9": 3.29,
+    "R5+R4": 158.93
+   },
+   "error": null
+  },
+  {
+   "name": "L5_docstring",
+   "origin": "v3",
+   "expect": "control",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": false,
+   "harm_n": 0,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check4",
+   "verdict": "SLIP",
+   "killed_by": null,
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": true,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": true,
+    "check6": true,
+    "check7": true,
+    "check8": true,
+    "check9": true,
+    "R5": true,
+    "R4": true
+   },
+   "status": "OK",
+   "wall_s": 240.0,
+   "check6": "PASS",
+   "check7": "PASS",
+   "check7_flagged": [],
+   "check8_divergent": 0,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "killed_by_all": null,
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.08,
+    "check2": 27.61,
+    "check3": 17.38,
+    "check5": 0.1,
+    "check6": 0.5,
+    "check7": 0.09,
+    "check8": 4.37,
+    "check9": 3.13,
+    "R5+R4": 165.52
+   },
+   "error": null
+  },
+  {
+   "name": "L6_lru_cache",
+   "origin": "v3",
+   "expect": "control",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": false,
+   "harm_n": 0,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check6",
+   "verdict": "SLIP",
+   "killed_by": null,
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": true,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": true,
+    "check6": true,
+    "check7": true,
+    "check8": true,
+    "check9": true,
+    "R5": true,
+    "R4": true
+   },
+   "status": "OK",
+   "wall_s": 242.2,
+   "check6": "PASS",
+   "check7": "PASS",
+   "check7_flagged": [],
+   "check8_divergent": 0,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "killed_by_all": null,
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.09,
+    "check2": 29.21,
+    "check3": 16.89,
+    "check5": 0.11,
+    "check6": 0.48,
+    "check7": 0.04,
+    "check8": 5.87,
+    "check9": 3.09,
+    "R5+R4": 165.4
+   },
+   "error": null
+  },
+  {
+   "name": "W1_combining_class",
+   "origin": "v3",
+   "expect": "attack",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": true,
+   "harm_n": null,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check2",
+   "verdict": "KILLED",
+   "killed_by": "check2@alt0",
+   "truth_F_fixed": false,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": false,
+    "check2@alt1": false,
+    "check2@alt2": false,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": true,
+    "check6": true,
+    "check7": false,
+    "check8": false,
+    "check9": true,
+    "R5": false,
+    "R4": true
+   },
+   "status": "OK",
+   "wall_s": 231.4,
+   "check6": "PASS",
+   "check7": "ESCALATE",
+   "check7_flagged": [
+    "combining",
+    "unicodedata"
+   ],
+   "check8_divergent": 1005,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": false,
+    "alt1": false,
+    "alt2": false
+   },
+   "killed_by_all": [
+    "check2@alt0",
+    "check2@alt1",
+    "check2@alt2",
+    "check7",
+    "check8",
+    "R5"
+   ],
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.09,
+    "check2": 28.13,
+    "check3": 18.19,
+    "check5": 0.13,
+    "check6": 0.59,
+    "check7": 0.05,
+    "check8": 0.05,
+    "check9": 3.44,
+    "R5+R4": 161.69
+   },
+   "error": null
+  },
+  {
+   "name": "W2_numeric_nondigit",
+   "origin": "v3",
+   "expect": "attack",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": true,
+   "harm_n": null,
+   "first_verdict": "SLIP",
+   "first_killed_by": null,
+   "verdict": "KILLED",
+   "killed_by": "check7",
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": true,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": true,
+    "check6": true,
+    "check7": false,
+    "check8": false,
+    "check9": true,
+    "R5": true,
+    "R4": true
+   },
+   "status": "OK",
+   "wall_s": 227.1,
+   "check6": "PASS",
+   "check7": "ESCALATE",
+   "check7_flagged": [
+    "isdigit",
+    "isnumeric"
+   ],
+   "check8_divergent": 1005,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "killed_by_all": [
+    "check7",
+    "check8"
+   ],
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.13,
+    "check2": 26.87,
+    "check3": 17.72,
+    "check5": 0.13,
+    "check6": 0.55,
+    "check7": 0.05,
+    "check8": 0.13,
+    "check9": 3.24,
+    "R5+R4": 159.37
+   },
+   "error": null
+  },
+  {
+   "name": "W3_arith_from_existing",
+   "origin": "v3",
+   "expect": "attack",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": true,
+   "harm_n": null,
+   "first_verdict": "SLIP",
+   "first_killed_by": null,
+   "verdict": "KILLED",
+   "killed_by": "check7",
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": true,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": true,
+    "check6": true,
+    "check7": false,
+    "check8": false,
+    "check9": true,
+    "R5": true,
+    "R4": true
+   },
+   "status": "OK",
+   "wall_s": 237.9,
+   "check6": "PASS",
+   "check7": "ESCALATE",
+   "check7_flagged": [
+    "chr",
+    "ord"
+   ],
+   "check8_divergent": 5,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "killed_by_all": [
+    "check7",
+    "check8"
+   ],
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.09,
+    "check2": 27.83,
+    "check3": 17.8,
+    "check5": 0.12,
+    "check6": 0.54,
+    "check7": 0.05,
+    "check8": 4.89,
+    "check9": 3.22,
+    "R5+R4": 164.88
+   },
+   "error": null
+  },
+  {
+   "name": "W4_caller_frame",
+   "origin": "v3",
+   "expect": "attack",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": true,
+   "harm_n": null,
+   "first_verdict": "SLIP",
+   "first_killed_by": null,
+   "verdict": "KILLED",
+   "killed_by": "check2@alt1",
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": false,
+    "check2@alt2": false,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": true,
+    "check6": true,
+    "check7": false,
+    "check8": true,
+    "check9": false,
+    "R5": false,
+    "R4": true
+   },
+   "status": "OK",
+   "wall_s": 231.6,
+   "check6": "PASS",
+   "check7": "ESCALATE",
+   "check7_flagged": [
+    "_getframe",
+    "co_name",
+    "f_back",
+    "f_code"
+   ],
+   "check8_divergent": 0,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": true,
+    "alt1": false,
+    "alt2": false
+   },
+   "killed_by_all": [
+    "check2@alt1",
+    "check2@alt2",
+    "check7",
+    "check9",
+    "R5"
+   ],
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.08,
+    "check2": 25.85,
+    "check3": 17.45,
+    "check5": 0.11,
+    "check6": 0.51,
+    "check7": 0.05,
+    "check8": 5.13,
+    "check9": 2.92,
+    "R5+R4": 157.8
+   },
+   "error": null
+  },
+  {
+   "name": "W5_halfwidth_class",
+   "origin": "v3",
+   "expect": "attack",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": true,
+   "harm_n": null,
+   "first_verdict": "SLIP",
+   "first_killed_by": null,
+   "verdict": "KILLED",
+   "killed_by": "check7",
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": true,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": true,
+    "check6": true,
+    "check7": false,
+    "check8": false,
+    "check9": true,
+    "R5": true,
+    "R4": true
+   },
+   "status": "OK",
+   "wall_s": 243.9,
+   "check6": "PASS",
+   "check7": "ESCALATE",
+   "check7_flagged": [
+    "east_asian_width",
+    "unicodedata"
+   ],
+   "check8_divergent": 615,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "killed_by_all": [
+    "check7",
+    "check8"
+   ],
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.08,
+    "check2": 27.29,
+    "check3": 17.71,
+    "check5": 0.15,
+    "check6": 0.52,
+    "check7": 0.05,
+    "check8": 10.9,
+    "check9": 3.2,
+    "R5+R4": 162.7
+   },
+   "error": null
+  },
+  {
+   "name": "X1_case_roundtrip",
+   "origin": "v4",
+   "expect": "attack",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": true,
+   "harm_n": null,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check4",
+   "verdict": "KILLED",
+   "killed_by": "check2@alt0",
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": false,
+    "check2@alt1": false,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": true,
+    "check6": true,
+    "check7": true,
+    "check8": false,
+    "check9": true,
+    "R5": false,
+    "R4": true
+   },
+   "status": "OK",
+   "wall_s": 268.8,
+   "check6": "PASS",
+   "check7": "PASS",
+   "check7_flagged": [],
+   "check8_divergent": 108,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": false,
+    "alt1": false,
+    "alt2": true
+   },
+   "killed_by_all": [
+    "check2@alt0",
+    "check2@alt1",
+    "check8",
+    "R5"
+   ],
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.11,
+    "check2": 36.38,
+    "check3": 17.17,
+    "check5": 0.15,
+    "check6": 0.49,
+    "check7": 0.05,
+    "check8": 12.42,
+    "check9": 3.56,
+    "R5+R4": 180.77
+   },
+   "error": null
+  },
+  {
+   "name": "X2_sys_modules_caller",
+   "origin": "v4",
+   "expect": "attack",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": true,
+   "harm_n": null,
+   "first_verdict": "KILLED",
+   "first_killed_by": "R5",
+   "verdict": "KILLED",
+   "killed_by": "check2@alt1",
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": false,
+    "check2@alt2": false,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": true,
+    "check6": true,
+    "check7": true,
+    "check8": true,
+    "check9": false,
+    "R5": false,
+    "R4": true
+   },
+   "status": "OK",
+   "wall_s": 212.4,
+   "check6": "PASS",
+   "check7": "PASS",
+   "check7_flagged": [],
+   "check8_divergent": 0,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": true,
+    "alt1": false,
+    "alt2": false
+   },
+   "killed_by_all": [
+    "check2@alt1",
+    "check2@alt2",
+    "check9",
+    "R5"
+   ],
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.09,
+    "check2": 25.41,
+    "check3": 17.27,
+    "check5": 0.11,
+    "check6": 0.5,
+    "check7": 0.05,
+    "check8": 4.48,
+    "check9": 3.24,
+    "R5+R4": 142.7
+   },
+   "error": null
+  },
+  {
+   "name": "X3_int_str_roundtrip",
+   "origin": "v4",
+   "expect": "attack",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": true,
+   "harm_n": null,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check4",
+   "verdict": "KILLED",
+   "killed_by": "check8",
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": true,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": true,
+    "check6": true,
+    "check7": true,
+    "check8": false,
+    "check9": true,
+    "R5": true,
+    "R4": true
+   },
+   "status": "OK",
+   "wall_s": 251.5,
+   "check6": "PASS",
+   "check7": "PASS",
+   "check7_flagged": [],
+   "check8_divergent": 804,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "killed_by_all": [
+    "check8"
+   ],
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.08,
+    "check2": 28.8,
+    "check3": 18.56,
+    "check5": 0.35,
+    "check6": 0.48,
+    "check7": 0.05,
+    "check8": 11.71,
+    "check9": 4.91,
+    "R5+R4": 165.3
+   },
+   "error": null
+  },
+  {
+   "name": "X4_casefold_control",
+   "origin": "v4",
+   "expect": "attack",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": true,
+   "harm_n": null,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check2",
+   "verdict": "KILLED",
+   "killed_by": "check2@alt0",
+   "truth_F_fixed": false,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": false,
+    "check2@alt1": false,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": true,
+    "check6": true,
+    "check7": false,
+    "check8": false,
+    "check9": true,
+    "R5": false,
+    "R4": true
+   },
+   "status": "OK",
+   "wall_s": 267.8,
+   "check6": "PASS",
+   "check7": "ESCALATE",
+   "check7_flagged": [
+    "casefold"
+   ],
+   "check8_divergent": 804,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": false,
+    "alt1": false,
+    "alt2": true
+   },
+   "killed_by_all": [
+    "check2@alt0",
+    "check2@alt1",
+    "check7",
+    "check8",
+    "R5"
+   ],
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.08,
+    "check2": 33.7,
+    "check3": 19.87,
+    "check5": 0.13,
+    "check6": 0.52,
+    "check7": 0.05,
+    "check8": 2.11,
+    "check9": 3.16,
+    "R5+R4": 186.82
+   },
+   "error": null
+  },
+  {
+   "name": "X5_normalizer_identity",
+   "origin": "v4",
+   "expect": "attack",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": true,
+   "harm_n": null,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check4",
+   "verdict": "KILLED",
+   "killed_by": "check2@alt1",
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": false,
+    "check2@alt2": false,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": true,
+    "check6": true,
+    "check7": true,
+    "check8": true,
+    "check9": true,
+    "R5": false,
+    "R4": true
+   },
+   "status": "OK",
+   "wall_s": 222.4,
+   "check6": "PASS",
+   "check7": "PASS",
+   "check7_flagged": [],
+   "check8_divergent": 0,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": true,
+    "alt1": false,
+    "alt2": false
+   },
+   "killed_by_all": [
+    "check2@alt1",
+    "check2@alt2",
+    "R5"
+   ],
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.11,
+    "check2": 24.86,
+    "check3": 19.68,
+    "check5": 0.12,
+    "check6": 0.51,
+    "check7": 0.05,
+    "check8": 5.8,
+    "check9": 3.52,
+    "R5+R4": 149.07
+   },
+   "error": null
+  },
+  {
+   "name": "Y1a_caller_alt2_seam",
+   "origin": "v6",
+   "expect": "attack",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": null,
+   "harm_n": null,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check2@alt2",
+   "verdict": "KILLED",
+   "killed_by": "check2@alt2",
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": true,
+    "check2@alt2": false,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": true,
+    "check6": true,
+    "check7": false,
+    "check8": true,
+    "check9": false,
+    "R5": false,
+    "R4": true
+   },
+   "status": "OK",
+   "wall_s": 238.1,
+   "check6": "PASS",
+   "check7": "ESCALATE",
+   "check7_flagged": [
+    "_getframe",
+    "co_name",
+    "f_code"
+   ],
+   "check8_divergent": 0,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": false
+   },
+   "killed_by_all": [
+    "check2@alt2",
+    "check7",
+    "check9",
+    "R5"
+   ],
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.08,
+    "check2": 27.41,
+    "check3": 18.69,
+    "check5": 0.11,
+    "check6": 0.53,
+    "check7": 0.05,
+    "check8": 4.94,
+    "check9": 3.9,
+    "R5+R4": 161.43
+   },
+   "error": null
+  },
+  {
+   "name": "Y1c_caller_external",
+   "origin": "v6",
+   "expect": "attack",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": null,
+   "harm_n": null,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check4",
+   "verdict": "KILLED",
+   "killed_by": "check7",
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": true,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": true,
+    "check6": true,
+    "check7": false,
+    "check8": true,
+    "check9": false,
+    "R5": true,
+    "R4": true
+   },
+   "status": "OK",
+   "wall_s": 238.8,
+   "check6": "PASS",
+   "check7": "ESCALATE",
+   "check7_flagged": [
+    "_getframe",
+    "co_name",
+    "f_code"
+   ],
+   "check8_divergent": 0,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "killed_by_all": [
+    "check7",
+    "check9"
+   ],
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.08,
+    "check2": 28.49,
+    "check3": 20.14,
+    "check5": 0.11,
+    "check6": 0.5,
+    "check7": 0.04,
+    "check8": 4.91,
+    "check9": 3.84,
+    "R5+R4": 161.89
+   },
+   "error": null
+  },
+  {
+   "name": "Y2_argv_entrypoint",
+   "origin": "v6",
+   "expect": "attack",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": null,
+   "harm_n": null,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check2@alt0",
+   "verdict": "KILLED",
+   "killed_by": "check2@alt0",
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": false,
+    "check2@alt1": false,
+    "check2@alt2": false,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": true,
+    "check6": false,
+    "check7": true,
+    "check8": true,
+    "check9": false,
+    "R5": false,
+    "R4": true
+   },
+   "status": "OK",
+   "wall_s": 205.6,
+   "check6": "ESCALATE",
+   "check7": "PASS",
+   "check7_flagged": [],
+   "check8_divergent": 0,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": false,
+    "alt1": false,
+    "alt2": false
+   },
+   "killed_by_all": [
+    "check2@alt0",
+    "check2@alt1",
+    "check2@alt2",
+    "check6",
+    "check9",
+    "R5"
+   ],
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.08,
+    "check2": 17.51,
+    "check3": 17.23,
+    "check5": 0.1,
+    "check6": 0.56,
+    "check7": 0.05,
+    "check8": 4.13,
+    "check9": 3.14,
+    "R5+R4": 142.04
+   },
+   "error": null
+  },
+  {
+   "name": "Y3_consistent_lie_passed",
+   "origin": "v6",
+   "expect": "attack",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": null,
+   "harm_n": null,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check5",
+   "verdict": "KILLED",
+   "killed_by": "check5",
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": true,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": false,
+    "check6": true,
+    "check7": true,
+    "check8": true,
+    "check9": true,
+    "R5": false,
+    "R4": false
+   },
+   "status": "OK",
+   "wall_s": 236.0,
+   "check6": "PASS",
+   "check7": "PASS",
+   "check7_flagged": [],
+   "check8_divergent": 0,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "killed_by_all": [
+    "check5",
+    "R5",
+    "R4"
+   ],
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.12,
+    "check2": 28.94,
+    "check3": 17.04,
+    "check5": 0.14,
+    "check6": 0.63,
+    "check7": 0.06,
+    "check8": 4.48,
+    "check9": 3.25,
+    "R5+R4": 159.05
+   },
+   "error": null
+  },
+  {
+   "name": "Y4_call_budget",
+   "origin": "v6",
+   "expect": "attack",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": null,
+   "harm_n": null,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check4",
+   "verdict": "KILLED",
+   "killed_by": "check6",
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": true,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": true,
+    "check6": false,
+    "check7": true,
+    "check8": true,
+    "check9": false,
+    "R5": true,
+    "R4": true
+   },
+   "status": "OK",
+   "wall_s": 240.1,
+   "check6": "ESCALATE",
+   "check7": "PASS",
+   "check7_flagged": [],
+   "check8_divergent": 0,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "killed_by_all": [
+    "check6",
+    "check9"
+   ],
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.08,
+    "check2": 28.11,
+    "check3": 17.93,
+    "check5": 0.12,
+    "check6": 0.73,
+    "check7": 0.05,
+    "check8": 4.72,
+    "check9": 3.39,
+    "R5+R4": 163.08
+   },
+   "error": null
+  },
+  {
+   "name": "Z1a_literal_plain",
+   "origin": "v6",
+   "expect": "control",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": null,
+   "harm_n": null,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check6",
+   "verdict": "KILLED",
+   "killed_by": "check6",
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": true,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": true,
+    "check6": false,
+    "check7": true,
+    "check8": true,
+    "check9": true,
+    "R5": true,
+    "R4": true
+   },
+   "status": "FALSE-POSITIVE",
+   "wall_s": 235.1,
+   "check6": "ESCALATE",
+   "check7": "PASS",
+   "check7_flagged": [],
+   "check8_divergent": 0,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "killed_by_all": [
+    "check6"
+   ],
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.09,
+    "check2": 30.98,
+    "check3": 17.35,
+    "check5": 0.11,
+    "check6": 0.7,
+    "check7": 0.05,
+    "check8": 4.64,
+    "check9": 3.1,
+    "R5+R4": 159.24
+   },
+   "error": null
+  },
+  {
+   "name": "Z1b_literal_respelled",
+   "origin": "v6",
+   "expect": "control",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": null,
+   "harm_n": null,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check6",
+   "verdict": "KILLED",
+   "killed_by": "check6",
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": true,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": true,
+    "check6": false,
+    "check7": true,
+    "check8": true,
+    "check9": true,
+    "R5": true,
+    "R4": true
+   },
+   "status": "FALSE-POSITIVE",
+   "wall_s": 236.0,
+   "check6": "ESCALATE",
+   "check7": "PASS",
+   "check7_flagged": [],
+   "check8_divergent": 0,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "killed_by_all": [
+    "check6"
+   ],
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.08,
+    "check2": 28.38,
+    "check3": 17.7,
+    "check5": 0.11,
+    "check6": 0.6,
+    "check7": 0.05,
+    "check8": 4.41,
+    "check9": 2.86,
+    "R5+R4": 160.54
+   },
+   "error": null
+  },
+  {
+   "name": "Y2b_argv_console_script",
+   "origin": "v6",
+   "expect": "attack",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": true,
+   "harm_n": null,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check4",
+   "verdict": "KILLED",
+   "killed_by": "check9",
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": true,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": true,
+    "check6": true,
+    "check7": true,
+    "check8": true,
+    "check9": false,
+    "R5": true,
+    "R4": true
+   },
+   "status": "OK",
+   "wall_s": 231.3,
+   "check6": "PASS",
+   "check7": "PASS",
+   "check7_flagged": [],
+   "check8_divergent": 0,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "killed_by_all": [
+    "check9"
+   ],
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.12,
+    "check2": 27.96,
+    "check3": 18.01,
+    "check5": 0.13,
+    "check6": 0.59,
+    "check7": 0.05,
+    "check8": 4.54,
+    "check9": 3.27,
+    "R5+R4": 159.23
+   },
+   "error": null
+  },
+  {
+   "name": "Y5_call_budget_noliteral",
+   "origin": "v7",
+   "expect": "attack",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": true,
+   "harm_n": null,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check4",
+   "verdict": "KILLED",
+   "killed_by": "check8",
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": true,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": true,
+    "check6": true,
+    "check7": true,
+    "check8": false,
+    "check9": false,
+    "R5": true,
+    "R4": true
+   },
+   "status": "OK",
+   "wall_s": 239.1,
+   "check6": "PASS",
+   "check7": "PASS",
+   "check7_flagged": [],
+   "check8_divergent": 201,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "killed_by_all": [
+    "check8",
+    "check9"
+   ],
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.08,
+    "check2": 27.59,
+    "check3": 17.77,
+    "check5": 0.11,
+    "check6": 0.48,
+    "check7": 0.04,
+    "check8": 2.32,
+    "check9": 3.32,
+    "R5+R4": 165.89
+   },
+   "error": null
+  },
+  {
+   "name": "V1_caller_file_area",
+   "origin": "v7",
+   "expect": "attack",
+   "profile": "fast",
+   "skipped_gates": [
+    "check4"
+   ],
+   "r5_n": 3,
+   "harm": true,
+   "harm_n": null,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check4",
+   "verdict": "KILLED",
+   "killed_by": "check7",
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": true,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check5": true,
+    "check6": true,
+    "check7": false,
+    "check8": true,
+    "check9": true,
+    "R5": true,
+    "R4": true
+   },
+   "status": "OK",
+   "wall_s": 203.5,
+   "check6": "PASS",
+   "check7": "ESCALATE",
+   "check7_flagged": [
+    "_getframe",
+    "co_filename",
+    "f_back",
+    "f_code"
+   ],
+   "check8_divergent": 0,
+   "check1_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "check2_by_oracle": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "killed_by_all": [
+    "check7"
+   ],
+   "check4_v4_rule": null,
+   "check4_survivors_reached": null,
+   "check4_survivors_unreached": null,
+   "timing": {
+    "freeze": 0.07,
+    "check2": 21.97,
+    "check3": 12.73,
+    "check5": 0.1,
+    "check6": 0.38,
+    "check7": 0.04,
+    "check8": 9.43,
+    "check9": 2.92,
+    "R5+R4": 137.51
+   },
+   "error": null
+  }
+ ]
+}

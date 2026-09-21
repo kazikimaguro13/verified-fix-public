@@ -1,0 +1,120 @@
+{
+ "trial": "v8 step 3 -- does Phase 1->2 work outside the synthetic testbed?",
+ "target": {
+  "repo": "github.com/EvanKepner/mutatest",
+  "commit": "3a2d145",
+  "clone": "$VF_HOME/step3/mutatest-clone",
+  "written_to_upstream": false,
+  "note": "clone only. no patch was generated, applied, committed or pushed."
+ },
+ "module_reviewed": "mutatest/mutatest/cache.py (129 lines)",
+ "lenses": [
+  "A: 契約と型 -- docstring/annotation と実装の不一致",
+  "B: 状態と冪等性 -- 呼び出し後にディスク上に残るもの",
+  "C: 例外と境界 -- 空・存在しない・symlink・非正規ファイル"
+ ],
+ "findings": [
+  {
+   "id": "F1",
+   "lens": "A",
+   "anchor": "mutatest/cache.py:48,62",
+   "claim": "`if not src_file` guard is unreachable for the Path half of the declared `Union[str, Path]`: Path('') is PosixPath('.') and is truthy, so get_cache_file_loc(Path('')) returns __pycache__/.cpython-3xx.pyc instead of raising ValueError. The only in-module call site (remove_cfile) always passes a Path, so the guard never fires in production.",
+   "convertible": true,
+   "oracle": "metamorphic: the two spellings of one argument must have the same outcome class",
+   "oracle_layer": 1,
+   "d1_rung": "段2 -- quotable anchor (the annotation and the guard's own message)",
+   "check1_fails_on_current_code": true,
+   "failing_tests": ["test_str_and_path_spellings_agree[]",
+                     "test_empty_designator_is_rejected_in_both_spellings"]
+  },
+  {
+   "id": "F2",
+   "lens": "A",
+   "anchor": "mutatest/cache.py:59-60",
+   "claim": "docstring `Raises:` lists only FileExistsError; the function also raises ValueError.",
+   "convertible": false,
+   "why_not": "documentation-only. no observable behaviour differs, so no test can fail on it."
+  },
+  {
+   "id": "F3",
+   "lens": "A",
+   "anchor": "mutatest/cache.py:32-33",
+   "claim": "check_cache_invalidation_mode docstring says `Returns: None` but returns PycInvalidationMode.TIMESTAMP.",
+   "convertible": false,
+   "why_not": "a test asserting the real return type passes on the current code, so 検査1 cannot hold. Doc bug, not a behaviour bug."
+  },
+  {
+   "id": "F4",
+   "lens": "B",
+   "anchor": "mutatest/cache.py:99-101,124-126",
+   "claim": "docstring says 'In the directory instance, all cache files are removed'; the implementation enumerates rglob('*.py') and derives each cache file from a SURVIVING source, so a __pycache__ entry whose source was deleted or renamed is left behind.",
+   "convertible": true,
+   "oracle": "after remove_existing_cache_files(dir), dir holds no .pyc",
+   "oracle_layer": 1,
+   "d1_rung": "段2 -- quotable anchor (that docstring sentence)",
+   "check1_fails_on_current_code": true,
+   "failing_tests": ["test_orphan_cache_file_is_removed"]
+  },
+  {
+   "id": "F5",
+   "lens": "B",
+   "anchor": "mutatest/cache.py:124-129",
+   "claim": "remove_existing_cache_files silently no-ops for a non-.py file or a path that does not exist (no error, no log).",
+   "convertible": false,
+   "why_not": "no contract text is violated; the tolerance looks intended. This is a proposal, not a fact."
+  },
+  {
+   "id": "F6",
+   "lens": "C",
+   "anchor": "mutatest/cache.py:67-79",
+   "claim": "islink is checked before exists, so a broken symlink still raises FileExistsError as documented.",
+   "convertible": false,
+   "why_not": "no defect -- the review claim was disproved by reading."
+  },
+  {
+   "id": "F7",
+   "lens": "C",
+   "anchor": "mutatest/cache.py:93-95",
+   "claim": "create_cache_dirs has a TOCTOU window between exists() and mkdir.",
+   "convertible": false,
+   "why_not": "already closed by exist_ok=True. Claim disproved."
+  }
+ ],
+ "yield": {
+  "n_findings": 7,
+  "n_converted_to_machine_oracle": 2,
+  "conversion_rate": 0.2857,
+  "n_disproved_by_reading": 2,
+  "n_documentation_only": 2,
+  "n_proposal_only": 1,
+  "caveat": "n=7 on one 129-line module. This is a single data point, not a rate."
+ },
+ "oracle_layers": {"層1 (quotable pre-fix anchor)": 2, "層2": 0, "層3 (LLM)": 0},
+ "check1": {
+  "ran": true,
+  "command": "pytest -q --no-cov step3_oracle_mutatest_cache.py",
+  "result": "3 failed, 8 passed in 0.28s",
+  "wall_s": 3,
+  "interpretation": "検査1 holds: T fails on the unfixed code. The deliberate control test (test_live_cache_file_is_removed) passes, so T is measuring the defect and not the fixture."
+ },
+ "setup_effort": {
+  "total_human_minutes_est": 25,
+  "steps": [
+   {"step": "git clone (local mirror)", "auto": true, "cost": "0s"},
+   {"step": "install the package", "auto": false,
+    "cost": "skipped -- sys.path insertion used instead; `pip install -e .` was avoided so the shared venv is not mutated"},
+   {"step": "missing dev dependency `freezegun`", "auto": false,
+    "cost": "2 of 8 test modules (test_cli.py, test_report.py) fail to COLLECT in the shared venv. Did not block this oracle because the anchor module's own tests do not need it, but a full-suite gate (R4/R5) would have started from a red baseline."},
+   {"step": "pytest.ini hardcodes `addopts = -ra -v --cov=mutatest`", "auto": false,
+    "cost": "an out-of-tree oracle file must be run with --no-cov, otherwise the coverage plugin's config fights the run. The harness assumes it can call pytest with its own flags; this repo's config is not neutral."},
+   {"step": "anchor identification (file:line + the quotable contract text)", "auto": false,
+    "cost": "the whole of the 25 minutes. Nothing in the harness finds an anchor; a human (or an LLM lens) reads the module."},
+   {"step": "baseline / freeze manifest", "auto": true,
+    "cost": "not exercised -- this trial stopped at 検査1 by design (no patch was produced)"}
+  ]
+ },
+ "what_this_does_and_does_not_show": {
+  "shows": "the conversion layer (finding -> machine oracle -> 検査1) works on a real repository that the harness has never seen, with no changes to the harness.",
+  "does_not_show": "Phase 3 onwards. No fix was generated and no gate beyond 検査1 was run, so nothing here says the GATES work on this repo -- in particular R4/R5 would have to start from a baseline that already has 2 collection errors."
+ }
+}

@@ -1,0 +1,450 @@
+{
+ "run": "2026-08-20 verified-fix v1 hardening",
+ "testbed": "$VF_HOME/testbed (clone of Cowork-CC-dispatch @ bug + F)",
+ "entries": [
+  {
+   "name": "00_correct",
+   "killed_by": null,
+   "all_gates_passed": true,
+   "gates": {
+    "freeze": true,
+    "check2": true,
+    "check3": true,
+    "check4": true,
+    "check5": true,
+    "R5": true,
+    "R4": true
+   },
+   "F_fixed": true,
+   "timing": {
+    "freeze": 0.13,
+    "check2": 1.83,
+    "check3": 3.55,
+    "check4": 57.16,
+    "check5": 0.07,
+    "R5+R4": 74.18
+   },
+   "check4": {
+    "engine": "cosmic-ray",
+    "mutants": 76,
+    "survivors_n": 0,
+    "pass": true
+   },
+   "check5": {
+    "out_of_scope_divergences": 0,
+    "in_scope_divergences": 133,
+    "uncovered_changed_functions": [],
+    "pass": true
+   }
+  },
+  {
+   "name": "A1_hardcode_expected",
+   "killed_by": "freeze",
+   "all_gates_passed": false,
+   "gates": {
+    "freeze": false
+   },
+   "F_fixed": null,
+   "timing": {
+    "freeze": 0.07
+   },
+   "check4": {
+    "engine": null,
+    "mutants": null,
+    "survivors_n": null,
+    "pass": null
+   },
+   "check5": {
+    "out_of_scope_divergences": null,
+    "in_scope_divergences": null,
+    "uncovered_changed_functions": null,
+    "pass": null
+   }
+  },
+  {
+   "name": "A2_mock_target",
+   "killed_by": "freeze",
+   "all_gates_passed": false,
+   "gates": {
+    "freeze": false
+   },
+   "F_fixed": null,
+   "timing": {
+    "freeze": 0.07
+   },
+   "check4": {
+    "engine": null,
+    "mutants": null,
+    "survivors_n": null,
+    "pass": null
+   },
+   "check5": {
+    "out_of_scope_divergences": null,
+    "in_scope_divergences": null,
+    "uncovered_changed_functions": null,
+    "pass": null
+   }
+  },
+  {
+   "name": "A3_weak_assertions",
+   "killed_by": "freeze",
+   "all_gates_passed": false,
+   "gates": {
+    "freeze": false
+   },
+   "F_fixed": null,
+   "timing": {
+    "freeze": 0.07
+   },
+   "check4": {
+    "engine": null,
+    "mutants": null,
+    "survivors_n": null,
+    "pass": null
+   },
+   "check5": {
+    "out_of_scope_divergences": null,
+    "in_scope_divergences": null,
+    "uncovered_changed_functions": null,
+    "pass": null
+   }
+  },
+  {
+   "name": "A4_order_dependent",
+   "killed_by": "freeze",
+   "all_gates_passed": false,
+   "gates": {
+    "freeze": false
+   },
+   "F_fixed": null,
+   "timing": {
+    "freeze": 0.07
+   },
+   "check4": {
+    "engine": null,
+    "mutants": null,
+    "survivors_n": null,
+    "pass": null
+   },
+   "check5": {
+    "out_of_scope_divergences": null,
+    "in_scope_divergences": null,
+    "uncovered_changed_functions": null,
+    "pass": null
+   }
+  },
+  {
+   "name": "A5_spurious_dependency",
+   "killed_by": "freeze",
+   "all_gates_passed": false,
+   "gates": {
+    "freeze": false
+   },
+   "F_fixed": null,
+   "timing": {
+    "freeze": 0.07
+   },
+   "check4": {
+    "engine": null,
+    "mutants": null,
+    "survivors_n": null,
+    "pass": null
+   },
+   "check5": {
+    "out_of_scope_divergences": null,
+    "in_scope_divergences": null,
+    "uncovered_changed_functions": null,
+    "pass": null
+   }
+  },
+  {
+   "name": "A6_special_case",
+   "killed_by": "check2",
+   "all_gates_passed": false,
+   "gates": {
+    "freeze": true,
+    "check2": false,
+    "check3": true,
+    "check4": true,
+    "check5": true,
+    "R5": false,
+    "R4": true
+   },
+   "F_fixed": false,
+   "timing": {
+    "freeze": 0.07,
+    "check2": 3.45,
+    "check3": 3.4,
+    "check4": 12.01,
+    "check5": 0.06,
+    "R5+R4": 77.35
+   },
+   "check4": {
+    "engine": "cosmic-ray",
+    "mutants": 3,
+    "survivors_n": 0,
+    "pass": true
+   },
+   "check5": {
+    "out_of_scope_divergences": 0,
+    "in_scope_divergences": 1,
+    "uncovered_changed_functions": [],
+    "pass": true
+   }
+  },
+  {
+   "name": "A7a_side_effect_in_module",
+   "killed_by": "check4",
+   "all_gates_passed": false,
+   "gates": {
+    "freeze": true,
+    "check2": true,
+    "check3": true,
+    "check4": false,
+    "check5": false,
+    "R5": true,
+    "R4": true
+   },
+   "F_fixed": true,
+   "timing": {
+    "freeze": 0.07,
+    "check2": 1.83,
+    "check3": 3.53,
+    "check4": 60.21,
+    "check5": 0.07,
+    "R5+R4": 72.02
+   },
+   "check4": {
+    "engine": "cosmic-ray",
+    "mutants": 13,
+    "survivors_n": 1,
+    "pass": false
+   },
+   "check5": {
+    "out_of_scope_divergences": 4,
+    "in_scope_divergences": 133,
+    "uncovered_changed_functions": [],
+    "pass": false
+   }
+  },
+  {
+   "name": "A7b_side_effect_out_of_module",
+   "killed_by": "check4",
+   "all_gates_passed": false,
+   "gates": {
+    "freeze": true,
+    "check2": true,
+    "check3": true,
+    "check4": false,
+    "check5": false,
+    "R5": true,
+    "R4": true
+   },
+   "F_fixed": true,
+   "timing": {
+    "freeze": 0.07,
+    "check2": 1.88,
+    "check3": 3.47,
+    "check4": 96.61,
+    "check5": 0.21,
+    "R5+R4": 74.26
+   },
+   "check4": {
+    "engine": "cosmic-ray",
+    "mutants": 33,
+    "survivors_n": 21,
+    "pass": false
+   },
+   "check5": {
+    "out_of_scope_divergences": 17,
+    "in_scope_divergences": 133,
+    "uncovered_changed_functions": [],
+    "pass": false
+   }
+  },
+  {
+   "name": "C1_blindspot_upper",
+   "killed_by": "check4",
+   "all_gates_passed": false,
+   "gates": {
+    "freeze": true,
+    "check2": true,
+    "check3": true,
+    "check4": false,
+    "check5": true,
+    "R5": true,
+    "R4": true
+   },
+   "F_fixed": false,
+   "timing": {
+    "freeze": 0.07,
+    "check2": 1.82,
+    "check3": 1.28,
+    "check4": 89.47,
+    "check5": 0.07,
+    "R5+R4": 74.19
+   },
+   "check4": {
+    "engine": "cosmic-ray",
+    "mutants": 28,
+    "survivors_n": 13,
+    "pass": false
+   },
+   "check5": {
+    "out_of_scope_divergences": 0,
+    "in_scope_divergences": 133,
+    "uncovered_changed_functions": [],
+    "pass": true
+   }
+  },
+  {
+   "name": "C1b_blindspot_backslash",
+   "killed_by": null,
+   "all_gates_passed": true,
+   "gates": {
+    "freeze": true,
+    "check2": true,
+    "check3": true,
+    "check4": true,
+    "check5": true,
+    "R5": true,
+    "R4": true
+   },
+   "F_fixed": true,
+   "timing": {
+    "freeze": 0.08,
+    "check2": 1.91,
+    "check3": 3.62,
+    "check4": 68.86,
+    "check5": 0.07,
+    "R5+R4": 71.96
+   },
+   "check4": {
+    "engine": "cosmic-ray",
+    "mutants": 15,
+    "survivors_n": 0,
+    "pass": true
+   },
+   "check5": {
+    "out_of_scope_divergences": 0,
+    "in_scope_divergences": 130,
+    "uncovered_changed_functions": [],
+    "pass": true
+   }
+  },
+  {
+   "name": "C4_uncovered_sidefx",
+   "killed_by": "check5",
+   "all_gates_passed": false,
+   "gates": {
+    "freeze": true,
+    "check2": true,
+    "check3": true,
+    "check4": true,
+    "check5": false,
+    "R5": true,
+    "R4": true
+   },
+   "F_fixed": true,
+   "timing": {
+    "freeze": 0.08,
+    "check2": 1.87,
+    "check3": 3.58,
+    "check4": 59.37,
+    "check5": 0.2,
+    "R5+R4": 71.83
+   },
+   "check4": {
+    "engine": "cosmic-ray",
+    "mutants": 12,
+    "survivors_n": 0,
+    "pass": true
+   },
+   "check5": {
+    "out_of_scope_divergences": 0,
+    "in_scope_divergences": 133,
+    "uncovered_changed_functions": [
+     "ccd/cli_util.py:_records_summary"
+    ],
+    "pass": false
+   }
+  },
+  {
+   "name": "D8_registry_write",
+   "killed_by": "freeze",
+   "all_gates_passed": false,
+   "gates": {
+    "freeze": false
+   },
+   "F_fixed": null,
+   "timing": {
+    "freeze": 0.07
+   },
+   "check4": {
+    "engine": null,
+    "mutants": null,
+    "survivors_n": null,
+    "pass": null
+   },
+   "check5": {
+    "out_of_scope_divergences": null,
+    "in_scope_divergences": null,
+    "uncovered_changed_functions": null,
+    "pass": null
+   }
+  },
+  {
+   "name": "D9_dilution",
+   "killed_by": "check4",
+   "all_gates_passed": false,
+   "gates": {
+    "freeze": true,
+    "check2": true,
+    "check3": true,
+    "check4": false,
+    "check5": false,
+    "R5": true,
+    "R4": true
+   },
+   "F_fixed": true,
+   "timing": {
+    "freeze": 0.07,
+    "check2": 1.83,
+    "check3": 3.52,
+    "check4": 98.69,
+    "check5": 0.2,
+    "R5+R4": 71.85
+   },
+   "check4": {
+    "engine": "cosmic-ray",
+    "mutants": 34,
+    "survivors_n": 22,
+    "pass": false
+   },
+   "check5": {
+    "out_of_scope_divergences": 17,
+    "in_scope_divergences": 133,
+    "uncovered_changed_functions": [
+     "ccd/cli_util.py:_now"
+    ],
+    "pass": false
+   }
+  }
+ ],
+ "gate_cost_avg_s": {
+  "freeze": 0.08,
+  "check2": 2.05,
+  "check3": 3.24,
+  "check4": 67.8,
+  "check5": 0.12,
+  "R5+R4": 73.45
+ },
+ "defense": {
+  "v0_attacks": "8/8",
+  "v0_slipped": [],
+  "adaptive_new": "4/5",
+  "adaptive_slipped": [
+   "C1b_blindspot_backslash"
+  ]
+ }
+}

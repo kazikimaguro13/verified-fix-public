@@ -1,0 +1,71 @@
+{
+ "repo": "$VF_HOME/testbed",
+ "oracles": {
+  "tests/test_oracle_F_pbt.py": "aa41ba40d05fcf7ad58c637b0279844678222db902880dc604af5be442f83dd9"
+ },
+ "conftests": {},
+ "configs": {
+  "pyproject.toml": "41edb0d4bcdede66ae02dead7048192ed560ffbd615298d5c1d87bc6e2a0b105"
+ },
+ "tests_tree": {
+  "tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "tests/_adversarial_targets_for_test.py": "76526fffe9a0522508c86d12b57231701469445b7f9238f82d1bef0ac2d4649c",
+  "tests/fixtures/backfill/result_001.md": "c542a34e6f9d05cf70d1410f54fb155c9177397be705b05e6b0066fa2f886ab8",
+  "tests/fixtures/backfill/result_002.md": "9d2c575ade96e94d8d66a97c9c59ee1fe01212a5f91e3ee805d466f2229ea24f",
+  "tests/fixtures/backfill/result_003.md": "09dc90868488a4efa612328683f2c94528c37de470ad4e8694c1d7629b81aadb",
+  "tests/fixtures/backfill/result_004.md": "272f389dfff0e40410637132a3d5e6b0c5ca7a6e15ef35ea00aee49847c03839",
+  "tests/fixtures/backfill/result_005.md": "456e9d56f475cc3bf435a5eb1884cd43824af908c4660958250ccdbdca68c4b9",
+  "tests/fixtures/backfill/result_006.md": "ce18a2a293e80288532b0c178623deb5b6d9e841e78086718fb6d726d8e887ab",
+  "tests/fixtures/backfill/result_010.md": "2cdb79b4b1967f9eeeade42f7283b0023e149ceb728a9a5da2dae8f7c0e6de25",
+  "tests/fixtures/backfill/result_011.md": "64b8af56c02fbc1032d1cc488206f82fef46aeb57cf6e07332e418edf89bca98",
+  "tests/fixtures/backfill/result_012.md": "1835af851e8a423e93e138494d97314489c11a4c9258777798556e8f912cc4c2",
+  "tests/fixtures/backfill/result_013.md": "3d461c478b7f657a1bef7f7739baf87914294652d026bac2e333c7a33c05f755",
+  "tests/fixtures/backfill/result_014.md": "82e4aedf841fa4a4d196bb251e8e27b43bf1e892957637c33610b0b9c92b81c4",
+  "tests/fixtures/backfill/result_015.md": "12057b1e13996c5829ae0e961bc88f21a544cce7cc13db209e329af1a5e19759",
+  "tests/fixtures/backfill/result_016.md": "ae335417dc83f6102a1b5074944575cf02a158b5bc91922fdba8fdc3c0799a70",
+  "tests/fixtures/dashboard/bash-prototype.json": "1266971302ed8822b91ad91878c1b990b5ba492b7aa906b67860afa5c865528e",
+  "tests/fixtures/dashboard/ccd-native.json": "a419e9348e82f6b60bbd71b39f689e5368c398e2db68f8089b6efa3bbf0634ee",
+  "tests/test_adversarial.py": "a48530dd5ca090f1957cf57b55d02e9b8fdd8cc60663df512866ed7a6460535e",
+  "tests/test_agent.py": "7702ec1d34f2ae22086432a9f07aefeaffd33d6d0b866c786606fdf0afb4c4a5",
+  "tests/test_ai_review.py": "ca0ba667d3ffe9257649ec7edf5ac513cc8b092c1d154d9b6a311f96d4fe35a5",
+  "tests/test_backfill.py": "63f61b44f286fa90b398c035a6bd09ea35dadbc72ff9e50f9c21d1ec74f913e7",
+  "tests/test_brief.py": "f5679760c7b62268f75fc69b44ca843819bba11022bec3c6d4d12f97cbfb11b2",
+  "tests/test_chain.py": "1732a6bf983f90f05925f43db14464e5f3f7843adbdeb94f8b0ab9a37ae8f913",
+  "tests/test_cli.py": "49458d0bd8c8d9dc1623ff52ce814c5a845d1227a1fa7dff0414b48a7461385d",
+  "tests/test_dashboard.py": "0506a6ca593fc2fed828e8d82548eaab681bce34b7f7d16be328b88cb64a11f1",
+  "tests/test_discover.py": "ec1b43cb80ee8a517b2f84f84b113b83eabff6b9507c324709f3138592c0a60c",
+  "tests/test_discover_common.py": "fe91e75c03c39860a9893ac8d18185562ce8f4e02173bc62adcd5a09896b2cc1",
+  "tests/test_dispatch.py": "cd209c297d0aa592e6308313d96d606d136efdfa092de2278ff2bab4d571d11e",
+  "tests/test_guard.py": "7ff7ce87a20e2c43f6a2eb3f5f7f8390f9956c5d200e2a8fb284844c9ad7254d",
+  "tests/test_integrate.py": "6e7f7077841be29fa3d780b746f0afcb78daf6649d163ca38b1adef25b998077",
+  "tests/test_launchers.py": "dd34338e6f69f12e8393b5788327c7aa70fd795db3f8cb839737fc95e8b9c0cb",
+  "tests/test_loop.py": "37d67a407f16e92b3a26fbf552d23ed3e2b2f74f6fa497a8a03eb96e8baa644f",
+  "tests/test_metrics.py": "e38d092d3a09c468d217a741a8f7ff4ea65bb20495ee40582a714b8f5a31e6aa",
+  "tests/test_models.py": "f10efda787f36f51da9ad51542b0953376d8449676884efa30a29d939677e135",
+  "tests/test_mutation_invocation.py": "96fa51a6d5ad4855a6384f70c6c7c767e81972a29dc5342ec9b780ad172c2760",
+  "tests/test_mutation_subset.py": "ff914317845d053bb7ed120b36ace2c29a69fa38bdc99b254d73833c16bd7069",
+  "tests/test_nightly.py": "ebf9047a3283e6a67057481ad055575fa3c1328bdf9dbd17210d82ab0a4f982b",
+  "tests/test_nightly_core_integration.py": "8631df40eed08bb28a81451dd8dc2c5c7398238038c83cf20a75bfc177de008d",
+  "tests/test_nightly_gitops.py": "fdcc7dcdc9b9da2ebcef7b77a525580c9726d695aefd4cba800c933b276a18ed",
+  "tests/test_oracle_F.py": "697a8ba350fdc133bf372b191a10fb68cdd84806d8f6f3ac34e836ce5ad7b644",
+  "tests/test_oracle_F_pbt.py": "aa41ba40d05fcf7ad58c637b0279844678222db902880dc604af5be442f83dd9",
+  "tests/test_profile.py": "c1a0a777bd88869b1892eaa3aba4af8f909ed2a41e68b88c47e0013a9d5c8ff9",
+  "tests/test_protocol.py": "bbd6651f1c0b746a1dd41ee7c53c2f2dfd9eea7dbd55378fe59b9922b3f740c1",
+  "tests/test_retrospect.py": "996fdb82b672176162d68a834adcfcceceb58b4852beb2c8a171a52d3e254f8b",
+  "tests/test_retry.py": "f6fa2720d13fddcae5e82ff54c00d88998c64b083bcb04ed382c5334a34968d6",
+  "tests/test_run_writer.py": "8efdb10a320d386a6076e20a3f37bad9d73a036c26146ecb080b634512316cb0",
+  "tests/test_smoke.py": "13d818c69578c18acd711bdbb42ee9b080a371940a336f8af782caa4d1ef0cdf",
+  "tests/test_spec_047.py": "f18f23279fb9067be6e7740f5b13bf778146df8ddc745e5940c7aed513342847",
+  "tests/test_spec_050.py": "5e8da28f0d7757045598557c467c86fff9f27d5957cd81fee4a32de32ed4f3b1",
+  "tests/test_sweep.py": "db3ce1a000af25c991f6e8b383a7c2ec2da9a92f200fc1a263dcf74727baabdb",
+  "tests/test_textguard.py": "cd76a56b12e1cd675e280835130244284af07b24908f683b000351f4a615ec14",
+  "tests/test_translate.py": "4b3c747cf3fff00695734ee3c5140fe897e00448ced47bb33f79d190a565af89"
+ },
+ "anchors": {
+  "ccd/guard_pathmatch.py:_is_allowed": true
+ },
+ "registry": {
+  "index.jsonl": "00f8487538a46ec6811159c0d638d5e7c21a765c6cf03cdfd1ab970913b270d0",
+  "test_inv_0001_sibling.py": "cf0f1cb81842ec9ed1328cf27994954ac650dd8b096f38f19da80f98573b94d8"
+ }
+}

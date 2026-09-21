@@ -1,0 +1,25 @@
+{
+  "name": "vf-js",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "verified-fix harness — JS/TS port (DESIGN v0 §3/§4)",
+  "scripts": {
+    "test": "vitest run",
+    "test:json": "vitest run --reporter=json --outputFile=.vf/vitest.json",
+    "gate:freeze:build": "node gates/freeze.mjs build",
+    "gate:freeze:verify": "node gates/freeze.mjs verify",
+    "gate:diff": "node gates/diffgate.mjs",
+    "bench:trace": "node bench/tracebench.mjs"
+  },
+  "devDependencies": {
+    "acorn": "^8.18.0",
+    "@fast-check/vitest": "^0.4.1",
+    "@stryker-mutator/core": "^10.0.0",
+    "@stryker-mutator/vitest-runner": "^10.0.0",
+    "c8": "^12.0.0",
+    "fast-check": "^4.9.0",
+    "vitest": "^4.1.11",
+    "acorn-typescript": "^1.4.13"
+  }
+}

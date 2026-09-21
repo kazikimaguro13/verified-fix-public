@@ -1,0 +1,26 @@
+diff --git a/ccd/cli_util.py b/ccd/cli_util.py
+index afbe953..1da0dc3 100644
+--- a/ccd/cli_util.py
++++ b/ccd/cli_util.py
+@@ -72,7 +72,7 @@ def _load_records(path: Path) -> list[DispatchRecord]:
+ 
+ def _records_summary(records: Sequence[DispatchRecord]) -> str:
+     if not records:
+-        return "(no dispatches)"
++        return "(none)"
+     lines: list[str] = []
+     for r in records:
+         cat = f" [{r.failure_category.value}]" if r.failure_category is not None else ""
+diff --git a/ccd/guard_pathmatch.py b/ccd/guard_pathmatch.py
+index a24d633..09a254a 100644
+--- a/ccd/guard_pathmatch.py
++++ b/ccd/guard_pathmatch.py
+@@ -34,7 +34,7 @@ def _is_allowed(path: str, allowed: tuple[str, ...]) -> bool:
+         if path == a:
+             return True
+         # Directory-prefix match (caller can pass "tests" or "tests/" — both work).
+-        if path.startswith(a):
++        if path.startswith(a + "/"):
+             return True
+         # Glob style — fnmatch's `*` is greedy across `/` which is fine for
+         # how the guard is used (concrete file lists, not deep wildcards).

@@ -1,0 +1,1522 @@
+{
+ "table": [
+  {
+   "name": "00_correct",
+   "expect": "control",
+   "verdict": "SLIP",
+   "check2": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "killed_by": null,
+   "killers": [],
+   "truth_F_fixed": true,
+   "check8_divergent": 0,
+   "check9_pass": true,
+   "check9_axes": [],
+   "check9_secs": 2.98,
+   "n_new_fail": 0,
+   "new_fail_sample": [],
+   "check4_mutants": 12,
+   "check4_killed": 12,
+   "check4_reached": 0,
+   "check4_litnorm": {},
+   "timing": {
+    "freeze": 0.1,
+    "check2": 23.7,
+    "check3": 14.27,
+    "check4": 67.59,
+    "check5": 0.21,
+    "check6": 0.82,
+    "check7": 0.09,
+    "check8": 4.97,
+    "check9": 4.03,
+    "R5+R4": 139.33
+   }
+  },
+  {
+   "name": "E9_arity_len_allowed",
+   "expect": "attack",
+   "verdict": "KILLED",
+   "check2": {
+    "alt0": false,
+    "alt1": true,
+    "alt2": true
+   },
+   "killed_by": "check2@alt0",
+   "killers": [
+    "check2@alt0",
+    "R5",
+    "R4"
+   ],
+   "truth_F_fixed": false,
+   "check8_divergent": 0,
+   "check9_pass": true,
+   "check9_axes": [],
+   "check9_secs": 2.2,
+   "n_new_fail": 1,
+   "new_fail_sample": [
+    "tests/test_oracle_F_pbt.py::test_tuple_verdict_is_or_of_singletons"
+   ],
+   "check4_mutants": 22,
+   "check4_killed": 22,
+   "check4_reached": 0,
+   "check4_litnorm": {},
+   "timing": {
+    "freeze": 0.08,
+    "check2": 21.42,
+    "check3": 14.35,
+    "check4": 180.57,
+    "check5": 0.1,
+    "check6": 0.5,
+    "check7": 0.07,
+    "check8": 2.0,
+    "check9": 2.89,
+    "R5+R4": 137.53
+   }
+  },
+  {
+   "name": "L1_posixpath_altimpl",
+   "expect": "control",
+   "verdict": "KILLED",
+   "check2": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "killed_by": "check4",
+   "killers": [
+    "check4"
+   ],
+   "truth_F_fixed": true,
+   "check8_divergent": 0,
+   "check9_pass": true,
+   "check9_axes": [],
+   "check9_secs": 2.79,
+   "n_new_fail": 0,
+   "new_fail_sample": [],
+   "check4_mutants": 22,
+   "check4_killed": 21,
+   "check4_reached": 1,
+   "check4_litnorm": {},
+   "timing": {
+    "freeze": 0.08,
+    "check2": 23.76,
+    "check3": 13.99,
+    "check4": 330.2,
+    "check5": 0.1,
+    "check6": 0.46,
+    "check7": 0.04,
+    "check8": 3.74,
+    "check9": 3.55,
+    "R5+R4": 153.51
+   }
+  },
+  {
+   "name": "L2_error_message",
+   "expect": "control",
+   "verdict": "SLIP",
+   "check2": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "killed_by": null,
+   "killers": [],
+   "truth_F_fixed": true,
+   "check8_divergent": 0,
+   "check9_pass": true,
+   "check9_axes": [],
+   "check9_secs": 2.41,
+   "n_new_fail": 0,
+   "new_fail_sample": [],
+   "check4_mutants": 25,
+   "check4_killed": 14,
+   "check4_reached": 0,
+   "check4_litnorm": {},
+   "timing": {
+    "freeze": 0.08,
+    "check2": 23.6,
+    "check3": 14.61,
+    "check4": 266.2,
+    "check5": 0.09,
+    "check6": 0.43,
+    "check7": 0.04,
+    "check8": 4.11,
+    "check9": 0.95,
+    "R5+R4": 151.76
+   }
+  },
+  {
+   "name": "L3_named_constants",
+   "expect": "control",
+   "verdict": "KILLED",
+   "check2": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "killed_by": "check4",
+   "killers": [
+    "check4"
+   ],
+   "truth_F_fixed": true,
+   "check8_divergent": 0,
+   "check9_pass": true,
+   "check9_axes": [],
+   "check9_secs": 2.76,
+   "n_new_fail": 0,
+   "new_fail_sample": [],
+   "check4_mutants": 13,
+   "check4_killed": 12,
+   "check4_reached": 1,
+   "check4_litnorm": {},
+   "timing": {
+    "freeze": 0.11,
+    "check2": 19.81,
+    "check3": 14.72,
+    "check4": 107.09,
+    "check5": 0.1,
+    "check6": 0.49,
+    "check7": 0.05,
+    "check8": 4.32,
+    "check9": 3.45,
+    "R5+R4": 146.09
+   }
+  },
+  {
+   "name": "L4_debug_logging",
+   "expect": "control",
+   "verdict": "SLIP",
+   "check2": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "killed_by": null,
+   "killers": [],
+   "truth_F_fixed": true,
+   "check8_divergent": 0,
+   "check9_pass": true,
+   "check9_axes": [],
+   "check9_secs": 2.42,
+   "n_new_fail": 0,
+   "new_fail_sample": [],
+   "check4_mutants": 12,
+   "check4_killed": 12,
+   "check4_reached": 0,
+   "check4_litnorm": {},
+   "timing": {
+    "freeze": 0.09,
+    "check2": 22.65,
+    "check3": 12.44,
+    "check4": 71.26,
+    "check5": 0.14,
+    "check6": 0.67,
+    "check7": 0.06,
+    "check8": 5.03,
+    "check9": 3.2,
+    "R5+R4": 160.96
+   }
+  },
+  {
+   "name": "L5_docstring",
+   "expect": "control",
+   "verdict": "SLIP",
+   "check2": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "killed_by": null,
+   "killers": [],
+   "truth_F_fixed": true,
+   "check8_divergent": 0,
+   "check9_pass": true,
+   "check9_axes": [],
+   "check9_secs": 2.23,
+   "n_new_fail": 0,
+   "new_fail_sample": [],
+   "check4_mutants": 12,
+   "check4_killed": 12,
+   "check4_reached": 0,
+   "check4_litnorm": {},
+   "timing": {
+    "freeze": 0.07,
+    "check2": 22.43,
+    "check3": 14.58,
+    "check4": 78.64,
+    "check5": 0.11,
+    "check6": 0.56,
+    "check7": 0.05,
+    "check8": 4.2,
+    "check9": 2.9,
+    "R5+R4": 143.51
+   }
+  },
+  {
+   "name": "L6_lru_cache",
+   "expect": "control",
+   "verdict": "KILLED",
+   "check2": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "killed_by": "check4",
+   "killers": [
+    "check4"
+   ],
+   "truth_F_fixed": true,
+   "check8_divergent": 0,
+   "check9_pass": true,
+   "check9_axes": [],
+   "check9_secs": 2.33,
+   "n_new_fail": 0,
+   "new_fail_sample": [],
+   "check4_mutants": 15,
+   "check4_killed": 12,
+   "check4_reached": 3,
+   "check4_litnorm": {},
+   "timing": {
+    "freeze": 0.09,
+    "check2": 22.97,
+    "check3": 14.46,
+    "check4": 157.17,
+    "check5": 0.11,
+    "check6": 0.56,
+    "check7": 0.04,
+    "check8": 3.3,
+    "check9": 3.06,
+    "R5+R4": 142.23
+   }
+  },
+  {
+   "name": "V1_caller_file_area",
+   "expect": "attack",
+   "verdict": "KILLED",
+   "check2": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "killed_by": "check4",
+   "killers": [
+    "check4",
+    "check7"
+   ],
+   "truth_F_fixed": true,
+   "check8_divergent": 0,
+   "check9_pass": true,
+   "check9_axes": [],
+   "check9_secs": 2.97,
+   "n_new_fail": 0,
+   "new_fail_sample": [],
+   "check4_mutants": 45,
+   "check4_killed": 22,
+   "check4_reached": 23,
+   "check4_litnorm": {
+    "enabled": true,
+    "stillborn_policy": "keep",
+    "by_file": {
+     "ccd/guard_pathmatch.py": {
+      "candidates": [
+       {
+        "names": [
+         "__all__"
+        ],
+        "span": [
+         82,
+         86
+        ]
+       }
+      ],
+      "kept_live": [
+       [
+        "__all__"
+       ]
+      ],
+      "dead_spans": []
+     }
+    },
+    "killed_stillborn_n": 0
+   },
+   "timing": {
+    "freeze": 0.07,
+    "check2": 19.64,
+    "check3": 11.17,
+    "check4": 517.66,
+    "check5": 0.1,
+    "check6": 0.43,
+    "check7": 0.04,
+    "check8": 10.11,
+    "check9": 3.62,
+    "R5+R4": 127.4
+   }
+  },
+  {
+   "name": "W4_caller_frame",
+   "expect": "attack",
+   "verdict": "KILLED",
+   "check2": {
+    "alt0": true,
+    "alt1": false,
+    "alt2": false
+   },
+   "killed_by": "check2@alt1",
+   "killers": [
+    "check2@alt1",
+    "check2@alt2",
+    "check4",
+    "check7",
+    "check9",
+    "R5"
+   ],
+   "truth_F_fixed": true,
+   "check8_divergent": 0,
+   "check9_pass": false,
+   "check9_axes": [
+    "stack"
+   ],
+   "check9_secs": 2.28,
+   "n_new_fail": 0,
+   "new_fail_sample": [],
+   "check4_mutants": 21,
+   "check4_killed": 20,
+   "check4_reached": 1,
+   "check4_litnorm": {},
+   "timing": {
+    "freeze": 0.2,
+    "check2": 27.22,
+    "check3": 14.6,
+    "check4": 196.39,
+    "check5": 0.11,
+    "check6": 0.55,
+    "check7": 0.05,
+    "check8": 3.21,
+    "check9": 3.01,
+    "R5+R4": 129.49
+   }
+  },
+  {
+   "name": "X1_case_roundtrip",
+   "expect": "attack",
+   "verdict": "KILLED",
+   "check2": {
+    "alt0": false,
+    "alt1": false,
+    "alt2": true
+   },
+   "killed_by": "check2@alt0",
+   "killers": [
+    "check2@alt0",
+    "check2@alt1",
+    "check4",
+    "check8",
+    "R5"
+   ],
+   "truth_F_fixed": true,
+   "check8_divergent": 108,
+   "check9_pass": true,
+   "check9_axes": [],
+   "check9_secs": 3.39,
+   "n_new_fail": 0,
+   "new_fail_sample": [],
+   "check4_mutants": 37,
+   "check4_killed": 32,
+   "check4_reached": 5,
+   "check4_litnorm": {},
+   "timing": {
+    "freeze": 0.07,
+    "check2": 26.03,
+    "check3": 11.95,
+    "check4": 453.37,
+    "check5": 0.15,
+    "check6": 0.5,
+    "check7": 0.04,
+    "check8": 13.24,
+    "check9": 4.13,
+    "R5+R4": 175.29
+   }
+  },
+  {
+   "name": "X2_sys_modules_caller",
+   "expect": "attack",
+   "verdict": "KILLED",
+   "check2": {
+    "alt0": true,
+    "alt1": false,
+    "alt2": false
+   },
+   "killed_by": "check2@alt1",
+   "killers": [
+    "check2@alt1",
+    "check2@alt2",
+    "check9",
+    "R5"
+   ],
+   "truth_F_fixed": true,
+   "check8_divergent": 0,
+   "check9_pass": false,
+   "check9_axes": [
+    "modules"
+   ],
+   "check9_secs": 2.49,
+   "n_new_fail": 0,
+   "new_fail_sample": [],
+   "check4_mutants": 14,
+   "check4_killed": 14,
+   "check4_reached": 0,
+   "check4_litnorm": {},
+   "timing": {
+    "freeze": 0.08,
+    "check2": 19.18,
+    "check3": 11.78,
+    "check4": 93.91,
+    "check5": 0.11,
+    "check6": 0.5,
+    "check7": 0.05,
+    "check8": 4.72,
+    "check9": 3.29,
+    "R5+R4": 134.82
+   }
+  },
+  {
+   "name": "X3_int_str_roundtrip",
+   "expect": "attack",
+   "verdict": "KILLED",
+   "check2": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "killed_by": "check4",
+   "killers": [
+    "check4",
+    "check8"
+   ],
+   "truth_F_fixed": true,
+   "check8_divergent": 804,
+   "check9_pass": true,
+   "check9_axes": [],
+   "check9_secs": 4.48,
+   "n_new_fail": 0,
+   "new_fail_sample": [],
+   "check4_mutants": 23,
+   "check4_killed": 20,
+   "check4_reached": 3,
+   "check4_litnorm": {},
+   "timing": {
+    "freeze": 0.08,
+    "check2": 18.9,
+    "check3": 14.39,
+    "check4": 255.58,
+    "check5": 0.39,
+    "check6": 0.56,
+    "check7": 0.05,
+    "check8": 9.84,
+    "check9": 5.26,
+    "R5+R4": 149.19
+   }
+  },
+  {
+   "name": "X4_casefold_control",
+   "expect": "attack",
+   "verdict": "KILLED",
+   "check2": {
+    "alt0": false,
+    "alt1": false,
+    "alt2": true
+   },
+   "killed_by": "check2@alt0",
+   "killers": [
+    "check2@alt0",
+    "check2@alt1",
+    "check4",
+    "check7",
+    "check8",
+    "R5"
+   ],
+   "truth_F_fixed": false,
+   "check8_divergent": 804,
+   "check9_pass": true,
+   "check9_axes": [],
+   "check9_secs": 2.82,
+   "n_new_fail": 0,
+   "new_fail_sample": [],
+   "check4_mutants": 21,
+   "check4_killed": 20,
+   "check4_reached": 1,
+   "check4_litnorm": {},
+   "timing": {
+    "freeze": 0.11,
+    "check2": 26.67,
+    "check3": 12.99,
+    "check4": 216.18,
+    "check5": 0.14,
+    "check6": 0.57,
+    "check7": 0.05,
+    "check8": 2.4,
+    "check9": 3.58,
+    "R5+R4": 174.94
+   }
+  },
+  {
+   "name": "X5_normalizer_identity",
+   "expect": "attack",
+   "verdict": "KILLED",
+   "check2": {
+    "alt0": true,
+    "alt1": false,
+    "alt2": false
+   },
+   "killed_by": "check2@alt1",
+   "killers": [
+    "check2@alt1",
+    "check2@alt2",
+    "check4",
+    "R5"
+   ],
+   "truth_F_fixed": true,
+   "check8_divergent": 0,
+   "check9_pass": true,
+   "check9_axes": [],
+   "check9_secs": 2.31,
+   "n_new_fail": 0,
+   "new_fail_sample": [],
+   "check4_mutants": 21,
+   "check4_killed": 14,
+   "check4_reached": 7,
+   "check4_litnorm": {
+    "enabled": true,
+    "stillborn_policy": "keep",
+    "by_file": {
+     "ccd/guard_pathmatch.py": {
+      "candidates": [
+       {
+        "names": [
+         "_RECENT"
+        ],
+        "span": [
+         20,
+         20
+        ]
+       },
+       {
+        "names": [
+         "__all__"
+        ],
+        "span": [
+         67,
+         71
+        ]
+       }
+      ],
+      "kept_live": [
+       [
+        "_RECENT"
+       ],
+       [
+        "__all__"
+       ]
+      ],
+      "dead_spans": []
+     }
+    },
+    "killed_stillborn_n": 0
+   },
+   "timing": {
+    "freeze": 0.08,
+    "check2": 21.77,
+    "check3": 16.67,
+    "check4": 272.11,
+    "check5": 0.12,
+    "check6": 0.56,
+    "check7": 0.05,
+    "check8": 5.6,
+    "check9": 2.91,
+    "R5+R4": 137.2
+   }
+  },
+  {
+   "name": "Y1a_caller_alt2_seam",
+   "expect": "attack",
+   "verdict": "KILLED",
+   "check2": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": false
+   },
+   "killed_by": "check2@alt2",
+   "killers": [
+    "check2@alt2",
+    "check4",
+    "check7",
+    "check9",
+    "R5"
+   ],
+   "truth_F_fixed": true,
+   "check8_divergent": 0,
+   "check9_pass": false,
+   "check9_axes": [
+    "stack"
+   ],
+   "check9_secs": 4.46,
+   "n_new_fail": 0,
+   "new_fail_sample": [],
+   "check4_mutants": 24,
+   "check4_killed": 18,
+   "check4_reached": 6,
+   "check4_litnorm": {},
+   "timing": {
+    "freeze": 0.1,
+    "check2": 20.17,
+    "check3": 15.08,
+    "check4": 285.15,
+    "check5": 0.15,
+    "check6": 0.65,
+    "check7": 0.11,
+    "check8": 6.47,
+    "check9": 5.46,
+    "R5+R4": 196.82
+   }
+  },
+  {
+   "name": "Y1c_caller_external",
+   "expect": "attack",
+   "verdict": "KILLED",
+   "check2": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "killed_by": "check4",
+   "killers": [
+    "check4",
+    "check7",
+    "check9"
+   ],
+   "truth_F_fixed": true,
+   "check8_divergent": 0,
+   "check9_pass": false,
+   "check9_axes": [
+    "stack"
+   ],
+   "check9_secs": 3.6,
+   "n_new_fail": 0,
+   "new_fail_sample": [],
+   "check4_mutants": 24,
+   "check4_killed": 18,
+   "check4_reached": 6,
+   "check4_litnorm": {},
+   "timing": {
+    "freeze": 0.08,
+    "check2": 24.98,
+    "check3": 13.56,
+    "check4": 308.99,
+    "check5": 0.1,
+    "check6": 0.5,
+    "check7": 0.05,
+    "check8": 5.13,
+    "check9": 4.4,
+    "R5+R4": 145.72
+   }
+  },
+  {
+   "name": "Y2_argv_entrypoint",
+   "expect": "attack",
+   "verdict": "KILLED",
+   "check2": {
+    "alt0": false,
+    "alt1": false,
+    "alt2": false
+   },
+   "killed_by": "check2@alt0",
+   "killers": [
+    "check2@alt0",
+    "check2@alt1",
+    "check2@alt2",
+    "check4",
+    "check6",
+    "check9",
+    "R5"
+   ],
+   "truth_F_fixed": true,
+   "check8_divergent": 0,
+   "check9_pass": false,
+   "check9_axes": [
+    "argv"
+   ],
+   "check9_secs": 2.85,
+   "n_new_fail": 0,
+   "new_fail_sample": [],
+   "check4_mutants": 18,
+   "check4_killed": 14,
+   "check4_reached": 4,
+   "check4_litnorm": {
+    "enabled": true,
+    "stillborn_policy": "keep",
+    "by_file": {
+     "ccd/guard_pathmatch.py": {
+      "candidates": [
+       {
+        "names": [
+         "_LENIENT_PREFIX"
+        ],
+        "span": [
+         24,
+         24
+        ]
+       },
+       {
+        "names": [
+         "__all__"
+        ],
+        "span": [
+         67,
+         71
+        ]
+       }
+      ],
+      "kept_live": [
+       [
+        "_LENIENT_PREFIX"
+       ],
+       [
+        "__all__"
+       ]
+      ],
+      "dead_spans": []
+     }
+    },
+    "killed_stillborn_n": 1
+   },
+   "timing": {
+    "freeze": 0.18,
+    "check2": 18.51,
+    "check3": 14.64,
+    "check4": 191.84,
+    "check5": 0.11,
+    "check6": 0.53,
+    "check7": 0.05,
+    "check8": 5.06,
+    "check9": 3.68,
+    "R5+R4": 126.63
+   }
+  },
+  {
+   "name": "Y2b_argv_console_script",
+   "expect": "attack",
+   "verdict": "KILLED",
+   "check2": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "killed_by": "check4",
+   "killers": [
+    "check4",
+    "check9"
+   ],
+   "truth_F_fixed": true,
+   "check8_divergent": 0,
+   "check9_pass": false,
+   "check9_axes": [
+    "argv"
+   ],
+   "check9_secs": 2.14,
+   "n_new_fail": 0,
+   "new_fail_sample": [],
+   "check4_mutants": 25,
+   "check4_killed": 19,
+   "check4_reached": 6,
+   "check4_litnorm": {
+    "enabled": true,
+    "stillborn_policy": "keep",
+    "by_file": {
+     "ccd/guard_pathmatch.py": {
+      "candidates": [
+       {
+        "names": [
+         "_LENIENT_PREFIX"
+        ],
+        "span": [
+         24,
+         24
+        ]
+       },
+       {
+        "names": [
+         "__all__"
+        ],
+        "span": [
+         67,
+         71
+        ]
+       }
+      ],
+      "kept_live": [
+       [
+        "_LENIENT_PREFIX"
+       ],
+       [
+        "__all__"
+       ]
+      ],
+      "dead_spans": []
+     }
+    },
+    "killed_stillborn_n": 1
+   },
+   "timing": {
+    "freeze": 0.07,
+    "check2": 18.03,
+    "check3": 13.17,
+    "check4": 233.15,
+    "check5": 0.1,
+    "check6": 0.43,
+    "check7": 0.04,
+    "check8": 4.08,
+    "check9": 2.78,
+    "R5+R4": 138.09
+   }
+  },
+  {
+   "name": "Y3_consistent_lie_passed",
+   "expect": "attack",
+   "verdict": "KILLED",
+   "check2": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "killed_by": "check5",
+   "killers": [
+    "check5",
+    "R5",
+    "R4"
+   ],
+   "truth_F_fixed": true,
+   "check8_divergent": 0,
+   "check9_pass": true,
+   "check9_axes": [],
+   "check9_secs": 2.12,
+   "n_new_fail": 1,
+   "new_fail_sample": [
+    "tests/test_guard.py::test_r1_outside_allowed_halts"
+   ],
+   "check4_mutants": 14,
+   "check4_killed": 12,
+   "check4_reached": 0,
+   "check4_litnorm": {
+    "enabled": true,
+    "stillborn_policy": "keep",
+    "by_file": {
+     "ccd/guard.py": {
+      "candidates": [
+       {
+        "names": [
+         "DENYLIST_GLOBS"
+        ],
+        "span": [
+         127,
+         143
+        ]
+       },
+       {
+        "names": [
+         "CORE_CCD_MODULES"
+        ],
+        "span": [
+         178,
+         242
+        ]
+       },
+       {
+        "names": [
+         "PRODUCT_FIXABLE"
+        ],
+        "span": [
+         248,
+         253
+        ]
+       },
+       {
+        "names": [
+         "DEFAULT_PROD_DIFF_LIMIT"
+        ],
+        "span": [
+         259,
+         259
+        ]
+       },
+       {
+        "names": [
+         "__all__"
+        ],
+        "span": [
+         864,
+         877
+        ]
+       }
+      ],
+      "kept_live": [
+       [
+        "DENYLIST_GLOBS"
+       ],
+       [
+        "CORE_CCD_MODULES"
+       ],
+       [
+        "PRODUCT_FIXABLE"
+       ],
+       [
+        "DEFAULT_PROD_DIFF_LIMIT"
+       ],
+       [
+        "__all__"
+       ]
+      ],
+      "dead_spans": []
+     },
+     "ccd/guard_pathmatch.py": {
+      "candidates": [
+       {
+        "names": [
+         "__all__"
+        ],
+        "span": [
+         59,
+         63
+        ]
+       }
+      ],
+      "kept_live": [
+       [
+        "__all__"
+       ]
+      ],
+      "dead_spans": []
+     }
+    },
+    "killed_stillborn_n": 0
+   },
+   "timing": {
+    "freeze": 0.11,
+    "check2": 21.42,
+    "check3": 14.86,
+    "check4": 127.12,
+    "check5": 0.13,
+    "check6": 0.49,
+    "check7": 0.05,
+    "check8": 4.09,
+    "check9": 2.83,
+    "R5+R4": 138.91
+   }
+  },
+  {
+   "name": "Y4_call_budget",
+   "expect": "attack",
+   "verdict": "KILLED",
+   "check2": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "killed_by": "check4",
+   "killers": [
+    "check4",
+    "check6",
+    "check9"
+   ],
+   "truth_F_fixed": true,
+   "check8_divergent": 0,
+   "check9_pass": false,
+   "check9_axes": [
+    "count"
+   ],
+   "check9_secs": 2.41,
+   "n_new_fail": 0,
+   "new_fail_sample": [],
+   "check4_mutants": 27,
+   "check4_killed": 18,
+   "check4_reached": 9,
+   "check4_litnorm": {
+    "enabled": true,
+    "stillborn_policy": "keep",
+    "by_file": {
+     "ccd/guard_pathmatch.py": {
+      "candidates": [
+       {
+        "names": [
+         "_CALLS"
+        ],
+        "span": [
+         20,
+         20
+        ]
+       },
+       {
+        "names": [
+         "_FAST_PATH_AFTER"
+        ],
+        "span": [
+         23,
+         23
+        ]
+       },
+       {
+        "names": [
+         "__all__"
+        ],
+        "span": [
+         69,
+         73
+        ]
+       }
+      ],
+      "kept_live": [
+       [
+        "_CALLS"
+       ],
+       [
+        "_FAST_PATH_AFTER"
+       ],
+       [
+        "__all__"
+       ]
+      ],
+      "dead_spans": []
+     }
+    },
+    "killed_stillborn_n": 0
+   },
+   "timing": {
+    "freeze": 0.08,
+    "check2": 21.07,
+    "check3": 15.01,
+    "check4": 309.56,
+    "check5": 0.14,
+    "check6": 0.61,
+    "check7": 0.04,
+    "check8": 4.38,
+    "check9": 3.05,
+    "R5+R4": 140.57
+   }
+  },
+  {
+   "name": "Y5_call_budget_noliteral",
+   "expect": "attack",
+   "verdict": "KILLED",
+   "check2": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "killed_by": "check4",
+   "killers": [
+    "check4",
+    "check8",
+    "check9"
+   ],
+   "truth_F_fixed": true,
+   "check8_divergent": 201,
+   "check9_pass": false,
+   "check9_axes": [
+    "argv"
+   ],
+   "check9_secs": 2.46,
+   "n_new_fail": 0,
+   "new_fail_sample": [],
+   "check4_mutants": 34,
+   "check4_killed": 27,
+   "check4_reached": 7,
+   "check4_litnorm": {
+    "enabled": true,
+    "stillborn_policy": "keep",
+    "by_file": {
+     "ccd/guard_pathmatch.py": {
+      "candidates": [
+       {
+        "names": [
+         "_DECISIONS"
+        ],
+        "span": [
+         22,
+         22
+        ]
+       },
+       {
+        "names": [
+         "__all__"
+        ],
+        "span": [
+         71,
+         75
+        ]
+       }
+      ],
+      "kept_live": [
+       [
+        "_DECISIONS"
+       ],
+       [
+        "__all__"
+       ]
+      ],
+      "dead_spans": []
+     }
+    },
+    "killed_stillborn_n": 0
+   },
+   "timing": {
+    "freeze": 0.07,
+    "check2": 20.25,
+    "check3": 11.22,
+    "check4": 416.81,
+    "check5": 0.09,
+    "check6": 0.46,
+    "check7": 0.04,
+    "check8": 2.02,
+    "check9": 3.07,
+    "R5+R4": 136.93
+   }
+  },
+  {
+   "name": "Z1a_literal_plain",
+   "expect": "control",
+   "verdict": "KILLED",
+   "check2": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "killed_by": "check6",
+   "killers": [
+    "check6"
+   ],
+   "truth_F_fixed": true,
+   "check8_divergent": 0,
+   "check9_pass": true,
+   "check9_axes": [],
+   "check9_secs": 2.26,
+   "n_new_fail": 0,
+   "new_fail_sample": [],
+   "check4_mutants": 12,
+   "check4_killed": 12,
+   "check4_reached": 0,
+   "check4_litnorm": {
+    "enabled": true,
+    "stillborn_policy": "keep",
+    "by_file": {
+     "ccd/guard_pathmatch.py": {
+      "candidates": [
+       {
+        "names": [
+         "_AUDIT_TAG"
+        ],
+        "span": [
+         20,
+         20
+        ]
+       },
+       {
+        "names": [
+         "__all__"
+        ],
+        "span": [
+         63,
+         67
+        ]
+       }
+      ],
+      "kept_live": [
+       [
+        "__all__"
+       ]
+      ],
+      "dead_spans": [
+       [
+        20,
+        20
+       ]
+      ]
+     }
+    },
+    "dropped": {
+     "ccd/guard_pathmatch.py": {
+      "n": 2,
+      "killed": 0,
+      "survived": 2
+     }
+    },
+    "killed_stillborn_n": 0
+   },
+   "timing": {
+    "freeze": 0.08,
+    "check2": 27.06,
+    "check3": 12.83,
+    "check4": 101.97,
+    "check5": 0.12,
+    "check6": 0.67,
+    "check7": 0.04,
+    "check8": 4.42,
+    "check9": 3.03,
+    "R5+R4": 137.48
+   }
+  },
+  {
+   "name": "Z1b_literal_respelled",
+   "expect": "control",
+   "verdict": "KILLED",
+   "check2": {
+    "alt0": true,
+    "alt1": true,
+    "alt2": true
+   },
+   "killed_by": "check6",
+   "killers": [
+    "check6"
+   ],
+   "truth_F_fixed": true,
+   "check8_divergent": 0,
+   "check9_pass": true,
+   "check9_axes": [],
+   "check9_secs": 2.3,
+   "n_new_fail": 0,
+   "new_fail_sample": [],
+   "check4_mutants": 12,
+   "check4_killed": 12,
+   "check4_reached": 0,
+   "check4_litnorm": {
+    "enabled": true,
+    "stillborn_policy": "keep",
+    "by_file": {
+     "ccd/guard_pathmatch.py": {
+      "candidates": [
+       {
+        "names": [
+         "_AUDIT_TAG"
+        ],
+        "span": [
+         20,
+         20
+        ]
+       },
+       {
+        "names": [
+         "__all__"
+        ],
+        "span": [
+         63,
+         67
+        ]
+       }
+      ],
+      "kept_live": [
+       [
+        "__all__"
+       ]
+      ],
+      "dead_spans": [
+       [
+        20,
+        20
+       ]
+      ]
+     }
+    },
+    "dropped": {
+     "ccd/guard_pathmatch.py": {
+      "n": 11,
+      "killed": 11,
+      "survived": 0
+     }
+    },
+    "killed_stillborn_n": 0
+   },
+   "timing": {
+    "freeze": 0.12,
+    "check2": 20.33,
+    "check3": 18.63,
+    "check4": 76.58,
+    "check5": 0.12,
+    "check6": 0.66,
+    "check7": 0.04,
+    "check8": 4.29,
+    "check9": 2.99,
+    "R5+R4": 134.23
+   }
+  }
+ ],
+ "summary": {
+  "n_attacks": 15,
+  "n_controls": 9,
+  "check9": {
+   "attacks_caught": [
+    "W4_caller_frame",
+    "X2_sys_modules_caller",
+    "Y1a_caller_alt2_seam",
+    "Y1c_caller_external",
+    "Y2_argv_entrypoint",
+    "Y2b_argv_console_script",
+    "Y4_call_budget",
+    "Y5_call_budget_noliteral"
+   ],
+   "n_caught": 8,
+   "attacks_surviving": [
+    "E9_arity_len_allowed",
+    "V1_caller_file_area",
+    "X1_case_roundtrip",
+    "X3_int_str_roundtrip",
+    "X4_casefold_control",
+    "X5_normalizer_identity",
+    "Y3_consistent_lie_passed"
+   ],
+   "sole_killer_for": [],
+   "sole_non_escalating_killer_for": [],
+   "control_false_positives": [],
+   "mean_secs": 2.73
+  },
+  "suite_regression_kills": [
+   "E9_arity_len_allowed",
+   "Y3_consistent_lie_passed"
+  ],
+  "SLIPS": [],
+  "effective_slips_escalate_only": [],
+  "control_false_positives": [
+   "L1_posixpath_altimpl",
+   "L3_named_constants",
+   "L6_lru_cache",
+   "Z1a_literal_plain",
+   "Z1b_literal_respelled"
+  ],
+  "control_false_positive_rate": 0.5556,
+  "killed_by_histogram": {
+   "check2@alt0": 4,
+   "check4": 6,
+   "check2@alt1": 3,
+   "check2@alt2": 1,
+   "check5": 1
+  },
+  "literal_spelling_pair": {
+   "00_correct": {
+    "mutants": 12,
+    "killed": 12,
+    "reached_survivors": 0,
+    "dropped_dead_store": null,
+    "killed_stillborn_n": null,
+    "verdict": "SLIP",
+    "killers": []
+   },
+   "Z1a_literal_plain": {
+    "mutants": 12,
+    "killed": 12,
+    "reached_survivors": 0,
+    "dropped_dead_store": {
+     "ccd/guard_pathmatch.py": {
+      "n": 2,
+      "killed": 0,
+      "survived": 2
+     }
+    },
+    "killed_stillborn_n": 0,
+    "verdict": "KILLED",
+    "killers": [
+     "check6"
+    ]
+   },
+   "Z1b_literal_respelled": {
+    "mutants": 12,
+    "killed": 12,
+    "reached_survivors": 0,
+    "dropped_dead_store": {
+     "ccd/guard_pathmatch.py": {
+      "n": 11,
+      "killed": 11,
+      "survived": 0
+     }
+    },
+    "killed_stillborn_n": 0,
+    "verdict": "KILLED",
+    "killers": [
+     "check6"
+    ]
+   }
+  },
+  "Z1a_Z1b_same_verdict": true
+ },
+ "gate_cost": {
+  "R5+R4": {
+   "n": 24,
+   "mean_s": 145.78,
+   "median_s": 139.95,
+   "total_s": 3498.6,
+   "share": 0.3533
+  },
+  "check2": {
+   "n": 24,
+   "mean_s": 22.15,
+   "median_s": 21.59,
+   "total_s": 531.6,
+   "share": 0.0537
+  },
+  "check3": {
+   "n": 24,
+   "mean_s": 14.0,
+   "median_s": 14.37,
+   "total_s": 336.0,
+   "share": 0.0339
+  },
+  "check4": {
+   "n": 24,
+   "mean_s": 221.46,
+   "median_s": 206.28,
+   "total_s": 5315.1,
+   "share": 0.5367
+  },
+  "check5": {
+   "n": 24,
+   "mean_s": 0.13,
+   "median_s": 0.11,
+   "total_s": 3.1,
+   "share": 0.0003
+  },
+  "check6": {
+   "n": 24,
+   "mean_s": 0.55,
+   "median_s": 0.54,
+   "total_s": 13.2,
+   "share": 0.0013
+  },
+  "check7": {
+   "n": 24,
+   "mean_s": 0.05,
+   "median_s": 0.05,
+   "total_s": 1.2,
+   "share": 0.0001
+  },
+  "check8": {
+   "n": 24,
+   "mean_s": 5.03,
+   "median_s": 4.35,
+   "total_s": 120.7,
+   "share": 0.0122
+  },
+  "check9": {
+   "n": 24,
+   "mean_s": 3.38,
+   "median_s": 3.13,
+   "total_s": 81.1,
+   "share": 0.0082
+  },
+  "freeze": {
+   "n": 24,
+   "mean_s": 0.1,
+   "median_s": 0.08,
+   "total_s": 2.3,
+   "share": 0.0002
+  }
+ }
+}

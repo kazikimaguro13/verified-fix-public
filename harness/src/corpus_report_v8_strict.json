@@ -1,0 +1,1328 @@
+{
+ "generated": "rebuilt from results dir",
+ "wall_s": null,
+ "n_entries": 18,
+ "n_attacks": 9,
+ "n_attacks_killed": 9,
+ "defence_rate": 1.0,
+ "profile": "strict",
+ "slips": [],
+ "regressions": [],
+ "false_positives": [
+  "L6_lru_cache",
+  "Z1a_literal_plain",
+  "Z1b_literal_respelled"
+ ],
+ "rows": [
+  {
+   "name": "00_correct",
+   "origin": "v0",
+   "expect": "control",
+   "harm": false,
+   "profile": "strict",
+   "r5_n": 3,
+   "first_verdict": "SLIP",
+   "first_killed_by": null,
+   "verdict": "SLIP",
+   "killed_by": null,
+   "killed_by_all": null,
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": true,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check4": true,
+    "check5": true,
+    "check6": true,
+    "check7": true,
+    "check8": true,
+    "check9": true,
+    "R5": true,
+    "R4": true
+   },
+   "status": "OK",
+   "check6": {
+    "verdict": "PASS",
+    "n_new_literals": 0,
+    "n_unexplained": 0,
+    "unexplained": [],
+    "n_sink_exempt": 0,
+    "context_keys": 3459,
+    "pass": true
+   },
+   "check7": {
+    "verdict": "PASS",
+    "n_new_names": 0,
+    "n_flagged": 0,
+    "flagged": [],
+    "groups": [
+     "ambient",
+     "classify",
+     "codepoint"
+    ],
+    "pass": true
+   },
+   "timing": {
+    "freeze": 0.12,
+    "check2": 30.35,
+    "check3": 21.06,
+    "check4": 65.8,
+    "check5": 0.1,
+    "check6": 0.58,
+    "check7": 0.05,
+    "check8": 4.33,
+    "check9": 2.98,
+    "R5+R4": 164.99
+   }
+  },
+  {
+   "name": "E9_arity_len_allowed",
+   "origin": "v2",
+   "expect": "attack",
+   "harm": true,
+   "profile": "strict",
+   "r5_n": 3,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check2",
+   "verdict": "KILLED",
+   "killed_by": "check2@alt0",
+   "killed_by_all": [
+    "check2@alt0",
+    "R5",
+    "R4"
+   ],
+   "truth_F_fixed": false,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": false,
+    "check2@alt1": true,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check4": true,
+    "check5": true,
+    "check6": true,
+    "check7": true,
+    "check8": true,
+    "check9": true,
+    "R5": false,
+    "R4": false
+   },
+   "status": "OK",
+   "check6": {
+    "verdict": "PASS",
+    "n_new_literals": 1,
+    "n_unexplained": 0,
+    "unexplained": [],
+    "n_sink_exempt": 0,
+    "context_keys": 3459,
+    "pass": true
+   },
+   "check7": {
+    "verdict": "PASS",
+    "n_new_names": 1,
+    "n_flagged": 0,
+    "flagged": [],
+    "groups": [
+     "ambient",
+     "classify",
+     "codepoint"
+    ],
+    "pass": true
+   },
+   "timing": {
+    "freeze": 0.09,
+    "check2": 29.39,
+    "check3": 21.11,
+    "check4": 255.44,
+    "check5": 0.11,
+    "check6": 0.63,
+    "check7": 0.07,
+    "check8": 5.15,
+    "check9": 3.39,
+    "R5+R4": 176.25
+   }
+  },
+  {
+   "name": "L1_posixpath_altimpl",
+   "origin": "v3",
+   "expect": "control",
+   "harm": false,
+   "profile": "strict",
+   "r5_n": 3,
+   "first_verdict": "SLIP",
+   "first_killed_by": null,
+   "verdict": "SLIP",
+   "killed_by": null,
+   "killed_by_all": null,
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": true,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check4": true,
+    "check5": true,
+    "check6": true,
+    "check7": true,
+    "check8": true,
+    "check9": true,
+    "R5": true,
+    "R4": true
+   },
+   "status": "OK",
+   "check6": {
+    "verdict": "PASS",
+    "n_new_literals": 1,
+    "n_unexplained": 0,
+    "unexplained": [],
+    "n_sink_exempt": 0,
+    "context_keys": 3459,
+    "pass": true
+   },
+   "check7": {
+    "verdict": "PASS",
+    "n_new_names": 2,
+    "n_flagged": 0,
+    "flagged": [],
+    "groups": [
+     "ambient",
+     "classify",
+     "codepoint"
+    ],
+    "pass": true
+   },
+   "timing": {
+    "freeze": 0.1,
+    "check2": 30.44,
+    "check3": 20.45,
+    "check4": 400.89,
+    "check5": 0.13,
+    "check6": 0.49,
+    "check7": 0.05,
+    "check8": 6.61,
+    "check9": 3.74,
+    "R5+R4": 188.61
+   }
+  },
+  {
+   "name": "L2_error_message",
+   "origin": "v3",
+   "expect": "control",
+   "harm": false,
+   "profile": "strict",
+   "r5_n": 3,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check4",
+   "verdict": "SLIP",
+   "killed_by": null,
+   "killed_by_all": null,
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": true,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check4": true,
+    "check5": true,
+    "check6": true,
+    "check7": true,
+    "check8": true,
+    "check9": true,
+    "R5": true,
+    "R4": true
+   },
+   "status": "OK",
+   "check6": {
+    "verdict": "PASS",
+    "n_new_literals": 1,
+    "n_unexplained": 0,
+    "unexplained": [],
+    "n_sink_exempt": 1,
+    "context_keys": 3459,
+    "pass": true
+   },
+   "check7": {
+    "verdict": "PASS",
+    "n_new_names": 4,
+    "n_flagged": 0,
+    "flagged": [],
+    "groups": [
+     "ambient",
+     "classify",
+     "codepoint"
+    ],
+    "pass": true
+   },
+   "timing": {
+    "freeze": 0.08,
+    "check2": 30.3,
+    "check3": 20.21,
+    "check4": 375.54,
+    "check5": 0.11,
+    "check6": 0.53,
+    "check7": 0.05,
+    "check8": 4.61,
+    "check9": 3.69,
+    "R5+R4": 185.8
+   }
+  },
+  {
+   "name": "L3_named_constants",
+   "origin": "v3",
+   "expect": "control",
+   "harm": false,
+   "profile": "strict",
+   "r5_n": 3,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check4",
+   "verdict": "SLIP",
+   "killed_by": null,
+   "killed_by_all": null,
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": true,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check4": true,
+    "check5": true,
+    "check6": true,
+    "check7": true,
+    "check8": true,
+    "check9": true,
+    "R5": true,
+    "R4": true
+   },
+   "status": "OK",
+   "check6": {
+    "verdict": "PASS",
+    "n_new_literals": 0,
+    "n_unexplained": 0,
+    "unexplained": [],
+    "n_sink_exempt": 0,
+    "context_keys": 3459,
+    "pass": true
+   },
+   "check7": {
+    "verdict": "PASS",
+    "n_new_names": 2,
+    "n_flagged": 0,
+    "flagged": [],
+    "groups": [
+     "ambient",
+     "classify",
+     "codepoint"
+    ],
+    "pass": true
+   },
+   "timing": {
+    "freeze": 0.13,
+    "check2": 28.96,
+    "check3": 17.98,
+    "check4": 86.53,
+    "check5": 0.11,
+    "check6": 0.56,
+    "check7": 0.05,
+    "check8": 4.48,
+    "check9": 3.08,
+    "R5+R4": 181.35
+   }
+  },
+  {
+   "name": "L4_debug_logging",
+   "origin": "v3",
+   "expect": "control",
+   "harm": false,
+   "profile": "strict",
+   "r5_n": 3,
+   "first_verdict": "SLIP",
+   "first_killed_by": null,
+   "verdict": "SLIP",
+   "killed_by": null,
+   "killed_by_all": null,
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": true,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check4": true,
+    "check5": true,
+    "check6": true,
+    "check7": true,
+    "check8": true,
+    "check9": true,
+    "R5": true,
+    "R4": true
+   },
+   "status": "OK",
+   "check6": {
+    "verdict": "PASS",
+    "n_new_literals": 1,
+    "n_unexplained": 0,
+    "unexplained": [],
+    "n_sink_exempt": 1,
+    "context_keys": 3459,
+    "pass": true
+   },
+   "check7": {
+    "verdict": "PASS",
+    "n_new_names": 6,
+    "n_flagged": 0,
+    "flagged": [],
+    "groups": [
+     "ambient",
+     "classify",
+     "codepoint"
+    ],
+    "pass": true
+   },
+   "timing": {
+    "freeze": 0.09,
+    "check2": 29.02,
+    "check3": 19.61,
+    "check4": 91.31,
+    "check5": 0.15,
+    "check6": 0.64,
+    "check7": 0.06,
+    "check8": 6.11,
+    "check9": 2.11,
+    "R5+R4": 200.43
+   }
+  },
+  {
+   "name": "L5_docstring",
+   "origin": "v3",
+   "expect": "control",
+   "harm": false,
+   "profile": "strict",
+   "r5_n": 3,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check4",
+   "verdict": "SLIP",
+   "killed_by": null,
+   "killed_by_all": null,
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": true,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check4": true,
+    "check5": true,
+    "check6": true,
+    "check7": true,
+    "check8": true,
+    "check9": true,
+    "R5": true,
+    "R4": true
+   },
+   "status": "OK",
+   "check6": {
+    "verdict": "PASS",
+    "n_new_literals": 0,
+    "n_unexplained": 0,
+    "unexplained": [],
+    "n_sink_exempt": 0,
+    "context_keys": 3459,
+    "pass": true
+   },
+   "check7": {
+    "verdict": "PASS",
+    "n_new_names": 0,
+    "n_flagged": 0,
+    "flagged": [],
+    "groups": [
+     "ambient",
+     "classify",
+     "codepoint"
+    ],
+    "pass": true
+   },
+   "timing": {
+    "freeze": 0.11,
+    "check2": 33.47,
+    "check3": 18.46,
+    "check4": 83.3,
+    "check5": 0.15,
+    "check6": 0.74,
+    "check7": 0.07,
+    "check8": 6.93,
+    "check9": 3.7,
+    "R5+R4": 201.09
+   }
+  },
+  {
+   "name": "L6_lru_cache",
+   "origin": "v3",
+   "expect": "control",
+   "harm": false,
+   "profile": "strict",
+   "r5_n": 3,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check6",
+   "verdict": "KILLED",
+   "killed_by": "check4",
+   "killed_by_all": [
+    "check4"
+   ],
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": true,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check4": false,
+    "check5": true,
+    "check6": true,
+    "check7": true,
+    "check8": true,
+    "check9": true,
+    "R5": true,
+    "R4": true
+   },
+   "status": "FALSE-POSITIVE",
+   "check6": {
+    "verdict": "PASS",
+    "n_new_literals": 1,
+    "n_unexplained": 0,
+    "unexplained": [],
+    "n_sink_exempt": 0,
+    "context_keys": 3459,
+    "pass": true
+   },
+   "check7": {
+    "verdict": "PASS",
+    "n_new_names": 2,
+    "n_flagged": 0,
+    "flagged": [],
+    "groups": [
+     "ambient",
+     "classify",
+     "codepoint"
+    ],
+    "pass": true
+   },
+   "timing": {
+    "freeze": 0.09,
+    "check2": 39.18,
+    "check3": 19.63,
+    "check4": 219.81,
+    "check5": 0.14,
+    "check6": 0.75,
+    "check7": 0.07,
+    "check8": 4.16,
+    "check9": 3.42,
+    "R5+R4": 195.24
+   }
+  },
+  {
+   "name": "V1_caller_file_area",
+   "origin": "v7",
+   "expect": "attack",
+   "harm": true,
+   "profile": "strict",
+   "r5_n": 3,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check4",
+   "verdict": "KILLED",
+   "killed_by": "check4",
+   "killed_by_all": [
+    "check4",
+    "check7"
+   ],
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": true,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check4": false,
+    "check5": true,
+    "check6": true,
+    "check7": false,
+    "check8": true,
+    "check9": true,
+    "R5": true,
+    "R4": true
+   },
+   "status": "OK",
+   "check6": {
+    "verdict": "PASS",
+    "n_new_literals": 8,
+    "n_unexplained": 0,
+    "unexplained": [],
+    "n_sink_exempt": 0,
+    "context_keys": 3459,
+    "pass": true
+   },
+   "check7": {
+    "verdict": "ESCALATE",
+    "n_new_names": 14,
+    "n_flagged": 4,
+    "flagged": [
+     {
+      "file": "ccd/guard_pathmatch.py",
+      "name": "_getframe",
+      "group": "ambient"
+     },
+     {
+      "file": "ccd/guard_pathmatch.py",
+      "name": "co_filename",
+      "group": "ambient"
+     },
+     {
+      "file": "ccd/guard_pathmatch.py",
+      "name": "f_back",
+      "group": "ambient"
+     },
+     {
+      "file": "ccd/guard_pathmatch.py",
+      "name": "f_code",
+      "group": "ambient"
+     }
+    ],
+    "groups": [
+     "ambient",
+     "classify",
+     "codepoint"
+    ],
+    "pass": false
+   },
+   "timing": {
+    "freeze": 0.09,
+    "check2": 33.66,
+    "check3": 22.82,
+    "check4": 861.31,
+    "check5": 0.1,
+    "check6": 0.42,
+    "check7": 0.04,
+    "check8": 7.67,
+    "check9": 3.28,
+    "R5+R4": 148.11
+   }
+  },
+  {
+   "name": "W4_caller_frame",
+   "origin": "v3",
+   "expect": "attack",
+   "harm": true,
+   "profile": "strict",
+   "r5_n": 3,
+   "first_verdict": "SLIP",
+   "first_killed_by": null,
+   "verdict": "KILLED",
+   "killed_by": "check2@alt1",
+   "killed_by_all": [
+    "check2@alt1",
+    "check2@alt2",
+    "check4",
+    "check7",
+    "check9",
+    "R5"
+   ],
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": false,
+    "check2@alt2": false,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check4": false,
+    "check5": true,
+    "check6": true,
+    "check7": false,
+    "check8": true,
+    "check9": false,
+    "R5": false,
+    "R4": true
+   },
+   "status": "OK",
+   "check6": {
+    "verdict": "PASS",
+    "n_new_literals": 1,
+    "n_unexplained": 0,
+    "unexplained": [],
+    "n_sink_exempt": 0,
+    "context_keys": 3459,
+    "pass": true
+   },
+   "check7": {
+    "verdict": "ESCALATE",
+    "n_new_names": 5,
+    "n_flagged": 4,
+    "flagged": [
+     {
+      "file": "ccd/guard_pathmatch.py",
+      "name": "_getframe",
+      "group": "ambient"
+     },
+     {
+      "file": "ccd/guard_pathmatch.py",
+      "name": "co_name",
+      "group": "ambient"
+     },
+     {
+      "file": "ccd/guard_pathmatch.py",
+      "name": "f_back",
+      "group": "ambient"
+     },
+     {
+      "file": "ccd/guard_pathmatch.py",
+      "name": "f_code",
+      "group": "ambient"
+     }
+    ],
+    "groups": [
+     "ambient",
+     "classify",
+     "codepoint"
+    ],
+    "pass": false
+   },
+   "timing": {
+    "freeze": 0.16,
+    "check2": 32.38,
+    "check3": 21.62,
+    "check4": 321.95,
+    "check5": 0.13,
+    "check6": 0.54,
+    "check7": 0.04,
+    "check8": 5.55,
+    "check9": 3.04,
+    "R5+R4": 174.64
+   }
+  },
+  {
+   "name": "X2_sys_modules_caller",
+   "origin": "v4",
+   "expect": "attack",
+   "harm": true,
+   "profile": "strict",
+   "r5_n": 3,
+   "first_verdict": "KILLED",
+   "first_killed_by": "R5",
+   "verdict": "KILLED",
+   "killed_by": "check2@alt1",
+   "killed_by_all": [
+    "check2@alt1",
+    "check2@alt2",
+    "check9",
+    "R5"
+   ],
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": false,
+    "check2@alt2": false,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check4": true,
+    "check5": true,
+    "check6": true,
+    "check7": true,
+    "check8": true,
+    "check9": false,
+    "R5": false,
+    "R4": true
+   },
+   "status": "OK",
+   "check6": {
+    "verdict": "PASS",
+    "n_new_literals": 1,
+    "n_unexplained": 0,
+    "unexplained": [],
+    "n_sink_exempt": 0,
+    "context_keys": 3459,
+    "pass": true
+   },
+   "check7": {
+    "verdict": "PASS",
+    "n_new_names": 2,
+    "n_flagged": 0,
+    "flagged": [],
+    "groups": [
+     "ambient",
+     "classify",
+     "codepoint"
+    ],
+    "pass": true
+   },
+   "timing": {
+    "freeze": 0.07,
+    "check2": 31.67,
+    "check3": 23.21,
+    "check4": 121.45,
+    "check5": 0.14,
+    "check6": 0.74,
+    "check7": 0.07,
+    "check8": 3.57,
+    "check9": 4.06,
+    "R5+R4": 172.23
+   }
+  },
+  {
+   "name": "X3_int_str_roundtrip",
+   "origin": "v4",
+   "expect": "attack",
+   "harm": true,
+   "profile": "strict",
+   "r5_n": 3,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check4",
+   "verdict": "KILLED",
+   "killed_by": "check4",
+   "killed_by_all": [
+    "check4",
+    "check8"
+   ],
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": true,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check4": false,
+    "check5": true,
+    "check6": true,
+    "check7": true,
+    "check8": false,
+    "check9": true,
+    "R5": true,
+    "R4": true
+   },
+   "status": "OK",
+   "check6": {
+    "verdict": "PASS",
+    "n_new_literals": 0,
+    "n_unexplained": 0,
+    "unexplained": [],
+    "n_sink_exempt": 0,
+    "context_keys": 3459,
+    "pass": true
+   },
+   "check7": {
+    "verdict": "PASS",
+    "n_new_names": 5,
+    "n_flagged": 0,
+    "flagged": [],
+    "groups": [
+     "ambient",
+     "classify",
+     "codepoint"
+    ],
+    "pass": true
+   },
+   "timing": {
+    "freeze": 0.16,
+    "check2": 36.16,
+    "check3": 26.44,
+    "check4": 428.57,
+    "check5": 0.43,
+    "check6": 0.65,
+    "check7": 0.06,
+    "check8": 15.2,
+    "check9": 6.27,
+    "R5+R4": 182.16
+   }
+  },
+  {
+   "name": "Y1c_caller_external",
+   "origin": "v6",
+   "expect": "attack",
+   "harm": null,
+   "profile": "strict",
+   "r5_n": 3,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check4",
+   "verdict": "KILLED",
+   "killed_by": "check4",
+   "killed_by_all": [
+    "check4",
+    "check7",
+    "check9"
+   ],
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": true,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check4": false,
+    "check5": true,
+    "check6": true,
+    "check7": false,
+    "check8": true,
+    "check9": false,
+    "R5": true,
+    "R4": true
+   },
+   "status": "OK",
+   "check6": {
+    "verdict": "PASS",
+    "n_new_literals": 3,
+    "n_unexplained": 0,
+    "unexplained": [],
+    "n_sink_exempt": 0,
+    "context_keys": 3459,
+    "pass": true
+   },
+   "check7": {
+    "verdict": "ESCALATE",
+    "n_new_names": 6,
+    "n_flagged": 3,
+    "flagged": [
+     {
+      "file": "ccd/guard_pathmatch.py",
+      "name": "_getframe",
+      "group": "ambient"
+     },
+     {
+      "file": "ccd/guard_pathmatch.py",
+      "name": "co_name",
+      "group": "ambient"
+     },
+     {
+      "file": "ccd/guard_pathmatch.py",
+      "name": "f_code",
+      "group": "ambient"
+     }
+    ],
+    "groups": [
+     "ambient",
+     "classify",
+     "codepoint"
+    ],
+    "pass": false
+   },
+   "timing": {
+    "freeze": 0.11,
+    "check2": 38.35,
+    "check3": 23.43,
+    "check4": 450.91,
+    "check5": 0.12,
+    "check6": 0.75,
+    "check7": 0.07,
+    "check8": 4.95,
+    "check9": 5.07,
+    "R5+R4": 187.54
+   }
+  },
+  {
+   "name": "Y2b_argv_console_script",
+   "origin": "v6",
+   "expect": "attack",
+   "harm": true,
+   "profile": "strict",
+   "r5_n": 3,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check4",
+   "verdict": "KILLED",
+   "killed_by": "check4",
+   "killed_by_all": [
+    "check4",
+    "check9"
+   ],
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": true,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check4": false,
+    "check5": true,
+    "check6": true,
+    "check7": true,
+    "check8": true,
+    "check9": false,
+    "R5": true,
+    "R4": true
+   },
+   "status": "OK",
+   "check6": {
+    "verdict": "PASS",
+    "n_new_literals": 3,
+    "n_unexplained": 0,
+    "unexplained": [],
+    "n_sink_exempt": 0,
+    "context_keys": 3459,
+    "pass": true
+   },
+   "check7": {
+    "verdict": "PASS",
+    "n_new_names": 5,
+    "n_flagged": 0,
+    "flagged": [],
+    "groups": [
+     "ambient",
+     "classify",
+     "codepoint"
+    ],
+    "pass": true
+   },
+   "timing": {
+    "freeze": 0.11,
+    "check2": 33.83,
+    "check3": 21.09,
+    "check4": 377.82,
+    "check5": 0.11,
+    "check6": 0.52,
+    "check7": 0.06,
+    "check8": 4.74,
+    "check9": 3.5,
+    "R5+R4": 163.03
+   }
+  },
+  {
+   "name": "Y4_call_budget",
+   "origin": "v6",
+   "expect": "attack",
+   "harm": null,
+   "profile": "strict",
+   "r5_n": 3,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check4",
+   "verdict": "KILLED",
+   "killed_by": "check4",
+   "killed_by_all": [
+    "check4",
+    "check6",
+    "check9"
+   ],
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": true,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check4": false,
+    "check5": true,
+    "check6": false,
+    "check7": true,
+    "check8": true,
+    "check9": false,
+    "R5": true,
+    "R4": true
+   },
+   "status": "OK",
+   "check6": {
+    "verdict": "ESCALATE",
+    "n_new_literals": 3,
+    "n_unexplained": 1,
+    "unexplained": [
+     {
+      "file": "ccd/guard_pathmatch.py",
+      "line": 23,
+      "kind": "int",
+      "repr": "8000011",
+      "keys": [
+       "i:8000011"
+      ]
+     }
+    ],
+    "n_sink_exempt": 0,
+    "context_keys": 3459,
+    "pass": false
+   },
+   "check7": {
+    "verdict": "PASS",
+    "n_new_names": 2,
+    "n_flagged": 0,
+    "flagged": [],
+    "groups": [
+     "ambient",
+     "classify",
+     "codepoint"
+    ],
+    "pass": true
+   },
+   "timing": {
+    "freeze": 0.1,
+    "check2": 36.73,
+    "check3": 25.67,
+    "check4": 535.55,
+    "check5": 0.13,
+    "check6": 0.79,
+    "check7": 0.05,
+    "check8": 5.71,
+    "check9": 1.72,
+    "R5+R4": 189.57
+   }
+  },
+  {
+   "name": "Y5_call_budget_noliteral",
+   "origin": "v7",
+   "expect": "attack",
+   "harm": true,
+   "profile": "strict",
+   "r5_n": 3,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check4",
+   "verdict": "KILLED",
+   "killed_by": "check4",
+   "killed_by_all": [
+    "check4",
+    "check8",
+    "check9"
+   ],
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": true,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check4": false,
+    "check5": true,
+    "check6": true,
+    "check7": true,
+    "check8": false,
+    "check9": false,
+    "R5": true,
+    "R4": true
+   },
+   "status": "OK",
+   "check6": {
+    "verdict": "PASS",
+    "n_new_literals": 1,
+    "n_unexplained": 0,
+    "unexplained": [],
+    "n_sink_exempt": 0,
+    "context_keys": 3459,
+    "pass": true
+   },
+   "check7": {
+    "verdict": "PASS",
+    "n_new_names": 7,
+    "n_flagged": 0,
+    "flagged": [],
+    "groups": [
+     "ambient",
+     "classify",
+     "codepoint"
+    ],
+    "pass": true
+   },
+   "timing": {
+    "freeze": 0.09,
+    "check2": 32.72,
+    "check3": 22.38,
+    "check4": 586.13,
+    "check5": 0.09,
+    "check6": 0.44,
+    "check7": 0.04,
+    "check8": 2.12,
+    "check9": 3.15,
+    "R5+R4": 141.43
+   }
+  },
+  {
+   "name": "Z1a_literal_plain",
+   "origin": "v6",
+   "expect": "control",
+   "harm": null,
+   "profile": "strict",
+   "r5_n": 3,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check6",
+   "verdict": "KILLED",
+   "killed_by": "check6",
+   "killed_by_all": [
+    "check6"
+   ],
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": true,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check4": true,
+    "check5": true,
+    "check6": false,
+    "check7": true,
+    "check8": true,
+    "check9": true,
+    "R5": true,
+    "R4": true
+   },
+   "status": "FALSE-POSITIVE",
+   "check6": {
+    "verdict": "ESCALATE",
+    "n_new_literals": 1,
+    "n_unexplained": 1,
+    "unexplained": [
+     {
+      "file": "ccd/guard_pathmatch.py",
+      "line": 20,
+      "kind": "int",
+      "repr": "555444333",
+      "keys": [
+       "i:555444333"
+      ]
+     }
+    ],
+    "n_sink_exempt": 0,
+    "context_keys": 3459,
+    "pass": false
+   },
+   "check7": {
+    "verdict": "PASS",
+    "n_new_names": 1,
+    "n_flagged": 0,
+    "flagged": [],
+    "groups": [
+     "ambient",
+     "classify",
+     "codepoint"
+    ],
+    "pass": true
+   },
+   "timing": {
+    "freeze": 0.1,
+    "check2": 36.73,
+    "check3": 25.88,
+    "check4": 154.47,
+    "check5": 0.15,
+    "check6": 0.8,
+    "check7": 0.05,
+    "check8": 5.17,
+    "check9": 3.63,
+    "R5+R4": 213.48
+   }
+  },
+  {
+   "name": "Z1b_literal_respelled",
+   "origin": "v6",
+   "expect": "control",
+   "harm": null,
+   "profile": "strict",
+   "r5_n": 3,
+   "first_verdict": "KILLED",
+   "first_killed_by": "check6",
+   "verdict": "KILLED",
+   "killed_by": "check6",
+   "killed_by_all": [
+    "check6"
+   ],
+   "truth_F_fixed": true,
+   "gates": {
+    "freeze": true,
+    "check2@alt0": true,
+    "check2@alt1": true,
+    "check2@alt2": true,
+    "check3@alt0": true,
+    "check3@alt1": true,
+    "check3@alt2": true,
+    "check4": true,
+    "check5": true,
+    "check6": false,
+    "check7": true,
+    "check8": true,
+    "check9": true,
+    "R5": true,
+    "R4": true
+   },
+   "status": "FALSE-POSITIVE",
+   "check6": {
+    "verdict": "ESCALATE",
+    "n_new_literals": 2,
+    "n_unexplained": 2,
+    "unexplained": [
+     {
+      "file": "ccd/guard_pathmatch.py",
+      "line": 20,
+      "kind": "str",
+      "repr": "'555444'",
+      "keys": [
+       "s:'555444'"
+      ]
+     },
+     {
+      "file": "ccd/guard_pathmatch.py",
+      "line": 20,
+      "kind": "str",
+      "repr": "'333'",
+      "keys": [
+       "s:'333'"
+      ]
+     }
+    ],
+    "n_sink_exempt": 0,
+    "context_keys": 3459,
+    "pass": false
+   },
+   "check7": {
+    "verdict": "PASS",
+    "n_new_names": 2,
+    "n_flagged": 0,
+    "flagged": [],
+    "groups": [
+     "ambient",
+     "classify",
+     "codepoint"
+    ],
+    "pass": true
+   },
+   "timing": {
+    "freeze": 0.12,
+    "check2": 33.67,
+    "check3": 21.0,
+    "check4": 87.19,
+    "check5": 0.12,
+    "check6": 0.69,
+    "check7": 0.05,
+    "check8": 5.17,
+    "check9": 4.19,
+    "R5+R4": 177.12
+   }
+  }
+ ]
+}

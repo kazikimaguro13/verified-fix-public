@@ -1,0 +1,23 @@
+{
+ "schema": 1,
+ "what": "verified-fix -- the JS/TS side of the attack corpus.  One entry per variant: what it is, where it lives, and how it was last judged.  The sister file on the Python side is harness/attack-corpus/index.json (72 entries).",
+ "not_a_gate": "Nothing here decides anything.  This file is a record.",
+ "built_by": "harness/js/tools/build_corpus_index.py",
+ "read_with": "harness/js/tools/show_corpus.py",
+ "verdict_vocabulary": {
+  "rejected_hard": "killed_by_all is non-empty -- a hard gate measured the patch and rejected it",
+  "could_not_run": "killed_by_all is empty but errored_gates is not -- fail closed, NOT a kill (HANDOFF §0-c, 13th)",
+  "inapplicable": "killed_by_all and errored_gates are empty but inapplicable_gates is not -- a gate that cannot judge this anchor at all.  Fails closed today; whether it SHOULD is decision 1 C2, still open.  Only runs from v61 on can carry this",
+  "accepted_escalated": "no hard killer, no error, but an escalate-only gate (check6/check7) raised a flag",
+  "all_gates_passed": "every gate that ran returned true.  For kind=attack this is a SLIP"
+ },
+ "how_the_verdicts_were_pulled": "every reports/**/*.json carrying both `name` and `killed_by_all` (the run_gates.mjs output schema).  ⚠ `killed_by` is a scalar -- only the first hard killer -- and is never counted here.",
+ "known_limits": [
+  "It records VERDICTS, not gate health.  A gate can go silent while every verdict stays the same (HANDOFF §0-d, measured in v14).  Use src/compare_runs.py for that; this file cannot answer it.",
+  "Rounds v19-v37 kept their verdicts only in prose tables, so every anchor-1 variant (F1/M*) has latest=null.  That is a gap in the record, not a gap in the measurement.",
+  "`latest` is the newest RECORDED run, not a re-run.  Nothing here was executed to build this file.  When the harness configuration of that round is no longer the shipping one, the entry carries a `caveat` saying so (S26_date_validation is the live example: its v44 rejection needed check5 default-on, and check5 became opt-in in v45).  Read `gates_run` / `gates_skipped` before comparing two rounds -- 'no gate objected' and 'that gate was not on' are different facts and are recorded separately.",
+  "Cost, coverage and per-gate detail are in the raw files and are deliberately not copied here -- one number, one home (§0-g).",
+  "N7_zero_new is not an entry: v23 recorded that it could not be built, and that itself was the result."
+ ],
+ "entries": []
+}

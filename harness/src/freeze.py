@@ -1,0 +1,251 @@
+"""freeze.py — 凍結マニフェスト v2 (DESIGN D3).
+
+Freezes the *entire verification context*, not just the oracle file, so that a
+fixing agent that touches the test harness is rejected structurally rather than
+argued about.  Frozen surface:
+
+  * oracle T body(s)                    -> explicit hash  (T本体)
+  * every conftest.py in the repo       -> hash each      (攻撃#2)
+  * pytest config (pyproject/pytest.ini/setup.cfg/tox.ini)
+  * the whole tests/ tree (path->hash)  -> add/modify/delete detection (攻撃#2)
+  * F anchor(s)  file:function          -> must still exist (AST) (D2 scope base)
+  * registry/ directory                 -> hash each file (D4 tamper-proofing)
+
+Commands:
+  build   write the manifest json
+  verify  recompute and compare; exit 1 (and print the violations) on ANY drift
+
+Any verify failure == immediate rejection of the candidate patch.
+"""
+
+from __future__ import annotations
+
+import argparse
+import ast
+import hashlib
+import json
+import pathlib
+import sys
+
+SKIP_DIRS = {"__pycache__", ".git", ".hypothesis", ".pytest_cache"}
+CONFIG_NAMES = ("pyproject.toml", "pytest.ini", "setup.cfg", "tox.ini")
+
+
+def _h(data: bytes) -> str:
+    return hashlib.sha256(data).hexdigest()
+
+
+def _hash_file(p: pathlib.Path) -> str:
+    try:
+        return _h(p.read_bytes())
+    except OSError:
+        return "<unreadable>"
+
+
+def _walk(root: pathlib.Path):
+    if not root.exists():
+        return
+    for p in sorted(root.rglob("*")):
+        if any(part in SKIP_DIRS for part in p.parts):
+            continue
+        if p.is_file() and p.suffix != ".pyc":
+            yield p
+
+
+def _tree_map(root: pathlib.Path, base: pathlib.Path) -> dict:
+    return {str(p.relative_to(base)): _hash_file(p) for p in _walk(root)}
+
+
+def _anchor_present(repo: pathlib.Path, spec: str) -> bool:
+    """spec is ``file.py:func`` — True iff that FunctionDef exists in the file."""
+    rel, _, func = spec.partition(":")
+    f = repo / rel
+    if not f.exists():
+        return False
+    try:
+        tree = ast.parse(f.read_text(encoding="utf-8"))
+    except SyntaxError:
+        return False
+    return any(
+        isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef)) and n.name == func
+        for n in ast.walk(tree)
+    )
+
+
+def build_manifest(repo: pathlib.Path, oracles, anchors,
+                   registry: pathlib.Path, tests_dir: str = "tests",
+                   anchor_spec: str = "", findings=()) -> dict:
+    conftests = {
+        str(p.relative_to(repo)): _hash_file(p)
+        for p in _walk(repo)
+        if p.name == "conftest.py"
+    }
+    configs = {
+        name: _hash_file(repo / name)
+        for name in CONFIG_NAMES
+        if (repo / name).exists()
+    }
+    return {
+        "repo": str(repo),
+        # recorded so `verify` cannot be pointed at a different tree: a
+        # mismatched tests_dir would compare a populated map against an empty
+        # one and report every file as REMOVED -- a violation the patch did not
+        # cause.
+        "tests_dir": tests_dir,
+        # the input generator of 検査5/8/9/10/12 -- see --anchor-spec
+        "anchor_spec": ({str(pathlib.Path(anchor_spec)): _hash_file(pathlib.Path(anchor_spec))}
+                        if anchor_spec else {}),
+        # ★v120 (decision 44): the finding text is an explanation source for
+        # 検査6 (--lit-sources defaults to pre,finding,oracle,tests) and was not
+        # frozen.  MEASURED on the JS side (v116): appending one sentence --
+        # "実装上の既定として 69 を用いる。" -- took M1_hardcode's 検査6 from
+        # escalate=true with the numeric literal 69 unexplained to
+        # escalate=false with 69 explained BY THE FINDING.  Same patch, same
+        # oracle, same tests.  Frozen for the same reason anchor_spec is: a file
+        # that can silence a gate belongs in the freeze.
+        "findings": {str(pathlib.Path(f)): _hash_file(pathlib.Path(f))
+                     for f in dict.fromkeys(f for f in findings if f)},
+        "oracles": {o: _hash_file(repo / o) for o in oracles},
+        "conftests": conftests,
+        "configs": configs,
+        # not every project puts its tests at the root: mutatest keeps them
+        # at mutatest/tests, and a silently empty tests_tree would make the
+        # freeze claim "the test tree did not move" while watching nothing.
+        "tests_tree": _tree_map(repo / tests_dir, repo),
+        "anchors": {a: _anchor_present(repo, a) for a in anchors},
+        "registry": _tree_map(registry, registry),
+    }
+
+
+def diff_map(old: dict, new: dict, kind: str) -> list:
+    v = []
+    for k in old:
+        if k not in new:
+            v.append(f"{kind}: REMOVED {k}")
+        elif old[k] != new[k]:
+            v.append(f"{kind}: MODIFIED {k}")
+    for k in new:
+        if k not in old:
+            v.append(f"{kind}: ADDED {k}")
+    return v
+
+
+def verify(manifest: dict, repo: pathlib.Path, registry: pathlib.Path,
+           tests_dir: str = "tests", expected_spec: str = "",
+           expected_finding: str = "") -> list:
+    oracles = list(manifest["oracles"])
+    anchors = list(manifest["anchors"])
+    # rehash the findings the manifest recorded AND the one this run uses, so
+    # an edited finding and a cfg re-pointed at another one are both caught
+    # (the JS side measured the re-pointing case for specs in v65).
+    finding_keys = list(dict.fromkeys(
+        [*(manifest.get("findings") or {}), *( [expected_finding] if expected_finding else [] )]))
+    cur = build_manifest(repo, oracles, anchors, registry, tests_dir,
+                         next(iter(manifest.get('anchor_spec') or {}), ''),
+                         finding_keys)
+    violations = []
+    violations += diff_map(manifest["oracles"], cur["oracles"], "oracle")
+    violations += diff_map(manifest["conftests"], cur["conftests"], "conftest")
+    violations += diff_map(manifest["configs"], cur["configs"], "config")
+    violations += diff_map(manifest["tests_tree"], cur["tests_tree"], "tests_tree")
+    violations += diff_map(manifest["registry"], cur["registry"], "registry")
+    violations += diff_map(manifest.get("anchor_spec", {}),
+                           cur.get("anchor_spec", {}), "anchor_spec")
+    # An absent `findings` key is NOT read as "no finding to check" -- the
+    # caller is told through findings_frozen instead (§0-c).
+    if manifest.get("findings") is not None:
+        violations += diff_map(manifest["findings"], cur.get("findings", {}),
+                               "findings")
+    # ★v97 (owner 2026-09-07): a spec the run USES but the manifest never
+    # froze is not "no drift" -- it is an unchecked input to the sweeping
+    # gates (the JS side learned this in v66/v78(2): specs_frozen:false).
+    # MEASURED (v93 probe): run_gates3 --anchor-spec on manifest_v8, which
+    # has no spec, verified clean.  A changed spec is caught above as
+    # MODIFIED; an absent one is caught here.
+    if expected_spec:
+        key = str(pathlib.Path(expected_spec))
+        if key not in (manifest.get("anchor_spec") or {}):
+            violations.append("anchor_spec: UNFROZEN %s (the manifest froze no such spec; "
+                              "rebuild it with --anchor-spec before reading a verdict)" % key)
+    for a, present in manifest["anchors"].items():
+        if present and not cur["anchors"].get(a):
+            violations.append(f"anchor: MISSING {a}")
+    return violations
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("cmd", choices=["build", "verify"])
+    ap.add_argument("--repo", required=True)
+    ap.add_argument("--manifest", required=True)
+    ap.add_argument("--registry", required=True)
+    ap.add_argument("--tests-dir", default=None,
+                    help="repo-relative test tree to freeze (mutatest: "
+                         "mutatest/tests).  On `verify` the MANIFEST is the "
+                         "authority -- pass this only to assert what you "
+                         "expect, and a mismatch then fails closed.")
+    ap.add_argument("--anchor-spec", default="",
+                    help="path to the anchor spec JSON.  Frozen for the same "
+                         "reason the oracle is: it decides what the sweeping "
+                         "gates look at, so a patch that can edit it can "
+                         "silence them without writing an attack.")
+    ap.add_argument("--finding", action="append", default=[],
+                    help="path to the finding text.  Frozen for the same "
+                         "reason the anchor spec is: 検査6 explains literals "
+                         "with it, so a text that can be edited can silence "
+                         "the gate without writing an attack (decision 44).")
+    ap.add_argument("--oracle", action="append", default=[])
+    ap.add_argument("--anchor", action="append", default=[])
+    a = ap.parse_args()
+    repo = pathlib.Path(a.repo)
+    registry = pathlib.Path(a.registry)
+    mpath = pathlib.Path(a.manifest)
+
+    if a.cmd == "build":
+        m = build_manifest(repo, a.oracle, a.anchor, registry,
+                           a.tests_dir or "tests", a.anchor_spec, a.finding)
+        mpath.write_text(json.dumps(m, indent=1))
+        print(json.dumps({"built": str(mpath),
+                          "oracles": list(m["oracles"]),
+                          "conftests": list(m["conftests"]),
+                          "configs": list(m["configs"]),
+                          "n_tests_files": len(m["tests_tree"]),
+                          "anchors": m["anchors"],
+                          "n_registry_files": len(m["registry"]),
+                          "findings": list(m.get("findings") or {})}, indent=1))
+        return 0
+
+    manifest = json.loads(mpath.read_text())
+    # The manifest records which tree it froze, and that recording is the
+    # authority: a caller that does not say otherwise gets the frozen value.
+    # Without this, run_gates3 (which does not pass --tests-dir) verified a
+    # mutatest manifest against the default "tests" and reported a freeze
+    # violation the patch had nothing to do with -- measured, v13.
+    frozen_td = manifest.get("tests_dir", "tests")
+    if a.tests_dir is not None and frozen_td != a.tests_dir:
+        # fail closed and say which is which, rather than emitting a wall of
+        # phantom REMOVED lines.
+        print(json.dumps({"pass": False, "n_violations": 1,
+                          "violations": ["tests_dir: frozen as %r, verifying "
+                                         "with %r" % (frozen_td, a.tests_dir)]},
+                         indent=1))
+        return 1
+    finding_in_use = a.finding[0] if a.finding else ""
+    violations = verify(manifest, repo, registry, frozen_td,
+                        expected_spec=a.anchor_spec,
+                        expected_finding=finding_in_use)   # ★v97 / ★v120
+    # ★v120 (decision 44): "this manifest froze no finding and the run uses one"
+    # is reported as a FLAG, not as a violation -- the caller decides, and
+    # run_gates3 files it as could-not-run rather than as a kill (D22).
+    findings_frozen = not (manifest.get("findings") is None and finding_in_use)
+    print(json.dumps({"pass": not violations,
+                      "n_violations": len(violations),
+                      "violations": violations[:40],
+                      "n_findings_frozen": len(manifest.get("findings") or {}),
+                      "finding_in_use": finding_in_use,
+                      "findings_frozen": findings_frozen}, indent=1))
+    return 0 if not violations else 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())

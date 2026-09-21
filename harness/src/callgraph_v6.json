@@ -1,0 +1,427 @@
+{
+ "repo": "$VF_HOME/testbed",
+ "anchor": "ccd/guard_pathmatch.py:_is_allowed",
+ "n_functions_scanned": 1772,
+ "altitudes": {
+  "0": [
+   {
+    "rel": "ccd/guard_pathmatch.py",
+    "qual": "_is_allowed",
+    "name": "_is_allowed",
+    "lineno": null
+   }
+  ],
+  "1": [
+   {
+    "rel": "ccd/guard.py",
+    "qual": "inspect_diff",
+    "name": "inspect_diff",
+    "lineno": 293
+   }
+  ],
+  "2": [
+   {
+    "rel": "ccd/cli.py",
+    "qual": "_cmd_guard",
+    "name": "_cmd_guard",
+    "lineno": 762
+   },
+   {
+    "rel": "ccd/nightly_defaults.py",
+    "qual": "_default_guard_inspector",
+    "name": "_default_guard_inspector",
+    "lineno": 323
+   }
+  ],
+  "3": [
+   {
+    "rel": "ccd/cli.py",
+    "qual": "main",
+    "name": "main",
+    "lineno": 82
+   }
+  ]
+ },
+ "altitude_count": 4,
+ "verification_callers_excluded": [
+  {
+   "rel": "registry/test_inv_0001_sibling.py",
+   "qual": "test_inv_0001_sibling_never_granted",
+   "name": "test_inv_0001_sibling_never_granted",
+   "lineno": 19
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_is_allowed_reflexive_single_entry_allowlist",
+   "name": "test_is_allowed_reflexive_single_entry_allowlist",
+   "lineno": 1733
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_is_allowed_never_crashes",
+   "name": "test_is_allowed_never_crashes",
+   "lineno": 1741
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_is_allowed_matches_via_glob_pattern",
+   "name": "test_is_allowed_matches_via_glob_pattern",
+   "lineno": 1749
+  },
+  {
+   "rel": "tests/test_oracle_F.py",
+   "qual": "test_is_allowed_rejects_sibling_sharing_a_prefix",
+   "name": "test_is_allowed_rejects_sibling_sharing_a_prefix",
+   "lineno": 20
+  },
+  {
+   "rel": "tests/test_oracle_F.py",
+   "qual": "test_is_allowed_rejects_filename_extension_of_an_entry",
+   "name": "test_is_allowed_rejects_filename_extension_of_an_entry",
+   "lineno": 25
+  },
+  {
+   "rel": "tests/test_oracle_F.py",
+   "qual": "test_is_allowed_still_accepts_a_real_directory_member",
+   "name": "test_is_allowed_still_accepts_a_real_directory_member",
+   "lineno": 30
+  },
+  {
+   "rel": "tests/test_oracle_F_pbt.py",
+   "qual": "test_sibling_or_extension_is_rejected",
+   "name": "test_sibling_or_extension_is_rejected",
+   "lineno": 286
+  },
+  {
+   "rel": "tests/test_oracle_F_pbt.py",
+   "qual": "test_real_member_is_allowed",
+   "name": "test_real_member_is_allowed",
+   "lineno": 307
+  },
+  {
+   "rel": "tests/test_oracle_F_pbt.py",
+   "qual": "test_entry_itself_is_allowed",
+   "name": "test_entry_itself_is_allowed",
+   "lineno": 323
+  },
+  {
+   "rel": "tests/test_oracle_F_pbt.py",
+   "qual": "test_empty_path_is_never_allowed",
+   "name": "test_empty_path_is_never_allowed",
+   "lineno": 339
+  },
+  {
+   "rel": "tests/test_oracle_F_pbt.py",
+   "qual": "test_tuple_verdict_is_or_of_singletons",
+   "name": "test_tuple_verdict_is_or_of_singletons",
+   "lineno": 355
+  },
+  {
+   "rel": "tests/test_oracle_F_pbt.py",
+   "qual": "test_order_of_allowed_does_not_matter",
+   "name": "test_order_of_allowed_does_not_matter",
+   "lineno": 369
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_legitimate_template_a_append_passes",
+   "name": "test_legitimate_template_a_append_passes",
+   "lineno": 274
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_legitimate_template_a_new_test_file_passes",
+   "name": "test_legitimate_template_a_new_test_file_passes",
+   "lineno": 287
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_r2_deleted_lines_in_existing_test_halt",
+   "name": "test_r2_deleted_lines_in_existing_test_halt",
+   "lineno": 297
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_r2_weakened_assert_halts",
+   "name": "test_r2_weakened_assert_halts",
+   "lineno": 309
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_r2_skip_marker_added_to_existing_halts",
+   "name": "test_r2_skip_marker_added_to_existing_halts",
+   "lineno": 321
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_r2_pytestmark_assignment_halts",
+   "name": "test_r2_pytestmark_assignment_halts",
+   "lineno": 348
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_r2_collect_ignore_in_conftest_halts",
+   "name": "test_r2_collect_ignore_in_conftest_halts",
+   "lineno": 365
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_r2_collection_hook_halts",
+   "name": "test_r2_collection_hook_halts",
+   "lineno": 381
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_r2_xfail_marker_in_brand_new_test_still_halts",
+   "name": "test_r2_xfail_marker_in_brand_new_test_still_halts",
+   "lineno": 396
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_r2_deleting_a_whole_test_file_halts",
+   "name": "test_r2_deleting_a_whole_test_file_halts",
+   "lineno": 408
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_r2b_halts_on_new_conftest_autouse_fixture",
+   "name": "test_r2b_halts_on_new_conftest_autouse_fixture",
+   "lineno": 418
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_r2b_normal_new_test_file_still_passes",
+   "name": "test_r2b_normal_new_test_file_still_passes",
+   "lineno": 442
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_r2b_halts_on_modified_pytest_ini",
+   "name": "test_r2b_halts_on_modified_pytest_ini",
+   "lineno": 454
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_r2b_halts_on_modified_pytest_config_basenames",
+   "name": "test_r2b_halts_on_modified_pytest_config_basenames",
+   "lineno": 475
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_r2b_halts_on_new_tests_init_with_module_monkeypatch",
+   "name": "test_r2b_halts_on_new_tests_init_with_module_monkeypatch",
+   "lineno": 507
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_r2b_new_tests_init_at_nested_depth_also_halts",
+   "name": "test_r2b_new_tests_init_at_nested_depth_also_halts",
+   "lineno": 529
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_r2_autouse_fixture_added_to_existing_test_halts",
+   "name": "test_r2_autouse_fixture_added_to_existing_test_halts",
+   "lineno": 571
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_r2_monkeypatch_setenv_added_to_existing_test_halts",
+   "name": "test_r2_monkeypatch_setenv_added_to_existing_test_halts",
+   "lineno": 589
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_r2c_halts_on_new_test_support_file_with_autouse_monkeypatch",
+   "name": "test_r2c_halts_on_new_test_support_file_with_autouse_monkeypatch",
+   "lineno": 650
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_r2c_fires_ahead_of_r1_even_with_narrow_allowlist",
+   "name": "test_r2c_fires_ahead_of_r1_even_with_narrow_allowlist",
+   "lineno": 665
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_r2c_normal_new_test_file_still_passes",
+   "name": "test_r2c_normal_new_test_file_still_passes",
+   "lineno": 678
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_r2c_does_not_duplicate_r2b_on_conftest_or_tests_init",
+   "name": "test_r2c_does_not_duplicate_r2b_on_conftest_or_tests_init",
+   "lineno": 689
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_r1_outside_allowed_halts",
+   "name": "test_r1_outside_allowed_halts",
+   "lineno": 710
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_denylist_guard_file_halts_even_if_explicitly_allowed",
+   "name": "test_denylist_guard_file_halts_even_if_explicitly_allowed",
+   "lineno": 721
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_denylist_pyproject_halts",
+   "name": "test_denylist_pyproject_halts",
+   "lineno": 733
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_denylist_github_workflow_halts",
+   "name": "test_denylist_github_workflow_halts",
+   "lineno": 743
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_denylist_nightly_module_halts",
+   "name": "test_denylist_nightly_module_halts",
+   "lineno": 753
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_template_b_small_prod_diff_passes",
+   "name": "test_template_b_small_prod_diff_passes",
+   "lineno": 764
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_template_b_huge_prod_diff_halts_r3",
+   "name": "test_template_b_huge_prod_diff_halts_r3",
+   "lineno": 773
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_template_a_does_not_apply_r3",
+   "name": "test_template_a_does_not_apply_r3",
+   "lineno": 783
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_template_b_tests_only_diff_halts_r3b",
+   "name": "test_template_b_tests_only_diff_halts_r3b",
+   "lineno": 797
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_template_b_legit_diff_touching_named_file_and_tests_passes",
+   "name": "test_template_b_legit_diff_touching_named_file_and_tests_passes",
+   "lineno": 811
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_r3b_noop_when_allowlist_has_zero_named_prod_files",
+   "name": "test_r3b_noop_when_allowlist_has_zero_named_prod_files",
+   "lineno": 823
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_r3b_halts_when_named_file_touched_with_zero_diff_lines",
+   "name": "test_r3b_halts_when_named_file_touched_with_zero_diff_lines",
+   "lineno": 838
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_binary_diff_safe_halts",
+   "name": "test_binary_diff_safe_halts",
+   "lineno": 869
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_rename_safe_halts",
+   "name": "test_rename_safe_halts",
+   "lineno": 879
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_mode_change_safe_halts",
+   "name": "test_mode_change_safe_halts",
+   "lineno": 889
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_empty_diff_passes",
+   "name": "test_empty_diff_passes",
+   "lineno": 899
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_unknown_template_halts",
+   "name": "test_unknown_template_halts",
+   "lineno": 911
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_multiple_violations_all_surfaced",
+   "name": "test_multiple_violations_all_surfaced",
+   "lineno": 921
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_returns_guard_result_dataclass",
+   "name": "test_returns_guard_result_dataclass",
+   "lineno": 939
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_template_b_core_module_metrics_halts_on_denylist",
+   "name": "test_template_b_core_module_metrics_halts_on_denylist",
+   "lineno": 976
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_template_b_product_fixable_protocol_passes",
+   "name": "test_template_b_product_fixable_protocol_passes",
+   "lineno": 995
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_template_b_other_core_modules_all_denied",
+   "name": "test_template_b_other_core_modules_all_denied",
+   "lineno": 1007
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_template_b_new_unclassified_ccd_module_denied_by_default",
+   "name": "test_template_b_new_unclassified_ccd_module_denied_by_default",
+   "lineno": 1023
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_template_a_tests_only_unchanged_under_inversion",
+   "name": "test_template_a_tests_only_unchanged_under_inversion",
+   "lineno": 1035
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_core_module_denied_even_via_rename_old_path",
+   "name": "test_core_module_denied_even_via_rename_old_path",
+   "lineno": 1103
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_denylist_profiles_canonical_toml_halts",
+   "name": "test_denylist_profiles_canonical_toml_halts",
+   "lineno": 1136
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_added_slow_marker_does_not_halt_guard",
+   "name": "test_added_slow_marker_does_not_halt_guard",
+   "lineno": 1269
+  },
+  {
+   "rel": "tests/test_guard.py",
+   "qual": "test_inspect_diff_unparseable_diff_safe_halts",
+   "name": "test_inspect_diff_unparseable_diff_safe_halts",
+   "lineno": 1297
+  }
+ ],
+ "bound": "repo-local only; importers outside this repo are not enumerable"
+}

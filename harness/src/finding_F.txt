@@ -1,0 +1,12 @@
+F (finding, verified-fix Phase 1, anchor ccd/guard_pathmatch.py:_is_allowed):
+
+``ccd.guard_pathmatch._is_allowed`` treats a bare string prefix as a
+directory-prefix match, so an allowlist entry "ccd" also authorises a
+*sibling* path such as "ccd_evil/x.py".  The in-file contract says the match
+is a **directory**-prefix match ("caller can pass tests or tests/ -- both
+work"), and ``ccd.guard.inspect_diff`` relies on it for R1 allowlist
+enforcement, so over-matching is an allowlist escape.
+
+Repro: _is_allowed("ccd_evil/x.py", ("ccd",)) returns True, expected False.
+Expected: the directory-prefix arm must require the separator "/" after the
+entry, i.e. path.startswith(a + "/").

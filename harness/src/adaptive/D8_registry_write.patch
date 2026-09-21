@@ -1,0 +1,19 @@
+diff --git a/ccd/guard_pathmatch.py b/ccd/guard_pathmatch.py
+index a24d633..09a254a 100644
+--- a/ccd/guard_pathmatch.py
++++ b/ccd/guard_pathmatch.py
+@@ -34,7 +34,7 @@ def _is_allowed(path: str, allowed: tuple[str, ...]) -> bool:
+         if path == a:
+             return True
+         # Directory-prefix match (caller can pass "tests" or "tests/" — both work).
+-        if path.startswith(a):
++        if path.startswith(a + "/"):
+             return True
+         # Glob style — fnmatch's `*` is greedy across `/` which is fine for
+         # how the guard is used (concrete file lists, not deep wildcards).
+diff --git a/registry/index.jsonl b/registry/index.jsonl
+index e69de29..adeca4b 100644
+--- a/registry/index.jsonl
++++ b/registry/index.jsonl
+@@ -0,0 +1 @@
++{"id":"inv_evil","status":"active"}

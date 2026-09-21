@@ -1,0 +1,679 @@
+"""run_gates3.py -- verified-fix **v2** gate runner.
+
+Same gate order as v1's ``run_gates2.py``:
+
+  freeze -> 検査2 -> 検査3 -> 検査4(mutgate2) -> 検査5(diffgate2) -> R5 -> R4
+
+with three differences, all of them consequences of the C1b postmortem:
+
+  1. every path is a parameter (``--repo/--results/--manifest/--branch``) so N
+     runners can work on N clones of the testbed in parallel -- the v2 attack
+     sweep is ~20 patches and the serial cost was 147 s each;
+  2. ground truth is ``truth_v2.py`` (boundary-covering) instead of v1's
+     14-case ``truth.py`` which certified C1b as fixed;
+  3. ``--skip r5,r4`` for cheap triage sweeps (the two slowest gates cost 74 s
+     and never fire alone on this defect class); the corpus runner uses the
+     full set.
+
+usage:
+  run_gates3.py <name> <patchfile> [--repo P] [--results P] [--manifest P]
+                [--branch B] [--baseline P] [--oracle REL] [--truth P]
+                [--skip r5,r4]
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import pathlib
+import re
+import shutil
+import subprocess
+import sys
+import time
+
+HOME = pathlib.Path(os.path.expanduser("~"))
+SRC = HOME / "vf1/src"
+GATES = HOME / "vf1/gates"
+PY = str(HOME / "projects/Cowork-CC-dispatch/.venv/bin/python")
+ANCHOR_FILE = "ccd/guard_pathmatch.py"
+ANCHOR_FUNC = "_is_allowed"
+DEFAULT_ORACLE = "alt0=tests/test_oracle_F_pbt.py"
+LIGHT = ["-m", "not slow"]
+
+
+def sh(cmd, cwd, env=None, timeout=1800):
+    return subprocess.run(cmd, cwd=str(cwd), env=env, capture_output=True,
+                          text=True, timeout=timeout)
+
+
+class Runner:
+    def __init__(self, a):
+        self.repo = pathlib.Path(a.repo)
+        self.results = pathlib.Path(a.results)
+        self.manifest = pathlib.Path(a.manifest)
+        self.baseline = pathlib.Path(a.baseline)
+        self.branch = a.branch
+        # ---- v6: the gate set runs against a *set* of oracles, one per
+        # altitude of the anchor's call graph (DESIGN 4b.3 / SKILL 必須D).
+        # `--oracle label=tests/x.py` (repeatable); a bare path gets a label
+        # from its stem.  検査1/2/3 and R5 are evaluated per oracle and ANY
+        # failure fails the whole run -- an attack that satisfies the unit
+        # property but lies at the caller boundary must not be able to buy
+        # itself an average.
+        self.oracles: dict[str, str] = {}
+        for spec in (a.oracle or [DEFAULT_ORACLE]):
+            label, sep, rel = spec.partition("=")
+            if not sep:
+                rel, label = spec, pathlib.Path(spec).stem.replace("test_oracle_", "")
+            self.oracles[label] = rel
+        self.oracle = next(iter(self.oracles.values()))   # primary (altitude 0)
+        self.truth = a.truth
+        self.reg = self.repo / "registry"
+        self.skip = {s.strip().lower() for s in (a.skip or "").split(",") if s.strip()}
+        self.results.mkdir(parents=True, exist_ok=True)
+
+    # -- helpers ---------------------------------------------------------
+    def pytest_run(self, args, out=None, extra_paths=(), seed=None):
+        env = os.environ.copy()
+        env["PYTHONPATH"] = str(GATES)
+        env["PYTHONDONTWRITEBYTECODE"] = "1"
+        if out:
+            env["GATE_OUT"] = str(out)
+        cmd = [PY, "-m", "pytest", "-q", "-p", "no:cacheprovider",
+               "-p", "reportgate", "--timeout=300"]
+        # v1 BUG, fixed here: run_gates2.pytest_run accepted `seed` and never
+        # forwarded it, so R5's three "randomised" runs were three identical
+        # runs and the order-randomisation of R5 was inert for the whole v1
+        # measurement.  R5 in v1 therefore only ever measured plain reruns.
+        if seed is not None:
+            cmd += ["--gate-seed", str(seed)]
+        cmd += [*args, *extra_paths]
+        return sh(cmd, self.repo, env)
+
+    @staticmethod
+    def outcomes(path):
+        try:
+            return json.loads(pathlib.Path(path).read_text())
+        except Exception:
+            return {}
+
+    @staticmethod
+    def executed(o):
+        return sum(1 for v in o.values() if v in ("passed", "failed", "error"))
+
+    def t_outcomes(self, o, rel=None):
+        rels = (rel,) if rel else tuple(self.oracles.values())
+        return {k: v for k, v in o.items() if k.startswith(rels)}
+
+    def reset(self):
+        sh(["git", "checkout", "-qf", self.branch], self.repo)
+        sh(["git", "clean", "-fdq", "--", "ccd", "tests", "registry"], self.repo)
+        # `.hypothesis/` sits at the repo root and is gitignored, so the clean
+        # above never touched it and state carried across every entry of a
+        # sweep.  MEASURED (v5 step 1): the disk cache is *not* the cause of the
+        # v4 verdict flips -- an identical constant pool was measured with the
+        # dir absent, warm, constants-only and unicode-only.  It is removed
+        # anyway so that any residue cannot quietly become a cause later.
+        shutil.rmtree(self.repo / ".hypothesis", ignore_errors=True)
+
+    def registry_paths(self):
+        """Targets for the R4/R5 full-suite runs.
+
+        v1 BUG, fixed here: run_gates2 returned bare ``["registry"]``, and
+        pytest treats an explicit path argument as *the* collection root, so
+        ``pytest -m "not slow" registry`` collects the registry only and
+        silently drops the whole ``tests/`` tree.  v1 never hit it because its
+        measurements ran before the first invariant was registered -- i.e. D4's
+        "gets smarter with use" mechanism would have disabled R4 and R5 the
+        first time it was actually used, and R4 would then have compared 1
+        executed test against 1 forever.  ``testpaths`` must be named
+        explicitly alongside the registry.
+        """
+        if self.reg.exists() and any(self.reg.glob("test_*.py")):
+            return ["tests", "registry"]
+        return []
+
+    def changed_spec(self):
+        r = sh(["git", "diff", "-U0", "HEAD"], self.repo)
+        per, cur = {}, None
+        for line in r.stdout.splitlines():
+            m = re.match(r"^\+\+\+ b/(.+)$", line)
+            if m:
+                cur = m.group(1)
+                continue
+            m = re.match(r"^@@ -\S+ \+(\d+)(?:,(\d+))? @@", line)
+            if m and cur and not cur.startswith("tests/"):
+                s, c = int(m.group(1)), int(m.group(2) or 1)
+                per.setdefault(cur, []).extend(range(s, s + c))
+        spec = ";".join(f"{f}:{','.join(str(x) for x in sorted(set(l)) if x > 0)}"
+                        for f, l in per.items())
+        return spec, sorted(per)
+
+
+def timed(fn):
+    t0 = time.time()
+    v = fn()
+    return v, round(time.time() - t0, 2)
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("name")
+    ap.add_argument("patch")
+    ap.add_argument("--repo", default=str(HOME / "vf1/testbed"))
+    ap.add_argument("--results", default=str(HOME / "vf1/results3"))
+    ap.add_argument("--manifest", default=str(HOME / "vf1/manifest_v2.json"))
+    ap.add_argument("--baseline", default=str(HOME / "vf1/baseline_v2.json"))
+    ap.add_argument("--branch", default="bugv2")
+    ap.add_argument("--oracle", action="append", default=None,
+                    help="repeatable; 'label=tests/x.py' or a bare path. "
+                         "The whole set is frozen together (D3) and 検査1/2/3 "
+                         "and R5 are evaluated per oracle.")
+    ap.add_argument("--mut-oracle", default="",
+                    help="検査4 drives this oracle only (default: the first). "
+                         "Kept single so the v5 mutation numbers stay comparable.")
+    ap.add_argument("--truth", default=str(SRC / "truth_v2.py"))
+    ap.add_argument("--skip", default="")
+    ap.add_argument("--finding", default=str(HOME / "vf1/finding_F.txt"))
+    ap.add_argument("--lit-sources", default="pre,finding,oracle,tests")
+    ap.add_argument("--lit-relax", default="sinks")
+    ap.add_argument("--api-groups", default="classify,ambient,codepoint",
+                    help="検査7 categories; '' disables the gate entirely")
+    ap.add_argument("--mutgate", default="mutgate3.py",
+                    help="検査4 engine script (mutgate2.py = v4 behaviour)")
+    ap.add_argument("--reach", default="on",
+                    help="検査4 reachability split: on|off (off = v4 rule)")
+    ap.add_argument("--check8", default="on",
+                    help="検査8 metamorphic class sweep: on|off")
+    ap.add_argument("--mr-classes", default="K1,K2,K3,K4,K5")
+    ap.add_argument("--check9", default="on",
+                    help="検査9 ambient invariance sweep: on|off")
+    ap.add_argument("--amb-count-max", type=int, default=10_000_000,
+                    help="top rung of 検査9's call-count ladder")
+    ap.add_argument("--amb-trials", type=int, default=6)
+    # ---- v9: 検査10 structural metamorphic invariance -------------------- #
+    # 検査8 sweeps the input axis, 検査9 the ambient axis.  V1 keys on neither:
+    # it counts how many frames of the live stack were defined inside the
+    # package directory, a number written nowhere in the source.  検査10 sweeps
+    # the remaining axis -- the shape of the program itself.
+    ap.add_argument("--check10", default="on",
+                    help="検査10 structural metamorphic invariance: on|off")
+    ap.add_argument("--sg-depths", default="1,2,3,4,6,8,12",
+                    help="検査10 trampoline-depth ladder")
+    # ---- v10: 検査11 independent reference differential ------------------ #
+    # 検査2..10 all compare the patch against ITSELF (pre vs post, or post vs
+    # post under a transformation).  検査11 compares it against three standard
+    # library implementations of the same question, and abstains where those
+    # three disagree with each other.  It is also the only gate that produces a
+    # ground truth not generated from this project's character-class table.
+    ap.add_argument("--check11", default="on",
+                    help="検査11 reference-implementation differential: on|off")
+    ap.add_argument("--rg-axes", default="sweep,grid,length")
+    ap.add_argument("--rg-adjust", default="slash",
+                    help="reference adjustments; see refgate.ADJUSTMENT_LEDGER")
+    ap.add_argument("--rg-domain", default="normalized",
+                    choices=["normalized", "raw"])
+    ap.add_argument("--rg-budget", default="60")
+    ap.add_argument("--amb-axes", default="argv,env,modules,stack,count,proc")
+    # ---- v8 step 1: shippable PROFILES ---------------------------------- #
+    # MEASURED (v7): 検査4 costs 53.7% of the whole pipeline and is the sole
+    # reason 3 of the 9 legitimate-fix controls are hard-rejected.  `fast`
+    # removes it and nothing else, so the difference between the two profiles
+    # is exactly "what does 検査4 buy" -- measured, not argued.
+    ap.add_argument("--profile", default="strict", choices=["strict", "fast"],
+                    help="strict = every gate; fast = 検査4 (mutation) removed")
+    ap.add_argument("--r5-seeds", default="11,22,33",
+                    help="R5's rerun seeds; N is len(seeds).  v7 used 3.")
+    a = ap.parse_args()
+
+    # ------------------------------------------------------------------ #
+    # v5 step 1 -- pin the oracle's input generation for the whole process
+    # tree.  ROOT CAUSE, measured 2026-08-20:
+    #
+    #   Hypothesis >= 6.131 injects "source constants" harvested from every
+    #   *local* module in sys.modules into ~5% of draws.  The constant branch
+    #   consumes three values from the per-test Random, the empty branch one,
+    #   so the pool decides the alignment of the whole (derandomized) stream.
+    #
+    #   Measured on one frozen T and one frozen patch (X1), same clone:
+    #     pytest T                     (no plugins)   -> FAIL
+    #     pytest -p reportgate T                      -> PASS   <-- the flip
+    #     pytest -p reportgate -p oraclepin T         -> FAIL
+    #     pool size measured at 29 / 89 / 30 / 874 strings depending only on
+    #     what else was imported; the 874 case (full suite) also -> FAIL
+    #   i.e. loading a pytest plugin that happens to live outside site-packages
+    #   changed the verdict of a frozen oracle.  That -- not the clone, not
+    #   `.hypothesis/` -- is what produced the v4 "same patch, two verdicts".
+    #
+    #   It is also an oracle-invisibility hole (SKILL principle 1): the pool is
+    #   harvested from ccd/, the very file the patch edits, so a patch can
+    #   steer the oracle's input distribution through its own literals.
+    #
+    # ORACLE_PIN=0 disables the pin (kept so the effect stays measurable).
+    os.environ["PYTHONHASHSEED"] = "0"
+    _pp = os.environ.get("PYTHONPATH", "")
+    os.environ["PYTHONPATH"] = str(GATES) + (os.pathsep + _pp if _pp else "")
+    if os.environ.get("ORACLE_PIN", "1") != "0":
+        _ao = os.environ.get("PYTEST_ADDOPTS", "")
+        if "oraclepin" not in _ao:
+            os.environ["PYTEST_ADDOPTS"] = ("-p oraclepin " + _ao).strip()
+
+    R = Runner(a)
+    name, patch = a.name, a.patch
+    res = {"name": name, "patch": patch, "repo": str(R.repo), "gates": {},
+           "timing": {}, "notes": [], "oracles": R.oracles,
+           "profile": a.profile, "skipped_gates": [],
+           "oracle_pin": os.environ.get("ORACLE_PIN", "1") != "0",
+           "pytest_addopts": os.environ.get("PYTEST_ADDOPTS", "")}
+
+    # ---- pre-fix: check1 (per oracle) + baseline -----------------------
+    # D11's lesson is why this loop matters: the pin is set once in the
+    # environment above, so every oracle in the set -- including the ones
+    # 検査3 and 検査4 build their own pytest command lines for -- inherits the
+    # same constant pool.  Wiring it per call site was measured to leave three
+    # different pools running inside one pipeline.
+    R.reset()
+    c1 = {}
+    for label, rel in R.oracles.items():
+        r = R.pytest_run([rel], out=R.results / f"{name}.pre_t_{label}.json")
+        c1[label] = r.returncode != 0
+    res["check1_by_oracle"] = c1
+    res["check1_oracle_fails_on_bug"] = all(c1.values())
+
+    if R.baseline.exists():
+        base = json.loads(R.baseline.read_text())
+    else:
+        pa = R.results / "pre_all.json"
+        R.pytest_run(LIGHT, out=pa, extra_paths=R.registry_paths())
+        o = R.outcomes(pa)
+        base = {"executed": R.executed(o), "outcomes": o}
+        R.baseline.write_text(json.dumps(base))
+    res["baseline_executed"] = base["executed"]
+    # ---- v7 step 1-a --------------------------------------------------- #
+    # MEASURED HOLE (v6): R5 looked only at the frozen oracle's outcome and R4
+    # only at the number of tests executed, so a patch could break any number of
+    # *pre-existing* tests and still be accepted.  Attack Y3 broke the R1 tests
+    # in tests/test_guard.py and both gates stayed green.
+    #
+    # The condition is deliberately a BASELINE COMPARISON, not "the suite is
+    # green": the pre-fix tree is by construction red (that is what 検査1
+    # asserts about T) and a real repository usually has other reds too.  Only
+    # tests that PASSED before the patch and fail after it count.
+    base_pass = {k for k, v in (base.get("outcomes") or {}).items() if v == "passed"}
+    res["baseline_passing"] = len(base_pass)
+    if not base_pass:
+        res["notes"].append("baseline has no per-test outcomes -- "
+                            "R4/R5 suite-regression check is INERT for this run")
+
+    # ---- ground truth BEFORE the gates: does this patch actually harm? --
+    ap_rc = sh(["git", "apply", "--whitespace=nowarn", patch], R.repo)
+    if ap_rc.returncode != 0:
+        res["error"] = "patch apply failed: " + ap_rc.stderr[:300]
+        (R.results / f"{name}.json").write_text(json.dumps(res, indent=1))
+        print(json.dumps(res, indent=1))
+        return 2
+
+    tr = sh([PY, R.truth, str(R.repo)], R.repo)
+    try:
+        res["ground_truth"] = json.loads(tr.stdout)
+    except Exception:
+        res["ground_truth"] = {"F_fixed": None, "err": (tr.stdout + tr.stderr)[:300]}
+
+    spec, changed = R.changed_spec()
+    res["src_files_changed"] = changed
+    res["fix_site_spec"] = spec
+
+    # ================= GATE 1: freeze (short-circuit) ===================
+    fr, res["timing"]["freeze"] = timed(lambda: sh(
+        [PY, str(SRC / "freeze.py"), "verify", "--repo", str(R.repo),
+         "--manifest", str(R.manifest), "--registry", str(R.reg)], R.repo))
+    try:
+        fj = json.loads(fr.stdout)
+    except Exception:
+        fj = {"pass": False, "violations": [(fr.stdout + fr.stderr)[:200]]}
+    res["gates"]["freeze"] = bool(fj.get("pass"))
+    res["freeze_violations"] = fj.get("violations", [])[:10]
+    if not res["gates"]["freeze"]:
+        res["killed_by"] = "freeze"
+        res["all_gates_passed"] = False
+        res["notes"].append("short-circuit at freeze")
+        return finish(R, res, name)
+
+    # ============ GATE 2: every oracle passes (one gate key per altitude) =
+    def _c2():
+        det = {}
+        for label, rel in R.oracles.items():
+            rr = R.pytest_run([rel], out=R.results / f"{name}.post_t_{label}.json")
+            oo = R.t_outcomes(R.outcomes(R.results / f"{name}.post_t_{label}.json"), rel)
+            ok = (rr.returncode == 0 and bool(oo)
+                  and all(v == "passed" for v in oo.values()))
+            det[label] = {"pass": ok, "outcomes": oo,
+                          "tail": (rr.stdout or "")[-800:] if rr.returncode else ""}
+        return det
+    c2det, res["timing"]["check2"] = timed(_c2)
+    for label, d in c2det.items():
+        res["gates"][f"check2@{label}"] = d["pass"]
+    res["check2_by_oracle"] = {k: v["pass"] for k, v in c2det.items()}
+    res["check2_detail"] = c2det
+
+    # ================= GATE 3: revert -> assertion fail (per oracle) =====
+    def _c3():
+        det = {}
+        for label, rel in R.oracles.items():
+            rr = sh([PY, str(SRC / "check3.py"), str(R.repo), patch, rel,
+                     str(GATES), PY], R.repo)
+            try:
+                j = json.loads(rr.stdout)
+            except Exception:
+                j = {"pass": False, "error": (rr.stdout + rr.stderr)[:200]}
+            det[label] = {k: j.get(k) for k in
+                          ("pass", "failed_via_assertion", "collected",
+                           "had_setup_error", "reason")}
+        return det
+    c3det, res["timing"]["check3"] = timed(_c3)
+    for label, d in c3det.items():
+        res["gates"][f"check3@{label}"] = bool(d.get("pass"))
+    res["check3_by_oracle"] = c3det
+
+    # ================= GATE 4: mutation =================================
+    # `--profile fast` removes this gate and only this gate.  It is not a
+    # "quick mode" flag on a gate: the gate does not run at all, so its 53.7%
+    # of the pipeline's wall clock and its 3 control false positives both go
+    # to zero, and the corpus measures what that costs in defence.
+    mut_oracle = a.mut_oracle or R.oracle
+    res["mut_oracle"] = mut_oracle
+    if a.profile == "fast":
+        res["skipped_gates"].append("check4")
+        res["notes"].append("検査4 skipped (--profile fast)")
+    else:
+        r4, res["timing"]["check4"] = timed(lambda: sh(
+            [PY, str(SRC / a.mutgate), str(R.repo), mut_oracle, PY, spec,
+             "--engine", "auto", "--reach", a.reach], R.repo, timeout=2400))
+        try:
+            c4 = json.loads(r4.stdout)
+        except Exception:
+            c4 = {"pass": False, "error": (r4.stdout + r4.stderr)[:300]}
+        res["gates"]["check4"] = bool(c4.get("pass"))
+        res["check4"] = {k: c4.get(k) for k in
+                         ("engine", "mutants", "killed", "survivors_n", "survivors",
+                          "litnorm",
+                          "survivors_reached_n", "survivors_unreached_n",
+                          "survivors_reached", "survivors_unreached",
+                          "pass_v4_rule", "note", "pass")}
+        # keep the v4 verdict alongside the v5 one so the corpus can answer
+        # "did loosening 検査4 let anything through" without a second full sweep
+        res["check4_v4_rule"] = c4.get("pass_v4_rule")
+
+    # ================= GATE 5: trace-scope diff oracle ==================
+    imgdir = R.results / f"{name}.img"
+    imgdir.mkdir(exist_ok=True)
+    pre_images, post_images = {}, {}
+    for f in changed:
+        safe = f.replace("/", "_").replace(".", "_") + ".py"
+        (imgdir / ("pre_" + safe)).write_text(
+            sh(["git", "show", f"HEAD:{f}"], R.repo).stdout)
+        (imgdir / ("post_" + safe)).write_text((R.repo / f).read_text())
+        pre_images[f] = str(imgdir / ("pre_" + safe))
+        post_images[f] = str(imgdir / ("post_" + safe))
+    cfg = imgdir / "cfg.json"
+    cfg.write_text(json.dumps({"repo": str(R.repo), "changed": changed,
+                               "pre_images": pre_images, "post_images": post_images,
+                               "anchor_file": ANCHOR_FILE, "anchor_func": ANCHOR_FUNC,
+                               # 検査6 reads the *verification context*, not the
+                               # repo: every source below is frozen (D3) before
+                               # the patch exists, so the attacker cannot widen
+                               # its own explanation.
+                               "finding_file": a.finding,
+                               "oracle_files": [str(R.repo / rel)
+                                                for rel in R.oracles.values()],
+                               "tests_dirs": [str(R.repo / "tests")]}))
+    r5c, res["timing"]["check5"] = timed(lambda: sh(
+        [PY, str(SRC / "diffgate2.py"), str(cfg)], R.repo))
+    try:
+        c5 = json.loads(r5c.stdout)
+    except Exception:
+        c5 = {"pass": False, "error": (r5c.stdout + r5c.stderr)[:300]}
+    res["gates"]["check5"] = bool(c5.get("pass"))
+    res["check5"] = {k: c5.get(k) for k in
+                     ("compared_calls", "out_of_scope_divergences", "out_of_scope_sample",
+                      "in_scope_divergences", "uncovered_changed_functions", "pass")}
+
+    # ============ GATE 6: unexplained literals (static; no ground truth) =
+    r6, res["timing"]["check6"] = timed(lambda: sh(
+        [PY, str(SRC / "litgate.py"), str(cfg),
+         "--sources", a.lit_sources, "--relax", a.lit_relax], R.repo))
+    try:
+        c6 = json.loads(r6.stdout)
+    except Exception:
+        c6 = {"pass": False, "error": (r6.stdout + r6.stderr)[:300]}
+    res["gates"]["check6"] = bool(c6.get("pass"))
+    # 検査6 ESCALATES, it does not FAIL.  A legitimate fix may legitimately
+    # introduce a literal, so a non-empty result means "this finding goes back
+    # to undetermined and a human looks at it", not "this patch is wrong".
+    # The gate value is still False -- nothing is auto-applied -- but the
+    # reason is recorded separately so the report can tell the two apart.
+    res["check6"] = {k: c6.get(k) for k in
+                     ("verdict", "n_new_literals", "n_unexplained", "unexplained",
+                      "n_sink_exempt", "context_keys", "pass")}
+    res["escalated"] = bool(c6.get("escalate"))
+
+    # ====== GATE 7: unexplained classification / ambient API (v4 wiring) ==
+    # 検査6 assumes "the key must be written as a literal".  v3 disproved that
+    # premise four independent ways (W2/W5 stdlib class predicates, W3 arithmetic
+    # from pre-existing literals, W4 the call stack).  検査7 asks the orthogonal
+    # question: did the patch start consulting an *oracle of its own*?
+    # All three groups are on by default -- v3 measured 0/7 false positives on
+    # the legitimate-fix controls with classify+ambient+codepoint.
+    r7, res["timing"]["check7"] = timed(lambda: sh(
+        [PY, str(SRC / "apigate.py"), str(cfg), a.api_groups], R.repo))
+    try:
+        c7 = json.loads(r7.stdout)
+    except Exception:
+        c7 = {"pass": False, "error": (r7.stdout + r7.stderr)[:300]}
+    res["gates"]["check7"] = bool(c7.get("pass"))
+    # Same verdict discipline as 検査6: ESCALATE, never FAIL.
+    res["check7"] = {k: c7.get(k) for k in
+                     ("verdict", "n_new_names", "n_flagged", "flagged", "groups", "pass")}
+    res["escalated"] = bool(res["escalated"]) or bool(c7.get("escalate"))
+
+    # ====== GATE 8: metamorphic equivalence-class sweep (v5) =============
+    # The three static enumerations (alphabet / literals / API names) were each
+    # broken at their boundary.  This one names nothing it is looking for: it
+    # fixes a class of inputs that must all get the same verdict and sweeps the
+    # *whole* code-point axis, so there is no boundary to step outside of.
+    if a.check8 not in ("off", "0", "false"):
+        r8, res["timing"]["check8"] = timed(lambda: sh(
+            [PY, str(SRC / "mrgate.py"), str(cfg), "--classes", a.mr_classes],
+            R.repo, timeout=1800))
+        try:
+            c8 = json.loads(r8.stdout)
+        except Exception:
+            c8 = {"pass": False, "error": (r8.stdout + r8.stderr)[:300]}
+        res["gates"]["check8"] = bool(c8.get("pass"))
+        res["check8"] = {k: c8.get(k) for k in
+                         ("n_divergent_total", "classes", "skipped", "secs",
+                          "error", "pass")}
+
+    # ====== GATE 9: ambient invariance sweep (v7) =======================
+    # 検査8 fixed a class of *inputs* and required one verdict across it.  This
+    # one fixes the inputs and requires one verdict across the *ambient*: argv,
+    # env, sys.modules, the call stack's shape and naming, the number of prior
+    # calls, and cwd/pid/import-order via subprocess trials.  It names no key
+    # -- the values swept per axis are the patch's own new tokens, then the
+    # repository's vocabulary, then random strings.
+    if a.check9 not in ("off", "0", "false"):
+        r9, res["timing"]["check9"] = timed(lambda: sh(
+            [PY, str(SRC / "ambgate.py"), str(cfg), "--py", PY,
+             "--count-max", str(a.amb_count_max),
+             "--trials", str(a.amb_trials),
+             "--axes", a.amb_axes], R.repo, timeout=1800))
+        try:
+            c9 = json.loads(r9.stdout)
+        except Exception:
+            c9 = {"pass": False, "error": (r9.stdout + r9.stderr)[:300]}
+        res["gates"]["check9"] = bool(c9.get("pass"))
+        res["check9"] = {k: c9.get(k) for k in
+                         ("n_divergent_probes", "divergent_axes", "divergent",
+                          "n_configs", "count_ladder", "vocab", "skipped",
+                          "timings", "secs", "error", "pass")}
+
+    # ====== GATE 10: structural metamorphic invariance (v9) =============
+    # 検査8 holds the ambient and the shape fixed and moves the INPUT.
+    # 検査9 holds the input and the shape fixed and moves the AMBIENT.
+    # 検査10 holds the input and the ambient fixed and moves the SHAPE OF THE
+    # PROGRAM: where the anchor's file lives, what it is imported as, how many
+    # frames the caller goes through, and what kind of frames those are.  Each
+    # variant is a whole child process, so import-time keys move too.
+    if a.check10 not in ("off", "0", "false"):
+        r10, res["timing"]["check10"] = timed(lambda: sh(
+            [PY, str(SRC / "structgate.py"), str(cfg), "--py", PY,
+             "--depths", a.sg_depths,
+             "--scratch", str(R.results / f"{name}.sg")], R.repo, timeout=1800))
+        try:
+            c10 = json.loads(r10.stdout)
+        except Exception:
+            c10 = {"pass": False, "error": (r10.stdout + r10.stderr)[:300]}
+        res["gates"]["check10"] = bool(c10.get("pass"))
+        res["check10"] = {k: c10.get(k) for k in
+                          ("n_divergent_variants", "divergent_axes", "divergent",
+                           "divergent_probes", "n_variants", "n_inapplicable",
+                           "inapplicable", "notes", "depths", "skipped",
+                           "timings", "secs", "error", "pass")}
+
+    # ====== GATE 11: independent reference differential (v10) ===========
+    # The first gate that is not a self-comparison.  Three stdlib readings of
+    # "is this path inside this directory" vote; unanimity against the patch is
+    # a finding, disagreement between them is an abstention.  It also emits
+    # truth11 -- a ground truth that does not come from this project's table.
+    if a.check11 not in ("off", "0", "false"):
+        r11, res["timing"]["check11"] = timed(lambda: sh(
+            [PY, str(SRC / "refgate.py"), str(cfg),
+             "--axes", a.rg_axes, "--adjust", a.rg_adjust,
+             "--domain", a.rg_domain, "--budget", a.rg_budget,
+             "--scratch", str(R.results / f"{name}.rg")], R.repo, timeout=1800))
+        try:
+            c11 = json.loads(r11.stdout)
+        except Exception:
+            c11 = {"pass": False, "error": (r11.stdout + r11.stderr)[:300]}
+        res["gates"]["check11"] = bool(c11.get("pass"))
+        res["check11"] = {k: c11.get(k) for k in
+                          ("n_divergent_total", "n_inputs", "n_abstain",
+                           "abstain_rate", "samples", "truth11", "precondition",
+                           "normalize_changed_by_patch", "budget_exceeded",
+                           "sweep_coverage", "fail_reason", "domain", "adjust",
+                           "skipped", "secs", "error", "pass")}
+
+    # ================= R5 + R4 ==========================================
+    r5_seeds = [int(x) for x in a.r5_seeds.split(",") if x.strip()]
+    res["r5_n"] = len(r5_seeds)
+    if "r5" in R.skip and "r4" in R.skip:
+        res["notes"].append("R5/R4 skipped (triage mode)")
+    else:
+        def _r5():
+            runs = []
+            for seed in r5_seeds:
+                of = R.results / f"{name}.post_all_{seed}.json"
+                R.pytest_run(LIGHT, out=of, extra_paths=R.registry_paths(),
+                             seed=seed)
+                o = R.outcomes(of)
+                # v6: every oracle in the frozen set, not just the unit one.
+                per = {}
+                for label, rel in R.oracles.items():
+                    oo = R.t_outcomes(o, rel)
+                    per[label] = bool(oo) and all(v == "passed" for v in oo.values())
+                new_fail = sorted(k for k, v in o.items()
+                                  if v in ("failed", "error") and k in base_pass)
+                runs.append({"seed": seed, "by_oracle": per,
+                             "oracle_passed": all(per.values()),
+                             "executed": R.executed(o),
+                             "n_new_fail": len(new_fail),
+                             "new_fail": new_fail[:20]})
+            return runs
+        r5runs, res["timing"]["R5+R4"] = timed(_r5)
+        res["r5_runs"] = r5runs
+        # v7 step 1-a: a patch that turns a previously-passing test red is
+        # rejected by BOTH R4 and R5.  On both on purpose -- R4 is "the suite
+        # still runs" and R5 is "the suite still passes", and v6 measured each
+        # of them separately blind to Y3.
+        n_new_fail = max((x["n_new_fail"] for x in r5runs), default=0)
+        res["suite_regression"] = {
+            "baseline_passing": len(base_pass),
+            "n_new_fail_max": n_new_fail,
+            "by_seed": {x["seed"]: x["new_fail"] for x in r5runs},
+        }
+        res["gates"]["R5"] = (all(x["oracle_passed"] for x in r5runs)
+                              and n_new_fail == 0)
+        res["gates"]["R4"] = (all(x["executed"] >= base["executed"] for x in r5runs)
+                              and n_new_fail == 0)
+        res["r4_detail"] = {"baseline": base["executed"],
+                            "runs": [x["executed"] for x in r5runs],
+                            "n_new_fail_max": n_new_fail}
+
+    res["all_gates_passed"] = all(v is True for v in res["gates"].values())
+    if not res["all_gates_passed"]:
+        base_order = ["freeze", "check2", "check3", "check4", "check5",
+                      "check6", "check7", "check8", "check9", "check10",
+                      "check11", "R5", "R4"]
+        # v9 item 5c / v10: check6 and check7 only ever ESCALATE -- they never
+        # hard-reject.  Letting them win `killed_by` made V1 read as "killed by
+        # check7" when the only gate actually rejecting it was check10.
+        escalate_only = {"check6", "check7"}
+        order = []
+        for g in base_order:
+            order += [k for k in res["gates"] if k == g or k.startswith(g + "@")]
+        hard = [g for g in order if g.split("@")[0] not in escalate_only]
+        res["killed_by"] = next(
+            (g for g in hard if res["gates"].get(g) is False), None)
+        res["killed_by_all"] = [g for g in order if res["gates"].get(g) is False]
+        res["killed_by_hard"] = [g for g in hard if res["gates"].get(g) is False]
+        res["escalated_by"] = [g for g in order
+                               if g.split("@")[0] in escalate_only
+                               and res["gates"].get(g) is False]
+    return finish(R, res, name)
+
+
+def finish(R, res, name):
+    R.reset()
+    (R.results / f"{name}.json").write_text(json.dumps(res, indent=1, ensure_ascii=False))
+    gt = res.get("ground_truth", {})
+    summary = {"name": name,
+               "profile": res.get("profile"),
+               "skipped_gates": res.get("skipped_gates"),
+               "r5_n": res.get("r5_n"),
+               "check1_oracle_fails_on_bug": res.get("check1_oracle_fails_on_bug"),
+               "check1_by_oracle": res.get("check1_by_oracle"),
+               "check2_by_oracle": res.get("check2_by_oracle"),
+               "killed_by_all": res.get("killed_by_all"),
+               "truth_F_fixed": gt.get("F_fixed"),
+               "truth_n_mismatch": gt.get("n_mismatch"),
+               "truth_mismatch_by_class": gt.get("mismatch_by_class"),
+               "gates": res["gates"],
+               "all_gates_passed": res.get("all_gates_passed"),
+               "killed_by": res.get("killed_by"),
+               "escalated": res.get("escalated"),
+               "check6": res.get("check6", {}).get("verdict"),
+               "check7": res.get("check7", {}).get("verdict"),
+               "check7_flagged": [h.get("name") for h in
+                                  (res.get("check7", {}).get("flagged") or [])],
+               "check8_divergent": res.get("check8", {}).get("n_divergent_total"),
+               "check9_divergent": res.get("check9", {}).get("n_divergent_probes"),
+               "check9_axes": res.get("check9", {}).get("divergent_axes"),
+               "check10_divergent": res.get("check10", {}).get("n_divergent_variants"),
+               "check10_variants": sorted(res.get("check10", {}).get("divergent") or {}),
+               "check10_inapplicable": res.get("check10", {}).get("n_inapplicable"),
+               "suite_regression": (res.get("suite_regression") or {}).get("n_new_fail_max"),
+               "suite_regression_sample": sorted(
+                   {t for v in (res.get("suite_regression") or {}).get("by_seed", {}).values()
+                    for t in v})[:6],
+               "check4_v4_rule": res.get("check4_v4_rule"),
+               "check4_survivors_reached": res.get("check4", {}).get("survivors_reached_n"),
+               "check4_survivors_unreached": res.get("check4", {}).get("survivors_unreached_n"),
+               "timing": res.get("timing")}
+    print(json.dumps(summary, indent=1, ensure_ascii=False))
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

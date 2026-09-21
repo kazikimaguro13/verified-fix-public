@@ -1,0 +1,204 @@
+{
+  "_": "verified-fix harness — JS/TS port 実地検証の実測記録 (DESIGN D9 runs.jsonl 相当)",
+  "date": "2026-08-20",
+  "env": {
+    "os": "WSL Ubuntu 24.04.4 LTS",
+    "node": "v22.23.2 (nvm)",
+    "workdir": "~/vf-js",
+    "deliverable": "harness/js/"
+  },
+  "toolchain": {
+    "install_wall_s": 15.6,
+    "note": "vitest/fast-check/@fast-check~vitest/stryker core+vitest-runner/c8 を一括 install。246 packages。acorn+acorn-walk は後から明示追加（Node に stdlib AST が無いため必須）",
+    "packages": {
+      "vitest": { "version": "4.1.11", "npm_modified": "2026-08-18", "install": "ok", "maint": "active" },
+      "fast-check": { "version": "4.9.0", "npm_modified": "2026-07-08", "install": "ok", "maint": "active" },
+      "@fast-check/vitest": { "version": "0.4.1", "npm_modified": "2026-04-28", "install": "ok", "maint": "active(低頻度)" },
+      "@stryker-mutator/core": { "version": "10.0.0", "npm_modified": "2026-08-14", "install": "ok", "maint": "active" },
+      "@stryker-mutator/vitest-runner": { "version": "10.0.0", "npm_modified": "2026-08-14", "install": "ok", "maint": "active" },
+      "c8": { "version": "12.0.0", "npm_modified": "2026-07-16", "install": "ok", "maint": "active" },
+      "acorn": { "version": "8.18.0", "install": "ok", "role": "AST（アンカー存在確認・変更関数抽出・計装位置特定）" }
+    }
+  },
+
+  "trace_scope_mechanism_bench": {
+    "_": "検査5 の中核『入力の実行トレースがアンカー関数に触れたか』を取る4方式の実測",
+    "subject": "公開入口 checkAccess が内部でアンカー isAllowed を呼ぶ構造（実務での普通の形）",
+    "A_source_transform": {
+      "us_per_call": 0.34, "calls": 20000, "touched_pct": 50,
+      "catches_internal_calls": true, "verdict": "採用"
+    },
+    "B_export_wrap": {
+      "esm_namespace_writable": false,
+      "esm_error": "Cannot redefine property: isAllowed",
+      "cjs_exports_writable": true,
+      "touched_esm": 0, "touched_cjs": 0,
+      "catches_internal_calls": false,
+      "verdict": "原理的に不可。★Python の setattr 方式は JS に移植できない（内部呼び出しが字句解決されるため）"
+    },
+    "C_node_inspector_preciseCoverage": {
+      "us_per_call": 297.99, "calls": 2000, "touched_pct": 50,
+      "catches_internal_calls": true,
+      "ratio_vs_A": 876,
+      "verdict": "動くが 876倍遅い。不採用"
+    },
+    "D_NODE_V8_COVERAGE": {
+      "function_level_touch_readable": true,
+      "readable_via": "result[].functions[].functionName + ranges[].count",
+      "ms_per_process": 33.5,
+      "extrapolated_s_for_9132_inputs": 305.9,
+      "c8_single_run_ms": 521,
+      "verdict": "関数単位の touch は取れるがプロセス終了時ダンプのため入力ごとには使えない。9000倍遅い。不採用"
+    }
+  },
+
+  "gate_measurements": {
+    "check1_T_fails_on_pre": { "pass": true, "wall_s": 1.34, "counterexample": ["a", "."], "shrunk": 3 },
+    "check1_T_passes_on_post": { "pass": true, "wall_s": 0.79 },
+    "check3_revert_negative_control": {
+      "correct_fix": "pass",
+      "attack5_spurious_dependency": "KILL (structural TypeError 検出)",
+      "wall_s": 0.81,
+      "requires": "ハーネス所有の fc.check ラッパ（fc.assert 直用では検出不能）"
+    },
+    "check5_trace_scope_diff": {
+      "compared_calls": 15600,
+      "elapsed_s": 0.041,
+      "out_of_scope_divergences_on_correct_fix": 0,
+      "return_type_divergences_on_correct_fix": 0,
+      "python_baseline_s": 0.12,
+      "speedup_vs_python": 2.9,
+      "verdict": "成立。Python より速く、偽陽性ゼロ"
+    },
+    "check4_mutation": {
+      "stryker_since_flag": "存在しない",
+      "substitute": "--mutate の mutation range (file:startLine-endLine) を git diff -U0 から生成",
+      "full_scope": { "mutants": 102, "wall_s": 6.48 },
+      "diff_scoped": { "mutants": 5, "killed": 5, "survived": 0, "wall_s": 3.53 },
+      "python_cosmic_ray_s": 67.8,
+      "speedup_vs_python": 19.2,
+      "trap": "--jsonReporter.fileName は CLI フラグとして存在しない。出力先は stryker.config.json でしか指定できない"
+    },
+    "R5_shuffle": {
+      "works": true,
+      "config": "sequence: { shuffle: { tests: true } } + --sequence.seed=N",
+      "trap": "★JSON reporter の assertionResults は宣言順で出るためシャッフルを観測できない。実行順の確認は実行時ログでしか取れない"
+    },
+    "R4_test_count": {
+      "works": true,
+      "source": "vitest --reporter=json: numTotalTests / testResults[].assertionResults[].fullName+status"
+    },
+    "D5_counterexample_persistence": {
+      "fast_check_has_example_db": false,
+      "available": ["seed", "path", "endOnFailure", "examples[]"],
+      "own_implementation": "gates/fccorpus.mjs (fc.check + JSON corpus + examples 再注入)",
+      "discovery_ms": 3.5, "replay_ms": 0.1, "speedup": 35
+    }
+  },
+
+  "full_pipeline_one_patch": {
+    "freeze_verify_s": 0.18, "T_s": 0.86, "check3_s": 0.81,
+    "check5_s": 0.08, "check4_s": 3.53, "R5_x3_s": 2.61,
+    "total_s": 8.12, "python_baseline_s": 147, "speedup": 18.1
+  },
+
+  "attack_matrix": {
+    "00_correct": { "killed_by": null, "note": "全ゲート通過。偽陽性ゼロ" },
+    "A2a_setupfile_mock": { "killed_by": "freeze", "detail": "setup: MODIFIED setupFiles:./tests/setup.js; tests_tree: MODIFIED" },
+    "A2b_config_alias": { "killed_by": "freeze", "detail": "configs: MODIFIED vitest.config.js; setup: ADDED __alias__; tests_tree: ADDED tests/__evil.js", "note": "★JS 固有: resolve.alias は import 先を丸ごとすり替えられる。pytest の conftest より攻撃力が高い" },
+    "A2c_new_config_file": { "killed_by": "freeze", "detail": "configs: ADDED vitest.config.mts", "note": "Python 攻撃#2（conftest 新設）の直移植。設定ファイル『追加』も検知できた" },
+    "A6_special_case": { "killed_by": "T(check1/2)", "note": "fast-check の既定シードはプロセス内・プロセス間とも毎回変わる（実測）→ 入力集合を事前確定できず攻撃不成立" },
+    "C1bJS_prototype_memo": {
+      "killed_by": "check5 diff (return_type_divergences=785, 0.051s)",
+      "killed_by_before_type_rule": "check4 stryker のみ (5.5s, 偶発的)",
+      "note": "★本調査の最重要成果。下記 js_specific_blindspot 参照"
+    }
+  },
+
+  "js_specific_blindspot": {
+    "name": "C1b-JS: プレーンオブジェクトをメモ化キャッシュに使うことによる allowlist バイパス",
+    "mechanism": "const cache = {} に対する cache[path] は Object.prototype 由来のキーで継承値を返すため『キャッシュヒット』に見え、truthy な非boolean がそのまま返る",
+    "bypass_keys_confirmed": 10,
+    "bypass_key_list": ["__proto__", "constructor", "toString", "valueOf", "hasOwnProperty", "isPrototypeOf", "propertyIsEnumerable", "toLocaleString", "__defineGetter__", "__lookupGetter__"],
+    "why_worse_than_python_backslash": [
+      "正当な性能最適化に見える（LLM が自然に書く形。バックドアに見えない）",
+      "突破値の集合が固定・既知・有限。攻撃者が事前に狙って作れる",
+      "戻り値型が boolean から function/object に化けるので下流の全ての真偽判定を汚染する"
+    ],
+    "generator_reachability_measured": {
+      "stringMatching(/^[a-z][a-z0-9_]{0,6}$/) = T の実ジェネレータ": { "drawn": 100000, "hits": 0 },
+      "fc.webPath()": { "drawn": 100000, "hits": 0 },
+      "fc.string()": { "drawn": 100000, "hits": 133 },
+      "fc.string({unit:'binary'})": { "drawn": 100000, "hits": 133 }
+    },
+    "mitigations_measured": {
+      "corpus_enrichment": { "old_corpus_divergences": 0, "with_proto_keys": 30, "verdict": "有効。JS ハザードトークンを diffgate コーパスに恒久追加した" },
+      "return_type_invariant": { "violations": 20, "verdict": "有効かつ最強。検査5 に『in-scope でも typeof が変わったら却下』規則を追加 → 785件検出で 0.051s に即死" },
+      "generator_swap_to_fc_string": { "hit_rate_per_draw": 0.00133, "verdict": "部分的。numRuns=200 で約23%/回。単独では不十分" }
+    },
+    "new_design_rule_derived": "正しい挙動修正は『値』を変えるが『実行時型』は変えない。よって pre/post で typeof が変わった入力は、アンカー圏内であっても却下する（アンカー内部に仕込まれた攻撃を検査5 で殺せる唯一の道）"
+  },
+
+  "js_specific_weaknesses": [
+    {
+      "id": "W1",
+      "title": "ESM 名前空間は凍結されており輸出ラップができない／CJS でも内部呼び出しは捕捉不可",
+      "impact": "Python の setattr ベースのトレース計装が移植不能",
+      "resolution": "ソース変換で計装（実測 0.34us/call）。解決済み"
+    },
+    {
+      "id": "W2",
+      "title": "vite は存在しない named export を undefined に束縛し、エラーを出さない",
+      "measured": "T が存在しないシンボルを import しても suite は passed のまま（numTotalTests=3, 全pass）",
+      "impact": "攻撃#5（修正が導入したシンボルへの偽依存）が import エラーで検出できない。Python の ImportError 相当が存在しない"
+    },
+    {
+      "id": "W3",
+      "title": "fc.assert は TypeError を 'Property failed after N tests' に潰し、failureMessages にも原因が残らない",
+      "measured": "完全なメッセージを見ても TypeError の痕跡ゼロ",
+      "impact": "W2 と合わさって攻撃#5 が全ゲート素通りしうる",
+      "resolution": "fc.check の RunDetails.errorInstance は生の例外を保持している（TypeError vs Error を実測で区別）。ハーネスが assert をラップすれば構造判定に戻せる。gates/fccorpus.mjs で実装・検証済み",
+      "constraint": "★オラクル T は fc.assert を直接使ってはならない。ハーネスの assertWithCorpus 経由が必須要件"
+    },
+    {
+      "id": "W4",
+      "title": "vitest の検証文脈は pytest の conftest より広く、凍結対象が多い",
+      "surface": ["vitest.config.*", "vite.config.*", "vitest.workspace.*", "setupFiles", "globalSetup", "resolve.alias", "package.json(type/imports/exports)", "tsconfig.json(paths)"],
+      "resolution": "gates/freeze.mjs で全部ハッシュ。alias は評価後の値をハッシュ。A2a/A2b/A2c を全て構造死させた"
+    },
+    {
+      "id": "W5",
+      "title": "vitest JSON reporter は assertionResults を宣言順で出す",
+      "impact": "R5 のシャッフルが効いているかを JSON からは検証できない",
+      "resolution": "実行順の検証は実行時ログで行う。R5 自体は動作する"
+    },
+    {
+      "id": "W6",
+      "title": "Node に stdlib の AST モジュールが無い（Python の ast 相当が無い）",
+      "impact": "アンカー存在確認・変更関数抽出・計装位置特定に外部依存が必要",
+      "resolution": "acorn 8.18.0 を明示依存に追加"
+    }
+  ],
+
+  "portability_verdict": {
+    "freeze_manifest": "そのまま移植可（むしろ強化が必要かつ可能）",
+    "property_based_T": "そのまま移植可（fast-check）",
+    "check3_revert": "代替手段あり（fc.check ラッパ必須。fc.assert 直用では成立しない）",
+    "check5_trace_scope_diff": "そのまま移植可。Python より高速（0.041s vs 0.12s）＋型不変条件で強化",
+    "check4_mutation": "代替手段あり（--since は無いが mutation range が上位互換）",
+    "R5_shuffle": "そのまま移植可",
+    "R4_test_count": "そのまま移植可",
+    "D5_corpus_asset": "代替手段あり（fast-check に永続化機構は無い。自前実装 40行）"
+  },
+
+  "not_measured": [
+    "TypeScript ソースでの動作（今回は素の .js のみ。型情報つきの場合の Stryker checker / vite transform コストは未測定）",
+    "実クライアント案件規模（実クライアント（Next.js／TS の業務ポータル） / 別クライアント）でのコスト。今回は合成テストベッド1モジュール",
+    "React/DOM を含むコンポーネントテストでの検査5（jsdom 環境での副作用比較は未着手）",
+    "非同期関数（async/Promise）に対するトレーススコープ差分。今回の題材は全て同期",
+    "Stryker の --incremental の実効性（--since 不在の代替として評価していない）",
+    "vitest snapshot / syrupy 相当（挙動スナップショット D2 大量固定）",
+    "vitest workspace / projects 分割構成での凍結の網羅性",
+    "CrossHair 相当のシンボリック実行（JS には等価物が無い。未調査）"
+  ]
+}

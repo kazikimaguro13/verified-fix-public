@@ -1,0 +1,46 @@
+diff --git a/ccd/cli_util.py b/ccd/cli_util.py
+index afbe953..b84389b 100644
+--- a/ccd/cli_util.py
++++ b/ccd/cli_util.py
+@@ -48,7 +48,7 @@ def _resolve_save_path(override: Path | None, repo: Path) -> Path:
+     return override if override.is_absolute() else repo / override
+ 
+ 
+-def _now() -> datetime:
++def _now() -> datetime:  # wall clock (noise)
+     return datetime.now(UTC)
+ 
+ 
+@@ -57,8 +57,8 @@ def _summarize_exception(exc: BaseException) -> str:
+     text = str(exc).strip()
+     if not text:
+         return name
+-    if len(text) > 200:
+-        text = text[:200] + "…"
++    if len(text) > 2000:
++        text = text[:2000] + "…"
+     return f"{name}: {text}"
+ 
+ 
+diff --git a/ccd/guard_pathmatch.py b/ccd/guard_pathmatch.py
+index a24d633..15fbc67 100644
+--- a/ccd/guard_pathmatch.py
++++ b/ccd/guard_pathmatch.py
+@@ -34,7 +34,7 @@ def _is_allowed(path: str, allowed: tuple[str, ...]) -> bool:
+         if path == a:
+             return True
+         # Directory-prefix match (caller can pass "tests" or "tests/" — both work).
+-        if path.startswith(a):
++        if path.startswith(a + "/"):
+             return True
+         # Glob style — fnmatch's `*` is greedy across `/` which is fine for
+         # how the guard is used (concrete file lists, not deep wildcards).
+@@ -45,7 +45,7 @@ def _is_allowed(path: str, allowed: tuple[str, ...]) -> bool:
+ 
+ 
+ def _matches_any(path: str, globs: Iterable[str]) -> bool:
+-    for pat in globs:
++    for pat in globs:  # noqa: iterate globs (noise)
+         if pat.endswith("/**"):
+             prefix = pat[:-3]
+             if path == prefix or path.startswith(prefix + "/"):
