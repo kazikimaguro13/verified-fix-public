@@ -192,7 +192,7 @@ freeze.mjs build --repo R --manifest M --registry G \
 | 既定では manifest に何も書かない | フラグ無しなら `[""]`（根のみ）で、`package_dirs` / `config_dirs` は**書かれない** ⇒ **既存の manifest とバイト同一**（実クライアント（Next.js／TS の業務ポータル） 88走行で md5 BEFORE＝AFTER を実測） |
 | **`verify` はフラグを取らない** | **manifest に記録された `package_dirs` / `config_dirs` を読む。** 呼び出し側が渡し忘れると `tree` 形の食い違いになるため |
 
-**`test.projects` の参照は辿って凍結する**（v132・判断59）: 列挙された glob ディレクトリ／直接パスを解決して `configs` に入れ、**凍結した全 config** の `setupFiles` / `globalSetup` を `setup` に入れる。読めない config は `__config_load_error__:<path>` として manifest に残す。⚠ 残余: config から ES import されるだけのファイル（zod の `vitest.root.mjs`）は未凍結。
+**`test.projects` の参照は辿って凍結する**（v132・判断59）: 列挙された glob ディレクトリ／直接パスを解決して `configs` に入れ、**凍結した全 config** の `setupFiles` / `globalSetup` を `setup` に入れる。読めない config は `__config_load_error__:<path>` として manifest に残す。v138（判断64）で config の相対 import も推移的に辿り（zod の `vitest.root.mjs` が凍結対象に）、v140（判断65）で import で届いた config の `setupFiles`／`globalSetup` も読む。⚠ 残余: 副作用 import・動的 import（実測 0）・`resolve.alias` は最初の config のみ。
 **判断48 の ⑥ として保留・未実装。**
 
 **★T の入力は、可能なら固定値でなくプロパティ／ランダム生成にする。**

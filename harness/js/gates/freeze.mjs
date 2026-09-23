@@ -299,11 +299,41 @@ async function resolveSetupFiles(repo, configDirs = [""], configs = {}) {
 
   const queue = [];
   if (legacy) queue.push(legacy);
-  for (const k of Object.keys(configs).sort()) {
-    const base = path.basename(k);
-    const ext = path.extname(base);
-    if (CONFIG_GLOBS.includes(base.slice(0, base.length - ext.length)) &&
-        IMPORTABLE_EXTS.includes(ext)) queue.push(path.join(repo, k));
+  // ★v140 (decision 65 A, owner 2026-09-22): THE QUEUE IS EVERY IMPORTABLE
+  // MODULE IN `configs`, not only the ones whose STEM is in CONFIG_GLOBS.
+  // MEASURED (v140 probe, zod -- reports/v140_raw/zod_probe65_a.log): j64
+  // (v138) put `vitest.root.mjs` into `configs` (two package configs import
+  // `../../vitest.root.mjs`), so editing THAT FILE is caught.  But the file
+  // also DECLARES `test.setupFiles`, and this queue never read it, because the
+  // filter here was the CONFIG_GLOBS stem list.  With `./vf_probe65_setup.mjs`
+  // added to that array the manifest recorded only
+  //     setupFiles:packages/docs/vf_probe65_setup.mjs       = <missing>
+  //     setupFiles:packages/resolution/vf_probe65_setup.mjs = <missing>
+  // -- the relative string resolved against the dir of each config that MERGED
+  // it -- and the real file at the repo root was in NO entry: rewriting it left
+  // `freeze verify` at pass / 0 violations.  A freeze that hashes the config
+  // but not what the config says to RUN is watching the letter, not the order.
+  // ⛔ THE IMPORT CLOSURE IS COMPUTED HERE, not taken from buildManifest, so
+  //   the KEY ORDER of `configs` does not move.  JSON.stringify preserves
+  //   insertion order, so reordering it would move the md5 of EVERY manifest;
+  //   buildManifest is unchanged and still appends the same two groups in the
+  //   same place afterwards.  MEASURED (v138, client anchor 1 / T1): the closure
+  //   is empty on that repo, so this loop queues exactly what it queued before.
+  // ⛔ BEING IMPORTABLE IS NOT BEING A CONFIG.  A module with no `test`
+  //   contributes NOTHING -- `cfg.test` is `{}` below, so no setupFiles, no
+  //   globalSetup, no projects are read.  The cost of asking is one import.
+  // ⛔ ONE THAT CANNOT BE IMPORTED keeps the `__config_load_error__:<label>`
+  //   convention (§0-c): "could not be read" must not be recorded as "was not
+  //   there".  That is what makes widening this queue safe to read -- a module
+  //   plain node refuses becomes a RECORDED entry, not a silence.
+  // ⛔ NOT followed: the relative imports of a config first reached through
+  //   `test.projects` in the loop below (it is discovered after this point).
+  //   Written down as a remaining edge, not left as an absence.
+  const queueKeys = new Set(Object.keys(configs));
+  for (const k of Object.keys(followConfigImports(repo, configs).added)) queueKeys.add(k);
+  for (const k of [...queueKeys].sort()) {
+    if (k.startsWith("__")) continue;
+    if (IMPORTABLE_EXTS.includes(path.extname(k))) queue.push(path.join(repo, k));
   }
 
   const seen = new Set();
@@ -359,6 +389,131 @@ async function resolveSetupFiles(repo, configDirs = [""], configs = {}) {
     }
   }
   return { setup: found, added };
+}
+
+// --- config が相対 import で引き込むファイルも凍結する ---
+// ★v138 (decision 64 A, owner 2026-09-22): FOLLOW THE IMPORT GRAPH OF THE
+// CONFIGS -- still without adding a NAME.
+// MEASURED (v132 §残余 2, zod): the docs / resolution configs `import` from
+// `../../vitest.root.mjs`.  That stem is in no CONFIG_GLOBS entry and no
+// `test.projects` names it, so the file was in NO map at all: editing it
+// changes what every project in the repo runs and `freeze verify` stays green.
+// j59 closed the `test.projects` edge; this closes the `import` edge.  The two
+// are the same move -- follow a REFERENCE, do not enumerate a NAME.
+//
+// WHAT IS READ: the SOURCE TEXT of every file already in `configs` whose
+// extension is a JS/TS module one.  The modules are NOT evaluated.  loadConfig
+// above already showed that plain node cannot even import some of them
+// (`__config_load_error__:packages/zod/vitest.config.ts`), and a freeze that
+// can only watch what it can execute watches less than an attacker can edit.
+// WHAT IS FOLLOWED: only specifiers starting with `./` or `../`, in the four
+// forms decision 64 names -- `import … from`, `export … from`, `import(…)`,
+// `require(…)`.  A bare specifier is a package; anything landing on a
+// `node_modules` segment is dropped.
+// HOW IT RESOLVES: as written, then the extension swapped/appended in the
+// order .ts .mts .cts .js .mjs .cjs .json, then `<spec>/index.{ts,mts,js,mjs}`.
+// That order is what makes `../../vitest.config.js` land on `vitest.config.ts`
+// -- what vite does and what plain node does not.
+// TRANSITIVE, BOUNDED BY THE REPO: an import of an import is followed; a file
+// that resolves OUTSIDE the repo is neither added nor walked (it cannot be
+// keyed repo-relative, and it is outside what this manifest claims to cover).
+// ⛔ AN UNRESOLVABLE RELATIVE SPECIFIER IS RECORDED, NOT SKIPPED, as
+//   `__import_unresolved__:<importing file>:<spec>`, exactly the thinking of
+//   `__config_load_error__` (§0-c: "could not be read" must not read as "was
+//   not there").  Its value is the CONSTANT "unresolved" on purpose: a value
+//   carrying an error string or a path would move with the environment and
+//   `verify` would then report a MODIFIED entry that is not an edit.
+// ⛔ THE DEFAULT IS UNCHANGED.  A config with no relative import returns two
+//   empty maps and an empty loop inserts nothing, so such a repo rebuilds
+//   BYTE-IDENTICAL.  Nothing already in `configs` is re-sorted or re-keyed;
+//   the two new groups are APPENDED, each sorted among itself.
+// ⛔ THIS IS A TEXT SCAN, NOT A PARSE.  A specifier inside a comment or a
+//   string IS followed.  That over-freezes (one more file watched) and is
+//   stable across rebuilds, which is the direction to err in.  A DYNAMIC
+//   specifier (`import(someVar)`) is NOT followed and NOT recorded -- there is
+//   no string to resolve.  NOT MEASURED how often either occurs.
+// ⛔ A SIDE-EFFECT import with no `from` (`import "./x"`) is NOT followed:
+//   decision 64 names four forms and that is not one of them.  Written down as
+//   a known remaining edge, not left as an absence.
+// ⛔ `verify` NEEDS NO CHANGE (read, not assumed): it rebuilds through
+//   buildManifest and diffs `configs` as a map, so these entries are compared
+//   like every other one.
+const IMPORT_SCAN_EXTS = [".ts", ".mts", ".cts", ".js", ".mjs", ".cjs"];
+const IMPORT_RESOLVE_EXTS = [".ts", ".mts", ".cts", ".js", ".mjs", ".cjs", ".json"];
+const IMPORT_INDEX_EXTS = [".ts", ".mts", ".js", ".mjs"];
+
+// The class `[\w$*{},\s]` cannot cross a quote, a semicolon or a parenthesis,
+// so the lazy middle cannot run past the clause it belongs to; and `import.`
+// does not match at all, because whitespace is required after the keyword.
+const IMPORT_RES = [
+  /\b(?:import|export)\s+(?:type\s+)?[\w$*{},\s]*?\bfrom\s*(['"])([^'"\n]+)\1/g,
+  /\bimport\s*\(\s*(['"])([^'"\n]+)\1\s*\)/g,
+  /\brequire\s*\(\s*(['"])([^'"\n]+)\1\s*\)/g,
+];
+
+function relImportSpecs(src) {
+  const out = [];
+  for (const re of IMPORT_RES) {
+    re.lastIndex = 0;
+    let m;
+    while ((m = re.exec(src)) !== null) {
+      const spec = m[2];
+      if (spec.startsWith("./") || spec.startsWith("../")) out.push(spec);
+    }
+  }
+  return out;
+}
+
+function resolveRelImport(fromDir, spec) {
+  const base = path.resolve(fromDir, spec);
+  const cands = [base];
+  const ext = path.extname(base);
+  if (ext) {
+    const stem = base.slice(0, base.length - ext.length);
+    for (const e of IMPORT_RESOLVE_EXTS) cands.push(stem + e);
+  }
+  for (const e of IMPORT_RESOLVE_EXTS) cands.push(base + e);
+  for (const e of IMPORT_INDEX_EXTS) cands.push(path.join(base, "index" + e));
+  for (const c of cands) {
+    try { if (fs.statSync(c).isFile()) return c; } catch { /* next candidate */ }
+  }
+  return null;
+}
+
+// Returns the two groups buildManifest appends to `configs`.
+function followConfigImports(repo, configs) {
+  const added = {};
+  const unresolved = {};
+  const known = new Set();
+  const queue = [];
+  for (const k of Object.keys(configs)) {
+    if (k.startsWith("__")) continue;
+    const abs = path.resolve(repo, k);
+    known.add(abs);
+    if (IMPORT_SCAN_EXTS.includes(path.extname(abs))) queue.push(abs);
+  }
+  const seen = new Set();
+  while (queue.length) {
+    const p = queue.shift();
+    if (seen.has(p)) continue;
+    seen.add(p);
+    let src = null;
+    try { src = fs.readFileSync(p, "utf8"); } catch { continue; }
+    const from = repoRel(repo, p) || p;
+    for (const spec of relImportSpecs(src)) {
+      const abs = resolveRelImport(path.dirname(p), spec);
+      if (abs === null) {
+        unresolved["__import_unresolved__:" + from + ":" + spec] = "unresolved";
+        continue;
+      }
+      const r = repoRel(repo, abs);
+      if (r === null) continue;                          // outside the repo
+      if (r.split("/").includes("node_modules")) continue;
+      if (!known.has(abs)) { known.add(abs); added[r] = hashFile(abs); }
+      if (IMPORT_SCAN_EXTS.includes(path.extname(abs)) && !seen.has(abs)) queue.push(abs);
+    }
+  }
+  return { added, unresolved };
 }
 
 // --- アンカー（file:function）が AST 上に存在するか ---
@@ -445,6 +600,15 @@ export async function buildManifest(repo, oracles, anchors, registry,
   const configs = findConfigs(repo, packageDirs);
   const { setup, added } = await resolveSetupFiles(repo, configDirs, configs);
   for (const k of Object.keys(added).sort()) configs[k] = added[k];
+  // ★v138 (decision 64 A): and the files those configs pull in by RELATIVE
+  // import, transitively, bounded by the repo.  Appended AFTER everything
+  // above, each group sorted among itself; both are empty for a config with
+  // no relative import, and an empty loop inserts nothing, so such a repo
+  // rebuilds byte-identical.
+  const imported = followConfigImports(repo, configs);
+  for (const k of Object.keys(imported.added).sort()) configs[k] = imported.added[k];
+  for (const k of Object.keys(imported.unresolved).sort())
+    configs[k] = imported.unresolved[k];
   return {
     repo,
     oracles: Object.fromEntries(oracles.map((o) => [o, hashFile(path.join(repo, o))])),

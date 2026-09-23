@@ -312,8 +312,19 @@ md5 が **BEFORE＝AFTER**。`a1=5db48fa9d2ac` / `t1=df459e2ea2af`）。
 ⚠ **測る前は「テストを消す」型だけ R4 の生計数（判断43）が拾い、setupFiles を 1 本足す注入は
 どのゲートも気づかなかった**（v131・`reports/v131_results.md`）。
 
-⚠ **残余**: config から ES import されるだけのファイル（zod の `vitest.root.mjs`）は**まだ凍結されない**
-（import グラフを辿るのは次の段）。`vitest.workspace.*` が配列を default export する形は未測定。
+**相対 import も辿る（v138・2026-09-22・判断64）**: 凍結した config の本文から相対指定子の import
+（`import … from './x'`／`export … from`／`import()`／`require()`）を取り出し、拡張子を補って解決し、
+リポジトリ内に在れば `configs` に加える（推移的）。解決できない相対 import は黙って飛ばさず
+`__import_unresolved__` として manifest に残す。zod で `configs` **10 → 11**（`vitest.root.mjs`）、
+そのファイルにコメント 1 行を足すと verify が落ちる。実クライアント 88 走行 SAME・manifest md5 不変。
+
+**import で届いた config の setup も読む（v140・2026-09-22・判断65）**: `setupFiles` / `globalSetup` の解決を
+`configs` に在る importable なモジュール全部に広げた。zod で、import でしか届かない config に setup ファイルを
+足して中身を改竄すると、**旧 freeze は verify を通し（穴）、新 freeze は `setup: MODIFIED` で落とす**。
+実クライアント 88 走行 SAME・manifest md5 不変。
+
+⚠ **残余**: 副作用 import（`import "./x"`）と動的 `import(expr)` は追わない（実測 0 本）。
+`vitest.workspace.*` が配列を default export する形は未測定。`resolve.alias` は最初の config からしか取らない。
 node の素の import で読めない config は飛ばさず `__config_load_error__` として manifest に残す。
 
 ---
